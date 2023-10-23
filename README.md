@@ -31,6 +31,7 @@ School project
 ### profil.php :
  - Form : Infos perso du user.
  - Gestion du compte.
+ - Paramètre : tranche d'âge, sexe, pratique [, poids, taille, IMC]
 
 ### aliments.php :
  - CRUD : les différents aliments possibles à mettre dans le journal.
