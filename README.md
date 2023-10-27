@@ -12,7 +12,7 @@ School project
 
 ### Footer :
  - Auteur (nous)
- - Menu 
+ - Menu
 
 ### connect.php :
  - Form de connexion.
@@ -36,7 +36,93 @@ School project
 ### aliments.php :
  - CRUD : les différents aliments possibles à mettre dans le journal.
 
-### journal.php : 
+### journal.php :
  - CRUD : Aliments conssommés.
  - Vérifier que l'aliment existe -> le sélectionner à partir d'une liste.
    - Date + heure + aliment + quantité (en grammes).
+
+## API
+
+> __Note :__
+> Tous les éléments renvoyés sont des json.
+> Tous les paramètres envoyés sont des json.
+
+### Aliments
+
+#### __GET__ /backend/api/aliments.php/{id}
+
+> Description :
+> Renvoi l'aliment spécifié par l'id dans l'URL.
+> Les valeurs des nutriments sont une proprtion (pourcentage).
+
+__Format :__
+
+{
+  "http_status": _int_,
+  "response": _string_,
+  "result": {
+    "aliment": {
+      "nom": _string_,
+      "energie_kcal": _float_,
+      "sucre": _float_,
+      "proteines": _float_,
+      "fibre_alimentaire": _float_,
+      "alcool": _float_,
+      "matieres_grasses": _float_
+    }
+  }
+}
+
+#### __GET__ /backend/api/aliments.php
+
+> Description :
+> Renvoi tous les aliments.
+
+__Format :__
+
+{
+  "http_status": _int_,
+  "response": _string_,
+  "result": [
+    {
+      "aliment": {
+        "nom": _string_,
+        "energie_kcal": _float_,
+        "sucre": _float_,
+        "proteines": _float_,
+        "fibre_alimentaire": _float_,
+        "alcool": _float_,
+        "matieres_grasses": _float_
+      }
+    },
+    ...
+  ]
+}
+
+#### __POST__ /backend/api/aliments.php
+
+> Description :
+> Ajoute un nouvel élément dans les aliments.
+> Optionnellement un aliment ajouté peut être un composant d'un autre aliment.
+
+__Paramètre POST :__
+
+{
+  "nom": _string_,
+  "energie_kcal": _float_,
+  "sucre": _float_,
+  "proteines": _float_,
+  "fibre_alimentaire": _float_,
+  "alcool": _float_,
+  "matieres_grasses": _float_,
+  "ingredient_de": [
+    {
+      "id_aliment": _int_,
+      "quantite": _float_
+    },
+    ...
+  ]
+}
+
+> Note :
+> Si l'aliment ne compose pas d'autre aliments, le champ __composition__ doit être un tableau vide.

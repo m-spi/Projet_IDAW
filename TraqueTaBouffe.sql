@@ -1,97 +1,220 @@
-/*==============================================================*/
-/* Nom de SGBD :  MySQL 5.0                                     */
-/* Date de cr�ation :  24/10/2023 17:16:05                      */
-/*==============================================================*/
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Oct 27, 2023 at 07:57 AM
+-- Server version: 11.1.2-MariaDB
+-- PHP Version: 8.2.11
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
-/*==============================================================*/
-/* Table : ALIMENTS                                             */
-/*==============================================================*/
-create table ALIMENTS
-(
-   ID_ALIMENT           int not null AUTO_INCREMENT comment '',
-   INDICE_NOVA          int  comment '',
-   NOM_ALIMENT          varchar(1024) not null  comment '',
-   ISLIQUID             bool not null  comment '',
-   primary key (ID_ALIMENT)
-);
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
-/*==============================================================*/
-/* Table : ALIMENT_CONSOMME                                     */
-/*==============================================================*/
-create table ALIMENT_CONSOMME
-(
-   ID_REPAS             int not null AUTO_INCREMENT comment '',
-   ID_ALIMENT_FK           int not null  comment '',
-   ID_USER_FK              int not null  comment '',
-   DATE                 datetime not null  comment '',
-   QUANTITE             float not null  comment '',
-   primary key (ID_REPAS)
-);
+--
+-- Database: `TraqueTaBouffe`
+--
 
-/*==============================================================*/
-/* Table : COMPOSITION                                          */
-/*==============================================================*/
-create table COMPOSITION
-(
-   ID_COMPOSANT_FK         int not null  comment '',
-   ID_ALIMENT_FK           int not null  comment '',
-   QUANTITE_DU_COMPOSANT float not null  comment '',
-   primary key (ID_COMPOSANT_FK, ID_ALIMENT_FK)
-);
+-- --------------------------------------------------------
 
-/*==============================================================*/
-/* Table : EST_COMPOSE                                          */
-/*==============================================================*/
-create table EST_COMPOSE
-(
-   ID_NUTRIMENT_FK         int not null  comment '',
-   ID_ALIMENT_FK           int not null  comment '',
-   POURCENTAGE          float not null  comment '',
-   primary key (ID_NUTRIMENT_FK, ID_ALIMENT_FK)
-);
+--
+-- Table structure for table `ALIMENTS`
+--
 
-/*==============================================================*/
-/* Table : NUTRIMENTS                                           */
-/*==============================================================*/
-create table NUTRIMENTS
-(
-   ID_NUTRIMENT         int not null AUTO_INCREMENT comment '',
-   NOM_NUTRIMENT        varchar(1024) not null  comment '',
-   primary key (ID_NUTRIMENT)
-);
+CREATE TABLE `ALIMENTS` (
+  `ID_ALIMENT` int(11) NOT NULL,
+  `INDICE_NOVA` int(11) DEFAULT NULL,
+  `NOM_ALIMENT` varchar(1024) NOT NULL,
+  `ISLIQUID` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-/*==============================================================*/
-/* Table : USER                                                 */
-/*==============================================================*/
-create table USER
-(
-   ID_USER              int not null AUTO_INCREMENT comment '',
-   NOM                  varchar(1024) not null  comment '',
-   AGE                  int not null  comment '',
-   ISMALE               bool not null  comment '',
-   POIDS                float not null  comment '',
-   TAILLE               float not null  comment '',
-   SPORT                int not null  comment '',
-   PRENOM               varchar(1024)  comment '',
-   primary key (ID_USER)
-);
+-- --------------------------------------------------------
 
-alter table ALIMENT_CONSOMME add constraint FK_ALIMENT__CONSOMME_USER foreign key (ID_USER_FK)
-      references USER (ID_USER) on delete restrict on update restrict;
+--
+-- Table structure for table `ALIMENT_CONSOMME`
+--
 
-alter table ALIMENT_CONSOMME add constraint FK_ALIMENT__EST_ALIMENTS foreign key (ID_ALIMENT_FK)
-      references ALIMENTS (ID_ALIMENT) on delete restrict on update restrict;
+CREATE TABLE `ALIMENT_CONSOMME` (
+  `ID_REPAS` int(11) NOT NULL,
+  `ID_ALIMENT_FK` int(11) NOT NULL,
+  `ID_USER_FK` int(11) NOT NULL,
+  `DATE` datetime NOT NULL,
+  `QUANTITE` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-alter table COMPOSITION add constraint FK_COMPOSIT_COMPOSITI_ALIMENTS foreign key (ID_COMPOSANT_FK)
-      references ALIMENTS (ID_ALIMENT) on delete restrict on update restrict;
+-- --------------------------------------------------------
 
-alter table COMPOSITION add constraint FK2_COMPOSIT_COMPOSITI_ALIMENTS foreign key (ID_ALIMENT_FK)
-      references ALIMENTS (ID_ALIMENT) on delete restrict on update restrict;
+--
+-- Table structure for table `COMPOSITION`
+--
 
-alter table EST_COMPOSE add constraint FK_EST_COMP_EST_COMPO_NUTRIMEN foreign key (ID_NUTRIMENT_FK)
-      references NUTRIMENTS (ID_NUTRIMENT) on delete restrict on update restrict;
+CREATE TABLE `COMPOSITION` (
+  `ID_COMPOSANT_FK` int(11) NOT NULL,
+  `ID_ALIMENT_FK` int(11) NOT NULL,
+  `QUANTITE_DU_COMPOSANT` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-alter table EST_COMPOSE add constraint FK2_EST_COMP_EST_COMPO_ALIMENTS foreign key (ID_ALIMENT_FK)
-      references ALIMENTS (ID_ALIMENT) on delete restrict on update restrict;
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `EST_COMPOSE`
+--
+
+CREATE TABLE `EST_COMPOSE` (
+  `ID_NUTRIMENT_FK` int(11) NOT NULL,
+  `ID_ALIMENT_FK` int(11) NOT NULL,
+  `POURCENTAGE` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `NUTRIMENTS`
+--
+
+CREATE TABLE `NUTRIMENTS` (
+  `ID_NUTRIMENT` int(11) NOT NULL,
+  `NOM_NUTRIMENT` varchar(1024) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `NUTRIMENTS`
+--
+
+INSERT INTO `NUTRIMENTS` (`ID_NUTRIMENT`, `NOM_NUTRIMENT`) VALUES
+(1, 'energie_kcal'),
+(2, 'sel'),
+(3, 'sucre'),
+(4, 'proteines'),
+(5, 'fibre_alimentaire'),
+(6, 'matiere_grasses'),
+(7, 'alcool');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `USER`
+--
+
+CREATE TABLE `USER` (
+  `ID_USER` int(11) NOT NULL,
+  `EMAIL` varchar(255) NOT NULL,
+  `NOM` varchar(1024) NOT NULL,
+  `PRENOM` varchar(1024) DEFAULT NULL,
+  `AGE` int(11) NOT NULL,
+  `ISMALE` tinyint(1) NOT NULL,
+  `POIDS` float NOT NULL,
+  `TAILLE` float NOT NULL,
+  `SPORT` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `ALIMENTS`
+--
+ALTER TABLE `ALIMENTS`
+  ADD PRIMARY KEY (`ID_ALIMENT`),
+  ADD KEY `NOM_ALIMENT` (`NOM_ALIMENT`(768));
+
+--
+-- Indexes for table `ALIMENT_CONSOMME`
+--
+ALTER TABLE `ALIMENT_CONSOMME`
+  ADD PRIMARY KEY (`ID_REPAS`),
+  ADD KEY `FK_ALIMENT__CONSOMME_USER` (`ID_USER_FK`),
+  ADD KEY `FK_ALIMENT__EST_ALIMENTS` (`ID_ALIMENT_FK`),
+  ADD KEY `DATE` (`DATE`);
+
+--
+-- Indexes for table `COMPOSITION`
+--
+ALTER TABLE `COMPOSITION`
+  ADD PRIMARY KEY (`ID_COMPOSANT_FK`,`ID_ALIMENT_FK`),
+  ADD KEY `FK2_COMPOSIT_COMPOSITI_ALIMENTS` (`ID_ALIMENT_FK`);
+
+--
+-- Indexes for table `EST_COMPOSE`
+--
+ALTER TABLE `EST_COMPOSE`
+  ADD PRIMARY KEY (`ID_NUTRIMENT_FK`,`ID_ALIMENT_FK`),
+  ADD KEY `FK2_EST_COMP_EST_COMPO_ALIMENTS` (`ID_ALIMENT_FK`);
+
+--
+-- Indexes for table `NUTRIMENTS`
+--
+ALTER TABLE `NUTRIMENTS`
+  ADD PRIMARY KEY (`ID_NUTRIMENT`);
+
+--
+-- Indexes for table `USER`
+--
+ALTER TABLE `USER`
+  ADD PRIMARY KEY (`ID_USER`),
+  ADD KEY `EMAIL` (`EMAIL`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `ALIMENTS`
+--
+ALTER TABLE `ALIMENTS`
+  MODIFY `ID_ALIMENT` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `ALIMENT_CONSOMME`
+--
+ALTER TABLE `ALIMENT_CONSOMME`
+  MODIFY `ID_REPAS` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `NUTRIMENTS`
+--
+ALTER TABLE `NUTRIMENTS`
+  MODIFY `ID_NUTRIMENT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `USER`
+--
+ALTER TABLE `USER`
+  MODIFY `ID_USER` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `ALIMENT_CONSOMME`
+--
+ALTER TABLE `ALIMENT_CONSOMME`
+  ADD CONSTRAINT `FK_ALIMENT__CONSOMME_USER` FOREIGN KEY (`ID_USER_FK`) REFERENCES `USER` (`ID_USER`),
+  ADD CONSTRAINT `FK_ALIMENT__EST_ALIMENTS` FOREIGN KEY (`ID_ALIMENT_FK`) REFERENCES `ALIMENTS` (`ID_ALIMENT`);
+
+--
+-- Constraints for table `COMPOSITION`
+--
+ALTER TABLE `COMPOSITION`
+  ADD CONSTRAINT `FK2_COMPOSIT_COMPOSITI_ALIMENTS` FOREIGN KEY (`ID_ALIMENT_FK`) REFERENCES `ALIMENTS` (`ID_ALIMENT`),
+  ADD CONSTRAINT `FK_COMPOSIT_COMPOSITI_ALIMENTS` FOREIGN KEY (`ID_COMPOSANT_FK`) REFERENCES `ALIMENTS` (`ID_ALIMENT`);
+
+--
+-- Constraints for table `EST_COMPOSE`
+--
+ALTER TABLE `EST_COMPOSE`
+  ADD CONSTRAINT `FK2_EST_COMP_EST_COMPO_ALIMENTS` FOREIGN KEY (`ID_ALIMENT_FK`) REFERENCES `ALIMENTS` (`ID_ALIMENT`),
+  ADD CONSTRAINT `FK_EST_COMP_EST_COMPO_NUTRIMEN` FOREIGN KEY (`ID_NUTRIMENT_FK`) REFERENCES `NUTRIMENTS` (`ID_NUTRIMENT`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
