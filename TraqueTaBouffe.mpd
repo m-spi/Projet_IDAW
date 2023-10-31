@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{D2B46C45-0A25-45C4-ADCF-AC1B695C2B87}" Label="" LastModificationDate="1698160302" Name="TraqueTaBouffe" Objects="139" Symbols="12" Target="MySQL 5.0" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" signature="PDM_DATA_MODEL_XML" version="16.7.1.6488"?>
+<?PowerDesigner AppLocale="UTF16" ID="{D2B46C45-0A25-45C4-ADCF-AC1B695C2B87}" Label="" LastModificationDate="1698160912" Name="TraqueTaBouffe" Objects="139" Symbols="12" Target="MySQL 5.0" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" signature="PDM_DATA_MODEL_XML" version="16.7.1.6488"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -13,11 +13,12 @@
 <a:Code>TRAQUETABOUFFE</a:Code>
 <a:CreationDate>1698159810</a:CreationDate>
 <a:Creator>donia</a:Creator>
-<a:ModificationDate>1698160302</a:ModificationDate>
+<a:ModificationDate>1698160912</a:ModificationDate>
 <a:Modifier>donia</a:Modifier>
 <a:History>ORG {88B3D7C6-5253-45D3-BE4A-00B9CBF89E18}
 DAT 1698159845
-ATT FOPT</a:History>
+ATT FOPT
+ATT MOPT</a:History>
 <a:PackageOptionsText>[FolderOptions]
 
 [FolderOptions\Physical Objects]
@@ -92,7 +93,7 @@ GenScriptName6=
 GenScriptName7=
 GenScriptName8=
 GenScriptName9=
-GenPathName=C:\Program Files\SAP\PowerDesigner 16\
+GenPathName=C:\wamp64\www\Projet_IDAW\
 GenSingleFile=Yes
 GenODBC=No
 GenCheckModel=Yes
@@ -3073,7 +3074,7 @@ CheckRequested=Yes</a:PackageOptionsText>
 
 [ModelOptions\Physical Objects]
 CaseSensitive=No
-DisplayName=Yes
+DisplayName=No
 EnableTrans=No
 UseTerm=No
 EnableRequirements=No
@@ -3372,7 +3373,7 @@ MaxLen=254
 Case=U
 ValidChar=
 InvldChar=
-AllValid=Yes
+AllValid=No
 NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
@@ -4524,8 +4525,8 @@ Shadow=0
 <c:Symbols>
 <o:ReferenceSymbol Id="o6">
 <a:ModificationDate>1698159889</a:ModificationDate>
-<a:Rect>((-12537,5653), (-779,6903))</a:Rect>
-<a:ListOfPoints>((-12137,6278),(-1179,6278))</a:ListOfPoints>
+<a:Rect>((-11275,5653), (-1191,6903))</a:Rect>
+<a:ListOfPoints>((-10875,6278),(-1591,6278))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -4545,8 +4546,8 @@ DESTINATION 0 Arial,8,N</a:FontList>
 </o:ReferenceSymbol>
 <o:ReferenceSymbol Id="o10">
 <a:ModificationDate>1698159889</a:ModificationDate>
-<a:Rect>((-14886,9027), (-13636,19978))</a:Rect>
-<a:ListOfPoints>((-14261,9427),(-14261,19578))</a:ListOfPoints>
+<a:Rect>((-14519,9027), (-13269,19978))</a:Rect>
+<a:ListOfPoints>((-13894,9427),(-13894,19578))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -4566,8 +4567,8 @@ DESTINATION 0 Arial,8,N</a:FontList>
 </o:ReferenceSymbol>
 <o:ReferenceSymbol Id="o13">
 <a:ModificationDate>1698159866</a:ModificationDate>
-<a:Rect>((-8921,21353), (-7671,29743))</a:Rect>
-<a:ListOfPoints>((-8296,29343),(-8296,21753))</a:ListOfPoints>
+<a:Rect>((-9107,21353), (-7857,29743))</a:Rect>
+<a:ListOfPoints>((-8482,29343),(-8482,21753))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -4588,8 +4589,8 @@ DESTINATION 0 Arial,8,N</a:FontList>
 </o:ReferenceSymbol>
 <o:ReferenceSymbol Id="o16">
 <a:ModificationDate>1698159868</a:ModificationDate>
-<a:Rect>((-11824,23217), (-10574,30068))</a:Rect>
-<a:ListOfPoints>((-11199,29668),(-11199,23617))</a:ListOfPoints>
+<a:Rect>((-12630,23217), (-10574,30068))</a:Rect>
+<a:ListOfPoints>((-12230,29668),(-12230,27134),(-11199,27134),(-11199,23617))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -4610,8 +4611,8 @@ DESTINATION 0 Arial,8,N</a:FontList>
 </o:ReferenceSymbol>
 <o:ReferenceSymbol Id="o18">
 <a:ModificationDate>1698159877</a:ModificationDate>
-<a:Rect>((12882,20465), (16858,21715))</a:Rect>
-<a:ListOfPoints>((13282,21090),(16458,21090))</a:ListOfPoints>
+<a:Rect>((14234,20465), (16034,21715))</a:Rect>
+<a:ListOfPoints>((14724,21090),(15634,21090))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -4631,8 +4632,8 @@ DESTINATION 0 Arial,8,N</a:FontList>
 </o:ReferenceSymbol>
 <o:ReferenceSymbol Id="o22">
 <a:ModificationDate>1698159871</a:ModificationDate>
-<a:Rect>((-2131,21627), (2972,22877))</a:Rect>
-<a:ListOfPoints>((2572,22252),(-1731,22252))</a:ListOfPoints>
+<a:Rect>((-2131,21627), (1530,22877))</a:Rect>
+<a:ListOfPoints>((1130,22252),(-1731,22252))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -4675,9 +4676,9 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:TableSymbol>
 <o:TableSymbol Id="o8">
-<a:ModificationDate>1698159881</a:ModificationDate>
+<a:ModificationDate>1698160912</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((-1179,5639), (9995,14787))</a:Rect>
+<a:Rect>((-1591,5639), (10407,14787))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
 <a:FillColor>16777136</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -4699,9 +4700,9 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:TableSymbol>
 <o:TableSymbol Id="o14">
-<a:ModificationDate>1698159866</a:ModificationDate>
+<a:ModificationDate>1698160912</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((-13809,29343), (507,33741))</a:Rect>
+<a:Rect>((-15431,29343), (2129,33741))</a:Rect>
 <a:LineColor>16744576</a:LineColor>
 <a:FillColor>16765136</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -4723,9 +4724,9 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:TableSymbol>
 <o:TableSymbol Id="o7">
-<a:ModificationDate>1698159889</a:ModificationDate>
+<a:ModificationDate>1698160912</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((-22641,3129), (-12137,9427))</a:Rect>
+<a:Rect>((-23903,3129), (-10875,9427))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
 <a:FillColor>16777136</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -4747,9 +4748,9 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:TableSymbol>
 <o:TableSymbol Id="o20">
-<a:ModificationDate>1698159877</a:ModificationDate>
+<a:ModificationDate>1698160912</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((16458,19091), (30156,23090))</a:Rect>
+<a:Rect>((15634,19091), (30980,23090))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
 <a:FillColor>16777136</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -4771,9 +4772,9 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:TableSymbol>
 <o:TableSymbol Id="o19">
-<a:ModificationDate>1698159871</a:ModificationDate>
+<a:ModificationDate>1698160912</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((2572,18856), (13282,23254))</a:Rect>
+<a:Rect>((1130,18856), (14724,23254))</a:Rect>
 <a:LineColor>16744576</a:LineColor>
 <a:FillColor>16765136</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -4819,11 +4820,13 @@ DAT 1698159845</a:History>
 <a:Code>ID_ALIMENT</a:Code>
 <a:CreationDate>1698159845</a:CreationDate>
 <a:Creator>donia</a:Creator>
-<a:ModificationDate>1698159845</a:ModificationDate>
+<a:ModificationDate>1698391780</a:ModificationDate>
 <a:Modifier>donia</a:Modifier>
 <a:History>ORG {F9B12B43-66E2-4C41-8563-1339A6013198}
-DAT 1698159845</a:History>
+DAT 1698159845
+ATT IDNT</a:History>
 <a:DataType>int</a:DataType>
+<a:Identity>1</a:Identity>
 <a:Column.Mandatory>1</a:Column.Mandatory>
 </o:Column>
 <o:Column Id="o31">
@@ -4936,11 +4939,13 @@ DAT 1698159845</a:History>
 <a:Code>ID_USER</a:Code>
 <a:CreationDate>1698159845</a:CreationDate>
 <a:Creator>donia</a:Creator>
-<a:ModificationDate>1698159845</a:ModificationDate>
+<a:ModificationDate>1698391827</a:ModificationDate>
 <a:Modifier>donia</a:Modifier>
 <a:History>ORG {0D4E440F-BF6C-4AF5-B079-3212A0D36822}
-DAT 1698159845</a:History>
+DAT 1698159845
+ATT IDNT</a:History>
 <a:DataType>int</a:DataType>
+<a:Identity>1</a:Identity>
 <a:Column.Mandatory>1</a:Column.Mandatory>
 </o:Column>
 <o:Column Id="o38">
@@ -5106,37 +5111,43 @@ DAT 1698159845</a:History>
 <a:Code>ID_REPAS</a:Code>
 <a:CreationDate>1698159845</a:CreationDate>
 <a:Creator>donia</a:Creator>
-<a:ModificationDate>1698159845</a:ModificationDate>
+<a:ModificationDate>1698391835</a:ModificationDate>
 <a:Modifier>donia</a:Modifier>
 <a:History>ORG {716238B8-07D4-4C9B-8B81-9A9F1A1B2860}
-DAT 1698159845</a:History>
+DAT 1698159845
+ATT IDNT</a:History>
 <a:DataType>int</a:DataType>
+<a:Identity>1</a:Identity>
 <a:Column.Mandatory>1</a:Column.Mandatory>
 </o:Column>
 <o:Column Id="o49">
 <a:ObjectID>223D6E72-1D96-46E9-B9EB-C13314D7C2A0</a:ObjectID>
-<a:Name>id_aliment</a:Name>
-<a:Code>ID_ALIMENT</a:Code>
+<a:Name>id_aliment_fk</a:Name>
+<a:Code>ID_ALIMENT_FK</a:Code>
 <a:CreationDate>1698159845</a:CreationDate>
 <a:Creator>donia</a:Creator>
-<a:ModificationDate>1698159845</a:ModificationDate>
+<a:ModificationDate>1698391932</a:ModificationDate>
 <a:Modifier>donia</a:Modifier>
 <a:History>ORG {F9B12B43-66E2-4C41-8563-1339A6013198},{3CBFEA16-9A0F-42F7-B31C-8902C52E99C3}
-DAT 1698159845</a:History>
+DAT 1698159845
+ATT NAME
+ATT CODE</a:History>
 <a:DataType>int</a:DataType>
 <a:Column.Mandatory>1</a:Column.Mandatory>
 <a:AutoMigrated>1</a:AutoMigrated>
 </o:Column>
 <o:Column Id="o50">
 <a:ObjectID>B756C5E8-4E06-454A-8FD6-967CE27528DC</a:ObjectID>
-<a:Name>id_user</a:Name>
-<a:Code>ID_USER</a:Code>
+<a:Name>id_user_fk</a:Name>
+<a:Code>ID_USER_FK</a:Code>
 <a:CreationDate>1698159845</a:CreationDate>
 <a:Creator>donia</a:Creator>
-<a:ModificationDate>1698159845</a:ModificationDate>
+<a:ModificationDate>1698391932</a:ModificationDate>
 <a:Modifier>donia</a:Modifier>
 <a:History>ORG {0D4E440F-BF6C-4AF5-B079-3212A0D36822},{D883B3C6-08E5-4399-859A-8A2BF9EE7F12}
-DAT 1698159845</a:History>
+DAT 1698159845
+ATT NAME
+ATT CODE</a:History>
 <a:DataType>int</a:DataType>
 <a:Column.Mandatory>1</a:Column.Mandatory>
 <a:AutoMigrated>1</a:AutoMigrated>
@@ -5290,11 +5301,13 @@ DAT 1698159845</a:History>
 <a:Code>ID_NUTRIMENT</a:Code>
 <a:CreationDate>1698159845</a:CreationDate>
 <a:Creator>donia</a:Creator>
-<a:ModificationDate>1698159845</a:ModificationDate>
+<a:ModificationDate>1698391816</a:ModificationDate>
 <a:Modifier>donia</a:Modifier>
 <a:History>ORG {B7E99473-7523-4788-A27D-DAAFF5BF5EB5}
-DAT 1698159845</a:History>
+DAT 1698159845
+ATT IDNT</a:History>
 <a:DataType>int</a:DataType>
+<a:Identity>1</a:Identity>
 <a:Column.Mandatory>1</a:Column.Mandatory>
 </o:Column>
 <o:Column Id="o61">
@@ -5378,11 +5391,11 @@ DAT 1698159845</a:History>
 <c:Columns>
 <o:Column Id="o65">
 <a:ObjectID>7AEF1333-5C5D-4F6F-8E3A-A23F9C15163F</a:ObjectID>
-<a:Name>id_composant</a:Name>
-<a:Code>ID_COMPOSANT</a:Code>
+<a:Name>id_composant_fk</a:Name>
+<a:Code>ID_COMPOSANT_FK</a:Code>
 <a:CreationDate>1698159845</a:CreationDate>
 <a:Creator>donia</a:Creator>
-<a:ModificationDate>1698159956</a:ModificationDate>
+<a:ModificationDate>1698391902</a:ModificationDate>
 <a:Modifier>donia</a:Modifier>
 <a:History>ORG {F9B12B43-66E2-4C41-8563-1339A6013198},{D3FBA9C2-B104-4206-914C-AC05928CD895}
 DAT 1698159845
@@ -5394,14 +5407,16 @@ ATT CODE</a:History>
 </o:Column>
 <o:Column Id="o66">
 <a:ObjectID>CFEB8FC2-9361-4A50-A529-81218BA95912</a:ObjectID>
-<a:Name>id_aliment</a:Name>
-<a:Code>ID_ALIMENT</a:Code>
+<a:Name>id_aliment_fk2</a:Name>
+<a:Code>ID_ALIMENT_FK2</a:Code>
 <a:CreationDate>1698159845</a:CreationDate>
 <a:Creator>donia</a:Creator>
-<a:ModificationDate>1698159845</a:ModificationDate>
+<a:ModificationDate>1698391902</a:ModificationDate>
 <a:Modifier>donia</a:Modifier>
 <a:History>ORG {F9B12B43-66E2-4C41-8563-1339A6013198},{F5C20D67-17F9-4C2F-82A3-80CE8D2D4D4B}
-DAT 1698159845</a:History>
+DAT 1698159845
+ATT NAME
+ATT CODE</a:History>
 <a:DataType>int</a:DataType>
 <a:Column.Mandatory>1</a:Column.Mandatory>
 <a:AutoMigrated>1</a:AutoMigrated>
@@ -5552,28 +5567,32 @@ DAT 1698159845</a:History>
 <c:Columns>
 <o:Column Id="o76">
 <a:ObjectID>EAF71FA5-C004-4E50-972C-CEE44F7E03FC</a:ObjectID>
-<a:Name>id_nutriment</a:Name>
-<a:Code>ID_NUTRIMENT</a:Code>
+<a:Name>id_nutriment_fk</a:Name>
+<a:Code>ID_NUTRIMENT_FK</a:Code>
 <a:CreationDate>1698159845</a:CreationDate>
 <a:Creator>donia</a:Creator>
-<a:ModificationDate>1698159845</a:ModificationDate>
+<a:ModificationDate>1698391866</a:ModificationDate>
 <a:Modifier>donia</a:Modifier>
 <a:History>ORG {B7E99473-7523-4788-A27D-DAAFF5BF5EB5},{C1943383-AEB0-4CD3-BA81-12A0DDE9EE68}
-DAT 1698159845</a:History>
+DAT 1698159845
+ATT NAME
+ATT CODE</a:History>
 <a:DataType>int</a:DataType>
 <a:Column.Mandatory>1</a:Column.Mandatory>
 <a:AutoMigrated>1</a:AutoMigrated>
 </o:Column>
 <o:Column Id="o77">
 <a:ObjectID>2D0C7E73-8696-4769-B4C2-09709B559AAE</a:ObjectID>
-<a:Name>id_aliment</a:Name>
-<a:Code>ID_ALIMENT</a:Code>
+<a:Name>id_aliment_fk</a:Name>
+<a:Code>ID_ALIMENT_FK</a:Code>
 <a:CreationDate>1698159845</a:CreationDate>
 <a:Creator>donia</a:Creator>
-<a:ModificationDate>1698159845</a:ModificationDate>
+<a:ModificationDate>1698391879</a:ModificationDate>
 <a:Modifier>donia</a:Modifier>
 <a:History>ORG {F9B12B43-66E2-4C41-8563-1339A6013198},{26628C03-1761-4E39-8783-09B125AF53CD}
-DAT 1698159845</a:History>
+DAT 1698159845
+ATT NAME
+ATT CODE</a:History>
 <a:DataType>int</a:DataType>
 <a:Column.Mandatory>1</a:Column.Mandatory>
 <a:AutoMigrated>1</a:AutoMigrated>
