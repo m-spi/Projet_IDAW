@@ -1,0 +1,22 @@
+.recommendation{
+    background-color: rgba(220, 20, 60, 0.58);
+    margin-top: 30px;
+    width: 15em;
+    height: 10em;
+    overflow: hidden;
+}
+
+#currentPage {
+    background-color: rgba(192, 192, 192, 0.24);
+    text-decoration-color: #ffffff;
+}
+
+.recoSize {
+    width: 15em;
+    overflow: hidden;
+
+
+}
+
+
+

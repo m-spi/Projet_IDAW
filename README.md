@@ -5,7 +5,7 @@ School project
 ## Pages
 
 ### Header :
- - Nom  du site
+ - Nom du site
  - Image
  - Menu horizontal
  - Bouton de déconnexion

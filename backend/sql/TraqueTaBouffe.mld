@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{88B3D7C6-5253-45D3-BE4A-00B9CBF89E18}" Label="" LastModificationDate="1698157396" Name="TraqueTaBouffe" Objects="116" Symbols="19" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" signature="CDM_DATA_MODEL_XML" version="16.7.1.6488"?>
+<?PowerDesigner AppLocale="UTF16" ID="{E408F04B-D9A1-4E83-BC6C-A57F85DE1A02}" Label="" LastModificationDate="1698158069" Name="TraqueTaBouffe" Objects="81" Symbols="8" Type="{5F45F978-C4F3-4E35-A3FC-AF3318663A0F}" signature="LDM_DATA_MODEL_XML" version="16.7.1.6488"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -8,16 +8,19 @@
 <a:SessionID>00000000-0000-0000-0000-000000000000</a:SessionID>
 <c:Children>
 <o:Model Id="o2">
-<a:ObjectID>88B3D7C6-5253-45D3-BE4A-00B9CBF89E18</a:ObjectID>
+<a:ObjectID>E408F04B-D9A1-4E83-BC6C-A57F85DE1A02</a:ObjectID>
 <a:Name>TraqueTaBouffe</a:Name>
 <a:Code>TRAQUETABOUFFE</a:Code>
-<a:CreationDate>1698152006</a:CreationDate>
+<a:CreationDate>1698158052</a:CreationDate>
 <a:Creator>donia</a:Creator>
-<a:ModificationDate>1698157396</a:ModificationDate>
+<a:ModificationDate>1698158068</a:ModificationDate>
 <a:Modifier>donia</a:Modifier>
+<a:History>ORG {88B3D7C6-5253-45D3-BE4A-00B9CBF89E18}
+DAT 1698158068
+ATT MOPT</a:History>
 <a:PackageOptionsText>[FolderOptions]
 
-[FolderOptions\Conceptual Data Objects]
+[FolderOptions\Common]
 GenerationCheckModel=Yes
 GenerationPath=
 GenerationOptions=
@@ -26,7 +29,7 @@ GenerationTargets=
 GenerationSelections=</a:PackageOptionsText>
 <a:ModelOptionsText>[ModelOptions]
 
-[ModelOptions\Conceptual options]
+[ModelOptions\Logical options]
 CaseSensitive=No
 DisplayName=Yes
 EnableTrans=No
@@ -34,10 +37,7 @@ UseTerm=No
 EnableRequirements=No
 EnableFullShortcut=Yes
 SynchroCode=Yes
-InfoUnique=Yes
-AllowReuse=Yes
-InfoAllowReuse=Yes
-Notation=2
+Notation=0
 RlshUnique=Yes
 DefaultDttp=
 DomnCopyDttp=Yes
@@ -46,16 +46,25 @@ DomnCopyRule=No
 DomnCopyExat=No
 DomnCopyMand=No
 DttpFullName=Yes
+RlshMigrateDomain=Yes
+RlshMigrateCheck=Yes
+RlshMigrateRule=Yes
+RlshMigrateExtd=Yes
+RlshAllowInhrDivr=No
+RlshAllowNN=No
+RlshGenNN=No
+FKNameTemplate=%.3:PARENT%_%ATTRIBUTE%
+FKNameTemplateUsage=No
 RlshAsstTmpl=Chaque %Entity1.Name%[CRLF].if %Entity1ToEntity2RoleMandatory%[CRLF] doit[CRLF].else[CRLF] peut[CRLF].endif[CRLF].if %Entity1ToEntity2Role%[CRLF] %.L:Entity1ToEntity2Role%[CRLF].else[CRLF] avoir[CRLF].endif[CRLF].if %Entity1ToEntity2RoleMaximumCardinality%==1[CRLF].if %Entity1ToEntity2RoleMandatory%[CRLF] un(e) et un(e) seul(e)[CRLF].else[CRLF] au plus un(e)[CRLF].endif[CRLF].else[CRLF] un(e) ou plusieurs[CRLF].endif[CRLF].if (%Entity1% == %Entity2%)[CRLF] autre[CRLF].endif[CRLF] %Entity2.Name%.[CRLF]Chaque %Entity2.Name%[CRLF].if %Entity2ToEntity1RoleMandatory%[CRLF] doit[CRLF].else[CRLF] peut[CRLF].endif[CRLF].if %Entity2ToEntity1Role%[CRLF] %.L:Entity2ToEntity1Role%[CRLF].else[CRLF] avoir[CRLF].endif[CRLF].if %Entity2ToEntity1RoleMaximumCardinality%==1[CRLF].if %Entity2ToEntity1RoleMandatory%[CRLF] un(e) et un(e) seul(e)[CRLF].else[CRLF] au plus un(e)[CRLF].endif[CRLF].else[CRLF] un(e) ou plusieurs[CRLF].endif[CRLF].if (%Entity1% == %Entity2%)[CRLF] autre[CRLF].endif[CRLF] %Entity1.Name%.
 RlshAsstExt=
 
-[ModelOptions\Conceptual options\NamingOptionsTemplates]
+[ModelOptions\Logical options\NamingOptionsTemplates]
 
-[ModelOptions\Conceptual options\ClssNamingOptions]
+[ModelOptions\Logical options\ClssNamingOptions]
 
-[ModelOptions\Conceptual options\ClssNamingOptions\FILO]
+[ModelOptions\Logical options\ClssNamingOptions\FILO]
 
-[ModelOptions\Conceptual options\ClssNamingOptions\FILO\Name]
+[ModelOptions\Logical options\ClssNamingOptions\FILO\Name]
 Template=
 MaxLen=254
 Case=M
@@ -68,7 +77,7 @@ Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
-[ModelOptions\Conceptual options\ClssNamingOptions\FILO\Code]
+[ModelOptions\Logical options\ClssNamingOptions\FILO\Code]
 Template=
 MaxLen=254
 Case=U
@@ -81,9 +90,9 @@ Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
-[ModelOptions\Conceptual options\ClssNamingOptions\FRMEOBJ]
+[ModelOptions\Logical options\ClssNamingOptions\FRMEOBJ]
 
-[ModelOptions\Conceptual options\ClssNamingOptions\FRMEOBJ\Name]
+[ModelOptions\Logical options\ClssNamingOptions\FRMEOBJ\Name]
 Template=
 MaxLen=254
 Case=M
@@ -96,7 +105,7 @@ Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
-[ModelOptions\Conceptual options\ClssNamingOptions\FRMEOBJ\Code]
+[ModelOptions\Logical options\ClssNamingOptions\FRMEOBJ\Code]
 Template=
 MaxLen=254
 Case=U
@@ -109,9 +118,9 @@ Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
-[ModelOptions\Conceptual options\ClssNamingOptions\FRMELNK]
+[ModelOptions\Logical options\ClssNamingOptions\FRMELNK]
 
-[ModelOptions\Conceptual options\ClssNamingOptions\FRMELNK\Name]
+[ModelOptions\Logical options\ClssNamingOptions\FRMELNK\Name]
 Template=
 MaxLen=254
 Case=M
@@ -124,7 +133,7 @@ Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
-[ModelOptions\Conceptual options\ClssNamingOptions\FRMELNK\Code]
+[ModelOptions\Logical options\ClssNamingOptions\FRMELNK\Code]
 Template=
 MaxLen=254
 Case=U
@@ -137,9 +146,9 @@ Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
-[ModelOptions\Conceptual options\ClssNamingOptions\AREA]
+[ModelOptions\Logical options\ClssNamingOptions\AREA]
 
-[ModelOptions\Conceptual options\ClssNamingOptions\AREA\Name]
+[ModelOptions\Logical options\ClssNamingOptions\AREA\Name]
 Template=
 MaxLen=254
 Case=M
@@ -152,7 +161,7 @@ Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
-[ModelOptions\Conceptual options\ClssNamingOptions\AREA\Code]
+[ModelOptions\Logical options\ClssNamingOptions\AREA\Code]
 Template=
 MaxLen=254
 Case=U
@@ -165,9 +174,9 @@ Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
-[ModelOptions\Conceptual options\ClssNamingOptions\DefaultClass]
+[ModelOptions\Logical options\ClssNamingOptions\DefaultClass]
 
-[ModelOptions\Conceptual options\ClssNamingOptions\DefaultClass\Name]
+[ModelOptions\Logical options\ClssNamingOptions\DefaultClass\Name]
 Template=
 MaxLen=254
 Case=M
@@ -180,7 +189,7 @@ Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
-[ModelOptions\Conceptual options\ClssNamingOptions\DefaultClass\Code]
+[ModelOptions\Logical options\ClssNamingOptions\DefaultClass\Code]
 Template=
 MaxLen=254
 Case=U
@@ -193,9 +202,9 @@ Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
-[ModelOptions\Conceptual options\ClssNamingOptions\CDMPCKG]
+[ModelOptions\Logical options\ClssNamingOptions\LDMPCKG]
 
-[ModelOptions\Conceptual options\ClssNamingOptions\CDMPCKG\Name]
+[ModelOptions\Logical options\ClssNamingOptions\LDMPCKG\Name]
 Template=
 MaxLen=254
 Case=M
@@ -208,7 +217,7 @@ Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
-[ModelOptions\Conceptual options\ClssNamingOptions\CDMPCKG\Code]
+[ModelOptions\Logical options\ClssNamingOptions\LDMPCKG\Code]
 Template=
 MaxLen=254
 Case=U
@@ -221,9 +230,9 @@ Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
-[ModelOptions\Conceptual options\ClssNamingOptions\CDMDOMN]
+[ModelOptions\Logical options\ClssNamingOptions\LDMDOMN]
 
-[ModelOptions\Conceptual options\ClssNamingOptions\CDMDOMN\Name]
+[ModelOptions\Logical options\ClssNamingOptions\LDMDOMN\Name]
 Template=
 MaxLen=254
 Case=M
@@ -236,7 +245,7 @@ Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
-[ModelOptions\Conceptual options\ClssNamingOptions\CDMDOMN\Code]
+[ModelOptions\Logical options\ClssNamingOptions\LDMDOMN\Code]
 Template=
 MaxLen=254
 Case=U
@@ -249,9 +258,9 @@ Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
-[ModelOptions\Conceptual options\ClssNamingOptions\INFO]
+[ModelOptions\Logical options\ClssNamingOptions\LDMENTT]
 
-[ModelOptions\Conceptual options\ClssNamingOptions\INFO\Name]
+[ModelOptions\Logical options\ClssNamingOptions\LDMENTT\Name]
 Template=
 MaxLen=254
 Case=M
@@ -264,7 +273,7 @@ Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
-[ModelOptions\Conceptual options\ClssNamingOptions\INFO\Code]
+[ModelOptions\Logical options\ClssNamingOptions\LDMENTT\Code]
 Template=
 MaxLen=254
 Case=U
@@ -277,9 +286,9 @@ Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
-[ModelOptions\Conceptual options\ClssNamingOptions\ENTT]
+[ModelOptions\Logical options\ClssNamingOptions\LDMPROP]
 
-[ModelOptions\Conceptual options\ClssNamingOptions\ENTT\Name]
+[ModelOptions\Logical options\ClssNamingOptions\LDMPROP\Name]
 Template=
 MaxLen=254
 Case=M
@@ -292,7 +301,7 @@ Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
-[ModelOptions\Conceptual options\ClssNamingOptions\ENTT\Code]
+[ModelOptions\Logical options\ClssNamingOptions\LDMPROP\Code]
 Template=
 MaxLen=254
 Case=U
@@ -305,9 +314,9 @@ Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
-[ModelOptions\Conceptual options\ClssNamingOptions\IDTF]
+[ModelOptions\Logical options\ClssNamingOptions\LDMIDTF]
 
-[ModelOptions\Conceptual options\ClssNamingOptions\IDTF\Name]
+[ModelOptions\Logical options\ClssNamingOptions\LDMIDTF\Name]
 Template=
 MaxLen=254
 Case=M
@@ -320,7 +329,7 @@ Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
-[ModelOptions\Conceptual options\ClssNamingOptions\IDTF\Code]
+[ModelOptions\Logical options\ClssNamingOptions\LDMIDTF\Code]
 Template=
 MaxLen=254
 Case=U
@@ -333,9 +342,9 @@ Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
-[ModelOptions\Conceptual options\ClssNamingOptions\RLSH]
+[ModelOptions\Logical options\ClssNamingOptions\LDMRLSH]
 
-[ModelOptions\Conceptual options\ClssNamingOptions\RLSH\Name]
+[ModelOptions\Logical options\ClssNamingOptions\LDMRLSH\Name]
 Template=
 MaxLen=254
 Case=M
@@ -348,7 +357,7 @@ Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
-[ModelOptions\Conceptual options\ClssNamingOptions\RLSH\Code]
+[ModelOptions\Logical options\ClssNamingOptions\LDMRLSH\Code]
 Template=
 MaxLen=254
 Case=U
@@ -361,9 +370,9 @@ Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
-[ModelOptions\Conceptual options\ClssNamingOptions\ASSC]
+[ModelOptions\Logical options\ClssNamingOptions\LDMINHR]
 
-[ModelOptions\Conceptual options\ClssNamingOptions\ASSC\Name]
+[ModelOptions\Logical options\ClssNamingOptions\LDMINHR\Name]
 Template=
 MaxLen=254
 Case=M
@@ -376,35 +385,7 @@ Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
 ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
-[ModelOptions\Conceptual options\ClssNamingOptions\ASSC\Code]
-Template=
-MaxLen=254
-Case=U
-ValidChar=&#39;a&#39;-&#39;z&#39;,&#39;A&#39;-&#39;Z&#39;,&#39;0&#39;-&#39;9&#39;,&quot;_&quot;
-InvldChar=
-AllValid=No
-NoAccent=Yes
-DefaultChar=_
-Script=.convert_code(%Code%,&quot; &quot;)
-ConvTable=
-ConvTablePath=%_HOME%\Resource Files\Conversion Tables
-
-[ModelOptions\Conceptual options\ClssNamingOptions\CDMINHR]
-
-[ModelOptions\Conceptual options\ClssNamingOptions\CDMINHR\Name]
-Template=
-MaxLen=254
-Case=M
-ValidChar=
-InvldChar=
-AllValid=Yes
-NoAccent=No
-DefaultChar=_
-Script=.convert_name(%Name%,&quot;_&quot;)
-ConvTable=
-ConvTablePath=%_HOME%\Resource Files\Conversion Tables
-
-[ModelOptions\Conceptual options\ClssNamingOptions\CDMINHR\Code]
+[ModelOptions\Logical options\ClssNamingOptions\LDMINHR\Code]
 Template=
 MaxLen=254
 Case=U
@@ -419,6 +400,11 @@ ConvTablePath=%_HOME%\Resource Files\Conversion Tables
 
 [ModelOptions\Generate]
 
+[ModelOptions\Generate\Cdm]
+CheckModel=Yes
+SaveLinks=Yes
+NameToCode=No
+
 [ModelOptions\Generate\Pdm]
 CheckModel=Yes
 SaveLinks=Yes
@@ -428,33 +414,36 @@ TablePrefix=
 IndxPKName=%TABLE%_PK
 IndxAKName=%TABLE%_AK
 IndxFKName=%REFR%_FK
-IndxThreshold=
-ClassPrefix=
-ColnFKName=%.3:PARENT%_%COLUMN%
-ColnFKNameUse=No
-
-[ModelOptions\Generate\Oom]
-CheckModel=Yes
-SaveLinks=Yes
-NameToCode=Yes
-
-[ModelOptions\Generate\Ldm]
-CheckModel=Yes
-SaveLinks=Yes
-NameToCode=No</a:ModelOptionsText>
-<a:RepositoryFilename>C:\wamp64\www\Projet_IDAW\TraqueTaBouffe.mcd</a:RepositoryFilename>
-<c:ConceptualDiagrams>
-<o:ConceptualDiagram Id="o3">
-<a:ObjectID>D814F291-9749-439C-AC15-DFB9C8729ACE</a:ObjectID>
+IndxThreshold=</a:ModelOptionsText>
+<a:RepositoryFilename>C:\wamp64\www\Projet_IDAW\TraqueTaBouffe.mld</a:RepositoryFilename>
+<c:GenerationOrigins>
+<o:Shortcut Id="o3">
+<a:ObjectID>0B0B7060-9E2B-4018-BD8E-05FD8642E8BC</a:ObjectID>
 <a:Name>TraqueTaBouffe</a:Name>
 <a:Code>TRAQUETABOUFFE</a:Code>
-<a:CreationDate>1698152006</a:CreationDate>
+<a:CreationDate>1698158069</a:CreationDate>
 <a:Creator>donia</a:Creator>
-<a:ModificationDate>1698157396</a:ModificationDate>
+<a:ModificationDate>1698158069</a:ModificationDate>
 <a:Modifier>donia</a:Modifier>
+<a:TargetStereotype/>
+<a:TargetID>88B3D7C6-5253-45D3-BE4A-00B9CBF89E18</a:TargetID>
+<a:TargetClassID>1E597170-9350-11D1-AB3C-0020AF71E433</a:TargetClassID>
+</o:Shortcut>
+</c:GenerationOrigins>
+<c:LogicalDiagrams>
+<o:LogicalDiagram Id="o4">
+<a:ObjectID>96E8C510-DE8B-4664-9C08-1DBC123DD787</a:ObjectID>
+<a:Name>TraqueTaBouffe</a:Name>
+<a:Code>TRAQUETABOUFFE</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {D814F291-9749-439C-AC15-DFB9C8729ACE}
+DAT 1698158068</a:History>
 <a:DisplayPreferences>[DisplayPreferences]
 
-[DisplayPreferences\CDM]
+[DisplayPreferences\LDM]
 
 [DisplayPreferences\General]
 Adjust to text=Yes
@@ -539,10 +528,16 @@ Relationship.Entity2ToEntity1RoleCardinality=No
 Relationship.Entity1ToEntity2RoleDominant=Yes
 Relationship.Stereotype=Yes
 Relationship.DisplayName=Yes
+Relationship.JoinExpression=No
 Relationship.Entity2ToEntity1Role=Yes
 Relationship.Entity1ToEntity2RoleCardinality=No
 Relationship.Entity2ToEntity1RoleDominant=Yes
 Relationship_SymbolLayout=&lt;Form&gt;[CRLF] &lt;Form Name=&quot;Source&quot; &gt;[CRLF]  &lt;StandardAttribute Name=&quot;Rôle&quot; Attribute=&quot;Entity1ToEntity2Role&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Caption=&quot;Rôle&quot; Mandatory=&quot;No&quot; /&gt;[CRLF]  &lt;StandardAttribute Name=&quot;Cardinalité&quot; Attribute=&quot;Entity2ToEntity1RoleCardinality&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Caption=&quot;Cardinalité&quot; Mandatory=&quot;No&quot; /&gt;[CRLF]  &lt;StandardAttribute Name=&quot;Dominance&quot; Attribute=&quot;Entity1ToEntity2RoleDominant&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Caption=&quot;Dominance&quot; Mandatory=&quot;No&quot; /&gt;[CRLF] &lt;/Form&gt;[CRLF] &lt;Form Name=&quot;Centre&quot; &gt;[CRLF]  &lt;StandardAttribute Name=&quot;Stéréotype&quot; Attribute=&quot;Stereotype&quot; Prefix=&quot;&amp;lt;&amp;lt;&quot; Suffix=&quot;&amp;gt;&amp;gt;&quot; Caption=&quot;&quot; Mandatory=&quot;No&quot; /&gt;[CRLF]  &lt;StandardAttribute Name=&quot;Nom&quot; Attribute=&quot;DisplayName&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Caption=&quot;&quot; Mandatory=&quot;No&quot; /&gt;[CRLF] &lt;/Form&gt;[CRLF] &lt;Form Name=&quot;Destination&quot; &gt;[CRLF]  &lt;StandardAttribute Name=&quot;Rôle&quot; Attribute=&quot;Entity2ToEntity1Role&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Caption=&quot;Rôle&quot; Mandatory=&quot;No&quot; /&gt;[CRLF]  &lt;StandardAttribute Name=&quot;Cardinalité&quot; Attribute=&quot;Entity1ToEntity2RoleCardinality&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Caption=&quot;Cardinalité&quot; Mandatory=&quot;No&quot; /&gt;[CRLF]  &lt;StandardAttribute Name=&quot;Dominance&quot; Attribute=&quot;Entity2ToEntity1RoleDominant&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Caption=&quot;Dominance&quot; Mandatory=&quot;No&quot; /&gt;[CRLF] &lt;/Form&gt;[CRLF]&lt;/Form&gt;
+Inheritance.Stereotype=Yes
+Inheritance.DisplayName=Yes
+Inheritance.IconPicture=No
+Inheritance.TextStyle=No
+Inheritance_SymbolLayout=&lt;Form&gt;[CRLF] &lt;StandardAttribute Name=&quot;Stéréotype&quot; Attribute=&quot;Stereotype&quot; Prefix=&quot;&amp;lt;&amp;lt;&quot; Suffix=&quot;&amp;gt;&amp;gt;&quot; Alignment=&quot;CNTR&quot; Caption=&quot;&quot; Mandatory=&quot;No&quot; /&gt;[CRLF] &lt;StandardAttribute Name=&quot;Nom&quot; Attribute=&quot;DisplayName&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Alignment=&quot;CNTR&quot; Caption=&quot;&quot; Mandatory=&quot;No&quot; /&gt;[CRLF] &lt;Separator Name=&quot;Séparateur&quot; /&gt;[CRLF] &lt;StandardAttribute Name=&quot;Icône&quot; Attribute=&quot;IconPicture&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Alignment=&quot;CNTR&quot; Caption=&quot;&quot; Mandatory=&quot;Yes&quot; /&gt;[CRLF] &lt;StandardAttribute Name=&quot;Forcer l&amp;#39;alignement en haut&quot; Attribute=&quot;TextStyle&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Alignment=&quot;CNTR&quot; Caption=&quot;&quot; Mandatory=&quot;Yes&quot; /&gt;[CRLF]&lt;/Form&gt;
 Association.Stereotype=Yes
 Association.Comment=No
 Association.Attributes=Yes
@@ -555,11 +550,6 @@ AssociationLink.SymbolCardinality=Yes
 AssociationLink.Stereotype=Yes
 AssociationLink.Role=Yes
 AssociationLink_SymbolLayout=&lt;Form&gt;[CRLF] &lt;Form Name=&quot;Source&quot; &gt;[CRLF]  &lt;StandardAttribute Name=&quot;Cardinalité&quot; Attribute=&quot;SymbolCardinality&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Caption=&quot;Cardinalité&quot; Mandatory=&quot;No&quot; /&gt;[CRLF] &lt;/Form&gt;[CRLF] &lt;Form Name=&quot;Centre&quot; &gt;[CRLF]  &lt;StandardAttribute Name=&quot;Stéréotype&quot; Attribute=&quot;Stereotype&quot; Prefix=&quot;&amp;lt;&amp;lt;&quot; Suffix=&quot;&amp;gt;&amp;gt;&quot; Caption=&quot;&quot; Mandatory=&quot;No&quot; /&gt;[CRLF]  &lt;StandardAttribute Name=&quot;Rôle&quot; Attribute=&quot;Role&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Caption=&quot;&quot; Mandatory=&quot;No&quot; /&gt;[CRLF] &lt;/Form&gt;[CRLF] &lt;Form Name=&quot;Destination&quot; &gt;[CRLF] &lt;/Form&gt;[CRLF]&lt;/Form&gt;
-Inheritance.Stereotype=Yes
-Inheritance.DisplayName=Yes
-Inheritance.IconPicture=No
-Inheritance.TextStyle=No
-Inheritance_SymbolLayout=&lt;Form&gt;[CRLF] &lt;StandardAttribute Name=&quot;Stéréotype&quot; Attribute=&quot;Stereotype&quot; Prefix=&quot;&amp;lt;&amp;lt;&quot; Suffix=&quot;&amp;gt;&amp;gt;&quot; Alignment=&quot;CNTR&quot; Caption=&quot;&quot; Mandatory=&quot;No&quot; /&gt;[CRLF] &lt;StandardAttribute Name=&quot;Nom&quot; Attribute=&quot;DisplayName&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Alignment=&quot;CNTR&quot; Caption=&quot;&quot; Mandatory=&quot;No&quot; /&gt;[CRLF] &lt;Separator Name=&quot;Séparateur&quot; /&gt;[CRLF] &lt;StandardAttribute Name=&quot;Icône&quot; Attribute=&quot;IconPicture&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Alignment=&quot;CNTR&quot; Caption=&quot;&quot; Mandatory=&quot;Yes&quot; /&gt;[CRLF] &lt;StandardAttribute Name=&quot;Forcer l&amp;#39;alignement en haut&quot; Attribute=&quot;TextStyle&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Alignment=&quot;CNTR&quot; Caption=&quot;&quot; Mandatory=&quot;Yes&quot; /&gt;[CRLF]&lt;/Form&gt;
 
 [DisplayPreferences\Symbol]
 
@@ -676,6 +666,166 @@ Keep center=No
 Keep size=No
 Width=4800
 Height=3600
+Brush color=255 255 255
+Fill Color=Yes
+Brush style=1
+Brush bitmap mode=12
+Brush gradient mode=0
+Brush gradient color=118 118 118
+Brush background image=
+Custom shape=
+Custom text mode=0
+Pen=1 0 0 0 255
+Shadow color=192 192 192
+Shadow=0
+
+[DisplayPreferences\Symbol\LDMPCKG]
+STRNFont=Arial,8,N
+STRNFont color=0 0 0
+DISPNAMEFont=Arial,8,N
+DISPNAMEFont color=0 0 0
+LABLFont=Arial,8,N
+LABLFont color=0 0 0
+AutoAdjustToText=Yes
+Keep aspect=No
+Keep center=No
+Keep size=No
+Width=4800
+Height=4000
+Brush color=255 255 192
+Fill Color=Yes
+Brush style=6
+Brush bitmap mode=12
+Brush gradient mode=65
+Brush gradient color=255 255 255
+Brush background image=
+Custom shape=
+Custom text mode=0
+Pen=1 0 178 178 178
+Shadow color=192 192 192
+Shadow=0
+
+[DisplayPreferences\Symbol\LDMENTT]
+STRNFont=Arial,8,N
+STRNFont color=0 0 0
+DISPNAMEFont=Arial,8,N
+DISPNAMEFont color=0 0 0
+AttributesFont=Arial,8,N
+AttributesFont color=0 0 0
+EntityPrimaryAttributeFont=Arial,8,U
+EntityPrimaryAttributeFont color=0 0 0
+EntityForeignAttributeFont=Arial,8,N
+EntityForeignAttributeFont color=0 0 0
+IdentifiersFont=Arial,8,N
+IdentifiersFont color=0 0 0
+LABLFont=Arial,8,N
+LABLFont color=0 0 0
+AutoAdjustToText=Yes
+Keep aspect=No
+Keep center=No
+Keep size=No
+Width=4800
+Height=4000
+Brush color=176 186 255
+Fill Color=Yes
+Brush style=6
+Brush bitmap mode=12
+Brush gradient mode=65
+Brush gradient color=255 255 255
+Brush background image=
+Custom shape=
+Custom text mode=0
+Pen=1 0 88 74 181
+Shadow color=192 192 192
+Shadow=0
+
+[DisplayPreferences\Symbol\LDMRLSH]
+SOURCEFont=Arial,8,N
+SOURCEFont color=0 0 0
+CENTERFont=Arial,8,N
+CENTERFont color=0 0 0
+DESTINATIONFont=Arial,8,N
+DESTINATIONFont color=0 0 0
+Line style=1
+Source Arrow=24
+Center Arrow=24
+Target Arrow=24
+AutoAdjustToText=Yes
+Keep aspect=No
+Keep center=No
+Keep size=No
+Brush color=255 255 255
+Fill Color=Yes
+Brush style=1
+Brush bitmap mode=12
+Brush gradient mode=0
+Brush gradient color=118 118 118
+Brush background image=
+Custom shape=
+Custom text mode=0
+Pen=1 0 88 74 181
+Shadow color=192 192 192
+Shadow=0
+
+[DisplayPreferences\Symbol\LDMINHR]
+STRNFont=Arial,8,N
+STRNFont color=0 0 0
+DISPNAMEFont=Arial,8,N
+DISPNAMEFont color=0 0 0
+AutoAdjustToText=Yes
+Keep aspect=No
+Keep center=No
+Keep size=Yes
+Width=1600
+Height=1000
+Brush color=176 186 255
+Fill Color=Yes
+Brush style=6
+Brush bitmap mode=12
+Brush gradient mode=65
+Brush gradient color=255 255 255
+Brush background image=
+Custom shape=
+Custom text mode=0
+Pen=1 0 128 128 255
+Shadow color=192 192 192
+Shadow=0
+
+[DisplayPreferences\Symbol\LDMLINH]
+CENTERFont=Arial,8,N
+CENTERFont color=0 0 0
+Line style=1
+Source Arrow=24
+Center Arrow=24
+Target Arrow=24
+AutoAdjustToText=Yes
+Keep aspect=No
+Keep center=No
+Keep size=No
+Brush color=255 255 255
+Fill Color=Yes
+Brush style=1
+Brush bitmap mode=12
+Brush gradient mode=0
+Brush gradient color=118 118 118
+Brush background image=
+Custom shape=
+Custom text mode=0
+Pen=1 0 128 128 255
+Shadow color=192 192 192
+Shadow=0
+
+[DisplayPreferences\Symbol\Free Symbol]
+Free TextFont=Arial,8,N
+Free TextFont color=0 0 0
+Line style=0
+Source Arrow=24
+Center Arrow=24
+Target Arrow=24
+AutoAdjustToText=Yes
+Keep aspect=No
+Keep center=No
+Keep size=No
 Brush color=255 255 255
 Fill Color=Yes
 Brush style=1
@@ -879,165 +1029,99 @@ Pen=1 0 128 128 255
 Shadow color=192 192 192
 Shadow=0
 
-[DisplayPreferences\Symbol\Free Symbol]
-Free TextFont=Arial,8,N
-Free TextFont color=0 0 0
-Line style=0
-Source Arrow=24
-Center Arrow=24
-Target Arrow=24
-AutoAdjustToText=Yes
-Keep aspect=No
-Keep center=No
-Keep size=No
-Brush color=255 255 255
-Fill Color=Yes
-Brush style=1
-Brush bitmap mode=12
-Brush gradient mode=0
-Brush gradient color=118 118 118
-Brush background image=
-Custom shape=
-Custom text mode=0
-Pen=1 0 0 0 255
-Shadow color=192 192 192
-Shadow=0</a:DisplayPreferences>
+[DisplayPreferences\CDM]</a:DisplayPreferences>
 <a:PaperSize>(8500, 11000)</a:PaperSize>
 <a:PageMargins>((315,354), (433,354))</a:PageMargins>
 <a:PageOrientation>1</a:PageOrientation>
 <a:PaperSource>15</a:PaperSource>
 <c:Symbols>
-<o:AssociationLinkSymbol Id="o4">
-<a:CreationDate>1698155116</a:CreationDate>
-<a:ModificationDate>1698155124</a:ModificationDate>
-<a:Rect>((-1150,-21245), (8750,20762))</a:Rect>
-<a:ListOfPoints>((-750,20362),(450,-19301),(8350,9974))</a:ListOfPoints>
+<o:RelationshipSymbol Id="o5">
+<a:Rect>((-14476,-19347), (10475,-1275))</a:Rect>
+<a:ListOfPoints>((8175,-1675),(8175,-18147),(-14076,-18147))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
-<a:ArrowStyle>0</a:ArrowStyle>
+<a:ArrowStyle>4627</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
 <a:ShadowColor>12632256</a:ShadowColor>
 <a:FontList>CENTER 0 Arial,8,N
-SOURCE 0 Arial,8,N</a:FontList>
+SOURCE 0 Arial,8,N
+DESTINATION 0 Arial,8,N</a:FontList>
 <c:SourceSymbol>
-<o:EntitySymbol Ref="o5"/>
+<o:EntitySymbol Ref="o6"/>
 </c:SourceSymbol>
 <c:DestinationSymbol>
-<o:AssociationSymbol Ref="o6"/>
+<o:EntitySymbol Ref="o7"/>
 </c:DestinationSymbol>
 <c:Object>
-<o:AssociationLink Ref="o7"/>
+<o:Relationship Ref="o8"/>
 </c:Object>
-</o:AssociationLinkSymbol>
-<o:AssociationLinkSymbol Id="o8">
-<a:CreationDate>1698155116</a:CreationDate>
-<a:ModificationDate>1698155124</a:ModificationDate>
-<a:Rect>((-1150,-21245), (14276,20762))</a:Rect>
-<a:ListOfPoints>((-750,20362),(-750,-19366),(13876,8774))</a:ListOfPoints>
+</o:RelationshipSymbol>
+<o:RelationshipSymbol Id="o9">
+<a:ModificationDate>1698158147</a:ModificationDate>
+<a:Rect>((-14600,-17143), (-3205,20625))</a:Rect>
+<a:ListOfPoints>((-14200,-15943),(-4105,-15943),(-4105,20225))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
-<a:ArrowStyle>0</a:ArrowStyle>
+<a:ArrowStyle>4882</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
 <a:ShadowColor>12632256</a:ShadowColor>
 <a:FontList>CENTER 0 Arial,8,N
-SOURCE 0 Arial,8,N</a:FontList>
+SOURCE 0 Arial,8,N
+DESTINATION 0 Arial,8,N</a:FontList>
+<a:AutomaticRoutingState>3</a:AutomaticRoutingState>
 <c:SourceSymbol>
-<o:EntitySymbol Ref="o5"/>
+<o:EntitySymbol Ref="o7"/>
 </c:SourceSymbol>
 <c:DestinationSymbol>
-<o:AssociationSymbol Ref="o6"/>
+<o:EntitySymbol Ref="o10"/>
 </c:DestinationSymbol>
 <c:Object>
-<o:AssociationLink Ref="o9"/>
+<o:Relationship Ref="o11"/>
 </c:Object>
-</o:AssociationLinkSymbol>
-<o:AssociationLinkSymbol Id="o10">
-<a:CreationDate>1698157309</a:CreationDate>
-<a:ModificationDate>1698157317</a:ModificationDate>
-<a:Rect>((-6950,-21385), (5984,-5343))</a:Rect>
-<a:ListOfPoints>((4184,-5743),(-6550,-5750))</a:ListOfPoints>
+</o:RelationshipSymbol>
+<o:RelationshipSymbol Id="o12">
+<a:Rect>((-2275,10149), (6691,14200))</a:Rect>
+<a:ListOfPoints>((6291,11174),(450,11174),(450,13800))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
-<a:ArrowStyle>0</a:ArrowStyle>
+<a:ArrowStyle>5906</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
 <a:ShadowColor>12632256</a:ShadowColor>
 <a:FontList>CENTER 0 Arial,8,N
-SOURCE 0 Arial,8,N</a:FontList>
+SOURCE 0 Arial,8,N
+DESTINATION 0 Arial,8,N</a:FontList>
 <c:SourceSymbol>
-<o:EntitySymbol Ref="o11"/>
+<o:EntitySymbol Ref="o13"/>
 </c:SourceSymbol>
 <c:DestinationSymbol>
-<o:AssociationSymbol Ref="o12"/>
+<o:EntitySymbol Ref="o10"/>
 </c:DestinationSymbol>
 <c:Object>
-<o:AssociationLink Ref="o13"/>
+<o:Relationship Ref="o14"/>
 </c:Object>
-</o:AssociationLinkSymbol>
-<o:AssociationLinkSymbol Id="o14">
-<a:CreationDate>1698157309</a:CreationDate>
-<a:ModificationDate>1698157317</a:ModificationDate>
-<a:Rect>((-14477,-21141), (-6596,-8089))</a:Rect>
-<a:ListOfPoints>((-14077,-18156),(-8612,-20666),(-8612,-8489))</a:ListOfPoints>
+</o:RelationshipSymbol>
+<o:RelationshipSymbol Id="o15">
+<a:ModificationDate>1698158152</a:ModificationDate>
+<a:Rect>((-4414,8950), (5935,18158))</a:Rect>
+<a:ListOfPoints>((5535,9974),(-1914,9974),(-1914,17758))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
-<a:ArrowStyle>0</a:ArrowStyle>
+<a:ArrowStyle>5906</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
 <a:ShadowColor>12632256</a:ShadowColor>
 <a:FontList>CENTER 0 Arial,8,N
-SOURCE 0 Arial,8,N</a:FontList>
+SOURCE 0 Arial,8,N
+DESTINATION 0 Arial,8,N</a:FontList>
+<a:AutomaticRoutingState>2</a:AutomaticRoutingState>
 <c:SourceSymbol>
-<o:EntitySymbol Ref="o15"/>
+<o:EntitySymbol Ref="o13"/>
 </c:SourceSymbol>
 <c:DestinationSymbol>
-<o:AssociationSymbol Ref="o12"/>
+<o:EntitySymbol Ref="o10"/>
 </c:DestinationSymbol>
 <c:Object>
-<o:AssociationLink Ref="o16"/>
+<o:Relationship Ref="o16"/>
 </c:Object>
-</o:AssociationLinkSymbol>
-<o:AssociationLinkSymbol Id="o17">
-<a:CreationDate>1698157396</a:CreationDate>
-<a:ModificationDate>1698157403</a:ModificationDate>
-<a:Rect>((-17301,-15741), (-14077,6602))</a:Rect>
-<a:ListOfPoints>((-16901,-15341),(-16899,6202))</a:ListOfPoints>
-<a:CornerStyle>1</a:CornerStyle>
-<a:ArrowStyle>0</a:ArrowStyle>
-<a:LineColor>16744576</a:LineColor>
-<a:ShadowColor>12632256</a:ShadowColor>
-<a:FontList>CENTER 0 Arial,8,N
-SOURCE 0 Arial,8,N</a:FontList>
-<c:SourceSymbol>
-<o:EntitySymbol Ref="o15"/>
-</c:SourceSymbol>
-<c:DestinationSymbol>
-<o:AssociationSymbol Ref="o18"/>
-</c:DestinationSymbol>
-<c:Object>
-<o:AssociationLink Ref="o19"/>
-</c:Object>
-</o:AssociationLinkSymbol>
-<o:AssociationLinkSymbol Id="o20">
-<a:CreationDate>1698157396</a:CreationDate>
-<a:ModificationDate>1698157403</a:ModificationDate>
-<a:Rect>((-17300,-19905), (-350,20762))</a:Rect>
-<a:ListOfPoints>((-750,20362),(-1950,-19505),(-16900,6200))</a:ListOfPoints>
-<a:CornerStyle>1</a:CornerStyle>
-<a:ArrowStyle>0</a:ArrowStyle>
-<a:LineColor>16744576</a:LineColor>
-<a:ShadowColor>12632256</a:ShadowColor>
-<a:FontList>CENTER 0 Arial,8,N
-SOURCE 0 Arial,8,N</a:FontList>
-<c:SourceSymbol>
-<o:EntitySymbol Ref="o5"/>
-</c:SourceSymbol>
-<c:DestinationSymbol>
-<o:AssociationSymbol Ref="o18"/>
-</c:DestinationSymbol>
-<c:Object>
-<o:AssociationLink Ref="o21"/>
-</c:Object>
-</o:AssociationLinkSymbol>
-<o:EntitySymbol Id="o5">
-<a:CreationDate>1698152057</a:CreationDate>
-<a:ModificationDate>1698155618</a:ModificationDate>
+</o:RelationshipSymbol>
+<o:EntitySymbol Id="o10">
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((-9475,13809), (7975,26915))</a:Rect>
+<a:Rect>((-9475,13800), (7975,26924))</a:Rect>
 <a:AutoAdjustToText>0</a:AutoAdjustToText>
 <a:LineColor>11184640</a:LineColor>
 <a:FillColor>16777136</a:FillColor>
@@ -1053,14 +1137,13 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <a:ManuallyResized>1</a:ManuallyResized>
 <c:Object>
-<o:Entity Ref="o22"/>
+<o:Entity Ref="o17"/>
 </c:Object>
 </o:EntitySymbol>
-<o:EntitySymbol Id="o11">
-<a:CreationDate>1698152062</a:CreationDate>
-<a:ModificationDate>1698157315</a:ModificationDate>
+<o:EntitySymbol Id="o6">
+<a:ModificationDate>1698158068</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((4184,-6390), (12166,3040))</a:Rect>
+<a:Rect>((3077,-6399), (13273,3049))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
 <a:FillColor>16777136</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -1074,34 +1157,34 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <c:Object>
-<o:Entity Ref="o23"/>
+<o:Entity Ref="o18"/>
 </c:Object>
 </o:EntitySymbol>
-<o:AssociationSymbol Id="o6">
-<a:CreationDate>1698155116</a:CreationDate>
-<a:ModificationDate>1698155124</a:ModificationDate>
+<o:EntitySymbol Id="o13">
+<a:ModificationDate>1698158068</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((8350,8474), (19402,11455))</a:Rect>
+<a:Rect>((5535,7151), (22219,12799))</a:Rect>
 <a:LineColor>16744576</a:LineColor>
 <a:FillColor>16765136</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
 <a:FontList>STRN 0 Arial,8,N
 DISPNAME 0 Arial,8,N
-LABL 0 Arial,8,N
 Attributes 0 Arial,8,N
-EntityPrimaryAttribute 0 Arial,8,U</a:FontList>
+EntityPrimaryAttribute 0 Arial,8,U
+EntityForeignAttribute 0 Arial,8,N
+Identifiers 0 Arial,8,N
+LABL 0 Arial,8,N</a:FontList>
 <a:BrushStyle>6</a:BrushStyle>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <c:Object>
-<o:Association Ref="o24"/>
+<o:Entity Ref="o19"/>
 </c:Object>
-</o:AssociationSymbol>
-<o:EntitySymbol Id="o15">
-<a:CreationDate>1698155633</a:CreationDate>
-<a:ModificationDate>1698155633</a:ModificationDate>
+</o:EntitySymbol>
+<o:EntitySymbol Id="o7">
+<a:ModificationDate>1698158068</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((-19432,-20972), (-8722,-15341))</a:Rect>
+<a:Rect>((-19792,-21921), (-8360,-14373))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
 <a:FillColor>16777136</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -1115,678 +1198,655 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <c:Object>
-<o:Entity Ref="o25"/>
+<o:Entity Ref="o20"/>
 </c:Object>
 </o:EntitySymbol>
-<o:AssociationSymbol Id="o12">
-<a:CreationDate>1698157309</a:CreationDate>
-<a:ModificationDate>1698157317</a:ModificationDate>
-<a:IconMode>-1</a:IconMode>
-<a:Rect>((-9469,-8490), (-3631,-5229))</a:Rect>
-<a:LineColor>16744576</a:LineColor>
-<a:FillColor>16765136</a:FillColor>
-<a:ShadowColor>12632256</a:ShadowColor>
-<a:FontList>STRN 0 Arial,8,N
-DISPNAME 0 Arial,8,N
-LABL 0 Arial,8,N
-Attributes 0 Arial,8,N
-EntityPrimaryAttribute 0 Arial,8,U</a:FontList>
-<a:BrushStyle>6</a:BrushStyle>
-<a:GradientFillMode>65</a:GradientFillMode>
-<a:GradientEndColor>16777215</a:GradientEndColor>
-<c:Object>
-<o:Association Ref="o26"/>
-</c:Object>
-</o:AssociationSymbol>
-<o:AssociationSymbol Id="o18">
-<a:CreationDate>1698157396</a:CreationDate>
-<a:ModificationDate>1698157403</a:ModificationDate>
-<a:IconMode>-1</a:IconMode>
-<a:Rect>((-20821,4702), (-12977,7702))</a:Rect>
-<a:LineColor>16744576</a:LineColor>
-<a:FillColor>16765136</a:FillColor>
-<a:ShadowColor>12632256</a:ShadowColor>
-<a:FontList>STRN 0 Arial,8,N
-DISPNAME 0 Arial,8,N
-LABL 0 Arial,8,N
-Attributes 0 Arial,8,N
-EntityPrimaryAttribute 0 Arial,8,U</a:FontList>
-<a:BrushStyle>6</a:BrushStyle>
-<a:GradientFillMode>65</a:GradientFillMode>
-<a:GradientEndColor>16777215</a:GradientEndColor>
-<c:Object>
-<o:Association Ref="o27"/>
-</c:Object>
-</o:AssociationSymbol>
 </c:Symbols>
-</o:ConceptualDiagram>
-</c:ConceptualDiagrams>
+</o:LogicalDiagram>
+</c:LogicalDiagrams>
 <c:DefaultDiagram>
-<o:ConceptualDiagram Ref="o3"/>
+<o:LogicalDiagram Ref="o4"/>
 </c:DefaultDiagram>
 <c:Entities>
-<o:Entity Id="o22">
-<a:ObjectID>37F3CFB3-1491-41EA-A8A8-B1838DBF5665</a:ObjectID>
+<o:Entity Id="o17">
+<a:ObjectID>87C03309-639A-40AF-BE2F-E863324CDC9A</a:ObjectID>
 <a:Name>Aliments</a:Name>
 <a:Code>ALIMENTS</a:Code>
-<a:CreationDate>1698152057</a:CreationDate>
+<a:CreationDate>1698158068</a:CreationDate>
 <a:Creator>donia</a:Creator>
-<a:ModificationDate>1698157273</a:ModificationDate>
+<a:ModificationDate>1698158068</a:ModificationDate>
 <a:Modifier>donia</a:Modifier>
-<c:Attributes>
-<o:EntityAttribute Id="o28">
-<a:ObjectID>6EC01F78-1BA9-46B1-A04A-CFBB517E2577</a:ObjectID>
-<a:CreationDate>1698152741</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698153570</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
-<c:DataItem>
-<o:DataItem Ref="o29"/>
-</c:DataItem>
-</o:EntityAttribute>
-<o:EntityAttribute Id="o30">
-<a:ObjectID>DFD731CE-607E-49C2-B2C2-9F12F56A49D2</a:ObjectID>
-<a:CreationDate>1698152741</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698153570</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
-<c:DataItem>
-<o:DataItem Ref="o31"/>
-</c:DataItem>
-</o:EntityAttribute>
-<o:EntityAttribute Id="o32">
-<a:ObjectID>10ED2ECD-A4FC-4CC3-8585-247792802808</a:ObjectID>
-<a:CreationDate>1698152741</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698153570</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
-<c:DataItem>
-<o:DataItem Ref="o33"/>
-</c:DataItem>
-</o:EntityAttribute>
-<o:EntityAttribute Id="o34">
-<a:ObjectID>1073BDF6-AFC8-42EC-BD2F-7A0C23100B6E</a:ObjectID>
-<a:CreationDate>1698152741</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698153570</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
-<c:DataItem>
-<o:DataItem Ref="o35"/>
-</c:DataItem>
-</o:EntityAttribute>
-<o:EntityAttribute Id="o36">
-<a:ObjectID>8121B164-FF3B-4301-B650-E6049FA9F7C2</a:ObjectID>
-<a:CreationDate>1698152741</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698153570</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
-<c:DataItem>
-<o:DataItem Ref="o37"/>
-</c:DataItem>
-</o:EntityAttribute>
-<o:EntityAttribute Id="o38">
-<a:ObjectID>F9B12B43-66E2-4C41-8563-1339A6013198</a:ObjectID>
-<a:CreationDate>1698152741</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698155614</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
-<c:DataItem>
-<o:DataItem Ref="o39"/>
-</c:DataItem>
-</o:EntityAttribute>
-<o:EntityAttribute Id="o40">
-<a:ObjectID>973E5441-ECF1-40C7-ABEC-053B8F387F02</a:ObjectID>
-<a:CreationDate>1698153233</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698153570</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
-<c:DataItem>
-<o:DataItem Ref="o41"/>
-</c:DataItem>
-</o:EntityAttribute>
-<o:EntityAttribute Id="o42">
-<a:ObjectID>471C4C3C-4BE8-4101-B488-009DCED38490</a:ObjectID>
-<a:CreationDate>1698153233</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698153570</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
-<c:DataItem>
-<o:DataItem Ref="o43"/>
-</c:DataItem>
-</o:EntityAttribute>
-<o:EntityAttribute Id="o44">
-<a:ObjectID>723C22DB-5D0D-41DD-9C52-3FD68DAA4C5A</a:ObjectID>
-<a:CreationDate>1698153233</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698153570</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<c:DataItem>
-<o:DataItem Ref="o45"/>
-</c:DataItem>
-</o:EntityAttribute>
-<o:EntityAttribute Id="o46">
-<a:ObjectID>D0F2CF12-5A3C-4F72-9698-EAE13985B51B</a:ObjectID>
-<a:CreationDate>1698154149</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698157273</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
-<c:DataItem>
-<o:DataItem Ref="o47"/>
-</c:DataItem>
-</o:EntityAttribute>
-<o:EntityAttribute Id="o48">
-<a:ObjectID>B7AF6CD9-23D0-48FB-83CE-FE5964ECDB2D</a:ObjectID>
-<a:CreationDate>1698157132</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698157273</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
-<c:DataItem>
-<o:DataItem Ref="o49"/>
-</c:DataItem>
-</o:EntityAttribute>
-</c:Attributes>
-</o:Entity>
-<o:Entity Id="o23">
-<a:ObjectID>14409801-BE7C-4441-8EBC-C4CD5098585E</a:ObjectID>
-<a:Name>User</a:Name>
-<a:Code>USER</a:Code>
-<a:CreationDate>1698152062</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698155564</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<c:Attributes>
-<o:EntityAttribute Id="o50">
-<a:ObjectID>0D4E440F-BF6C-4AF5-B079-3212A0D36822</a:ObjectID>
-<a:CreationDate>1698155263</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698155564</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
-<c:DataItem>
-<o:DataItem Ref="o51"/>
-</c:DataItem>
-</o:EntityAttribute>
-<o:EntityAttribute Id="o52">
-<a:ObjectID>A71A2019-CF65-4F16-87D1-DFAF318DFC8C</a:ObjectID>
-<a:CreationDate>1698155263</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698155487</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
-<c:DataItem>
-<o:DataItem Ref="o47"/>
-</c:DataItem>
-</o:EntityAttribute>
-<o:EntityAttribute Id="o53">
-<a:ObjectID>41B432D3-AE95-45C4-BEAD-0E98F5D35B45</a:ObjectID>
-<a:CreationDate>1698155263</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698155487</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
-<c:DataItem>
-<o:DataItem Ref="o54"/>
-</c:DataItem>
-</o:EntityAttribute>
-<o:EntityAttribute Id="o55">
-<a:ObjectID>9CA1CCBF-D568-4FC1-B96B-6338867C9E58</a:ObjectID>
-<a:CreationDate>1698155299</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698155487</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
-<c:DataItem>
-<o:DataItem Ref="o56"/>
-</c:DataItem>
-</o:EntityAttribute>
-<o:EntityAttribute Id="o57">
-<a:ObjectID>DC92D06E-F550-4426-963F-AC00FD28CF5A</a:ObjectID>
-<a:CreationDate>1698155299</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698155487</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
-<c:DataItem>
-<o:DataItem Ref="o58"/>
-</c:DataItem>
-</o:EntityAttribute>
-<o:EntityAttribute Id="o59">
-<a:ObjectID>FDC6B484-21FB-4837-9C08-0D2A38CCE5AA</a:ObjectID>
-<a:CreationDate>1698155299</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698155487</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
-<c:DataItem>
-<o:DataItem Ref="o60"/>
-</c:DataItem>
-</o:EntityAttribute>
-<o:EntityAttribute Id="o61">
-<a:ObjectID>C360CFD4-7157-43F7-B6C0-27AE589F42A5</a:ObjectID>
-<a:CreationDate>1698155299</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698155487</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
-<c:DataItem>
-<o:DataItem Ref="o62"/>
-</c:DataItem>
-</o:EntityAttribute>
-</c:Attributes>
-</o:Entity>
-<o:Entity Id="o25">
-<a:ObjectID>6F4A5B46-D3EA-4199-92BE-200AB9345F40</a:ObjectID>
-<a:Name>Aliment consommé</a:Name>
-<a:Code>ALIMENT_CONSOMME</a:Code>
-<a:CreationDate>1698155633</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698157354</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
+<a:History>ORG {37F3CFB3-1491-41EA-A8A8-B1838DBF5665}
+DAT 1698158068</a:History>
 <c:Identifiers>
-<o:Identifier Id="o63">
-<a:ObjectID>B733AC83-A963-4C9E-8DF2-231F96ED8311</a:ObjectID>
+<o:Identifier Id="o21">
+<a:ObjectID>0701083F-0511-4436-9EE5-F9C53CF4BC33</a:ObjectID>
 <a:Name>Identifiant_1</a:Name>
 <a:Code>IDENTIFIANT_1</a:Code>
-<a:CreationDate>1698157011</a:CreationDate>
+<a:CreationDate>1698158068</a:CreationDate>
 <a:Creator>donia</a:Creator>
-<a:ModificationDate>1698157130</a:ModificationDate>
+<a:ModificationDate>1698158068</a:ModificationDate>
 <a:Modifier>donia</a:Modifier>
+<a:History>ORG {13C18D76-9BCE-4EB0-8E42-A673B6C98EDA}
+DAT 1698158068</a:History>
 <c:Identifier.Attributes>
-<o:EntityAttribute Ref="o64"/>
+<o:EntityAttribute Ref="o22"/>
 </c:Identifier.Attributes>
 </o:Identifier>
 </c:Identifiers>
 <c:PrimaryIdentifier>
-<o:Identifier Ref="o63"/>
+<o:Identifier Ref="o21"/>
 </c:PrimaryIdentifier>
 <c:Attributes>
-<o:EntityAttribute Id="o64">
-<a:ObjectID>716238B8-07D4-4C9B-8B81-9A9F1A1B2860</a:ObjectID>
-<a:CreationDate>1698155654</a:CreationDate>
+<o:EntityAttribute Id="o23">
+<a:ObjectID>9AA75CCC-AF53-4411-BF4C-D61A2D66BAC4</a:ObjectID>
+<a:Name>energie</a:Name>
+<a:Code>ENERGIE</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
 <a:Creator>donia</a:Creator>
-<a:ModificationDate>1698157130</a:ModificationDate>
+<a:ModificationDate>1698158068</a:ModificationDate>
 <a:Modifier>donia</a:Modifier>
-<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
-<c:DataItem>
-<o:DataItem Ref="o65"/>
-</c:DataItem>
+<a:History>ORG {6EC01F78-1BA9-46B1-A04A-CFBB517E2577}
+DAT 1698158068</a:History>
+<a:DataType>F</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
 </o:EntityAttribute>
-<o:EntityAttribute Id="o66">
-<a:ObjectID>6AC496A7-77B7-4449-AD6F-3414BB9522FF</a:ObjectID>
-<a:CreationDate>1698156499</a:CreationDate>
+<o:EntityAttribute Id="o24">
+<a:ObjectID>909A4A6C-9841-49CD-B283-35C4727C2966</a:ObjectID>
+<a:Name>matière grasse</a:Name>
+<a:Code>MATIERE_GRASSE</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
 <a:Creator>donia</a:Creator>
-<a:ModificationDate>1698156761</a:ModificationDate>
+<a:ModificationDate>1698158068</a:ModificationDate>
 <a:Modifier>donia</a:Modifier>
-<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
-<c:DataItem>
-<o:DataItem Ref="o67"/>
-</c:DataItem>
+<a:History>ORG {DFD731CE-607E-49C2-B2C2-9F12F56A49D2}
+DAT 1698158068</a:History>
+<a:DataType>F</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
 </o:EntityAttribute>
-<o:EntityAttribute Id="o68">
-<a:ObjectID>561CA386-A267-4B2E-A9EC-515867F109A3</a:ObjectID>
-<a:CreationDate>1698156499</a:CreationDate>
+<o:EntityAttribute Id="o25">
+<a:ObjectID>8602C04C-29B0-42C3-BFD5-A1C526CF6455</a:ObjectID>
+<a:Name>sucre</a:Name>
+<a:Code>SUCRE</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
 <a:Creator>donia</a:Creator>
-<a:ModificationDate>1698156761</a:ModificationDate>
+<a:ModificationDate>1698158068</a:ModificationDate>
 <a:Modifier>donia</a:Modifier>
-<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
-<c:DataItem>
-<o:DataItem Ref="o69"/>
-</c:DataItem>
+<a:History>ORG {10ED2ECD-A4FC-4CC3-8585-247792802808}
+DAT 1698158068</a:History>
+<a:DataType>F</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o26">
+<a:ObjectID>785FAABA-0CC9-4F51-B206-E90D434107A2</a:ObjectID>
+<a:Name>protéine</a:Name>
+<a:Code>PROTEINE</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {1073BDF6-AFC8-42EC-BD2F-7A0C23100B6E}
+DAT 1698158068</a:History>
+<a:DataType>F</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o27">
+<a:ObjectID>AB61EB77-8F6C-407D-AF91-09F2F8ED3B9D</a:ObjectID>
+<a:Name>sel</a:Name>
+<a:Code>SEL</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {8121B164-FF3B-4301-B650-E6049FA9F7C2}
+DAT 1698158068</a:History>
+<a:DataType>F</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o22">
+<a:ObjectID>8A5C2B65-5897-495B-90B6-5CE7DE3FD8BE</a:ObjectID>
+<a:Name>id_aliment</a:Name>
+<a:Code>ID_ALIMENT</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {F9B12B43-66E2-4C41-8563-1339A6013198}
+DAT 1698158068</a:History>
+<a:DataType>I</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o28">
+<a:ObjectID>F215525B-1506-449A-AE37-3F255DC42643</a:ObjectID>
+<a:Name>fibre alimentaire</a:Name>
+<a:Code>FIBRE_ALIMENTAIRE</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {973E5441-ECF1-40C7-ABEC-053B8F387F02}
+DAT 1698158068</a:History>
+<a:DataType>F</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o29">
+<a:ObjectID>FA07A4FC-591D-4755-8BAC-9462C2AC7976</a:ObjectID>
+<a:Name>Alcool</a:Name>
+<a:Code>ALCOOL</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {471C4C3C-4BE8-4101-B488-009DCED38490}
+DAT 1698158068</a:History>
+<a:DataType>F</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o30">
+<a:ObjectID>E42C4511-057B-4EFA-BBF5-A8FCE3B2CCF2</a:ObjectID>
+<a:Name>indice NOVA</a:Name>
+<a:Code>INDICE_NOVA</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {723C22DB-5D0D-41DD-9C52-3FD68DAA4C5A}
+DAT 1698158068</a:History>
+<a:DataType>I</a:DataType>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o31">
+<a:ObjectID>A0159A04-F86C-480D-902B-127FDCEF8854</a:ObjectID>
+<a:Name>nom</a:Name>
+<a:Code>NOM</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {D0F2CF12-5A3C-4F72-9698-EAE13985B51B}
+DAT 1698158068</a:History>
+<a:DataType>TXT</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o32">
+<a:ObjectID>539E6B89-5ABF-4A1D-A966-917903A81FB8</a:ObjectID>
+<a:Name>isLiquid</a:Name>
+<a:Code>ISLIQUID</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {B7AF6CD9-23D0-48FB-83CE-FE5964ECDB2D}
+DAT 1698158068</a:History>
+<a:DataType>BL</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
+</o:EntityAttribute>
+</c:Attributes>
+</o:Entity>
+<o:Entity Id="o18">
+<a:ObjectID>EF7E6E13-CDD4-4C81-8E45-4A5075E9472F</a:ObjectID>
+<a:Name>User</a:Name>
+<a:Code>USER</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {14409801-BE7C-4441-8EBC-C4CD5098585E}
+DAT 1698158068</a:History>
+<c:Identifiers>
+<o:Identifier Id="o33">
+<a:ObjectID>DC624B00-0908-4304-9BF5-2D0B0F3B57CE</a:ObjectID>
+<a:Name>Identifiant_1</a:Name>
+<a:Code>IDENTIFIANT_1</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {E830A4E4-7D32-4DB2-821C-65E820E24459}
+DAT 1698158068</a:History>
+<c:Identifier.Attributes>
+<o:EntityAttribute Ref="o34"/>
+</c:Identifier.Attributes>
+</o:Identifier>
+</c:Identifiers>
+<c:PrimaryIdentifier>
+<o:Identifier Ref="o33"/>
+</c:PrimaryIdentifier>
+<c:Attributes>
+<o:EntityAttribute Id="o34">
+<a:ObjectID>26B8004C-B004-43C8-8407-3F0FE1D897D6</a:ObjectID>
+<a:Name>id_user</a:Name>
+<a:Code>ID_USER</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {0D4E440F-BF6C-4AF5-B079-3212A0D36822}
+DAT 1698158068</a:History>
+<a:DataType>I</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o35">
+<a:ObjectID>44462A4D-F045-4FE7-A7AA-3A7431360AC8</a:ObjectID>
+<a:Name>nom</a:Name>
+<a:Code>NOM</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {A71A2019-CF65-4F16-87D1-DFAF318DFC8C}
+DAT 1698158068</a:History>
+<a:DataType>TXT</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o36">
+<a:ObjectID>114BD8DC-1FE2-46FC-874E-AE1AF453B493</a:ObjectID>
+<a:Name>renom</a:Name>
+<a:Code>RENOM</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {41B432D3-AE95-45C4-BEAD-0E98F5D35B45}
+DAT 1698158068</a:History>
+<a:DataType>TXT</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o37">
+<a:ObjectID>E0212908-83A3-45E9-B966-8DA8C8F5ED8E</a:ObjectID>
+<a:Name>age</a:Name>
+<a:Code>AGE</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {9CA1CCBF-D568-4FC1-B96B-6338867C9E58}
+DAT 1698158068</a:History>
+<a:DataType>I</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o38">
+<a:ObjectID>24E6D3BB-98BB-4B85-AA2D-9B959B43B18E</a:ObjectID>
+<a:Name>sexe</a:Name>
+<a:Code>SEXE</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {DC92D06E-F550-4426-963F-AC00FD28CF5A}
+DAT 1698158068</a:History>
+<a:DataType>TXT</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o39">
+<a:ObjectID>D8C041A9-AF31-43F6-963B-8376B58D2369</a:ObjectID>
+<a:Name>poids</a:Name>
+<a:Code>POIDS</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {FDC6B484-21FB-4837-9C08-0D2A38CCE5AA}
+DAT 1698158068</a:History>
+<a:DataType>F</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o40">
+<a:ObjectID>71AA0CD9-6CF5-42F8-8F5A-7410B10B5C28</a:ObjectID>
+<a:Name>taille</a:Name>
+<a:Code>TAILLE</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {C360CFD4-7157-43F7-B6C0-27AE589F42A5}
+DAT 1698158068</a:History>
+<a:DataType>F</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
+</o:EntityAttribute>
+</c:Attributes>
+</o:Entity>
+<o:Entity Id="o20">
+<a:ObjectID>C3512A13-E784-416E-A95B-B7E5EC13984D</a:ObjectID>
+<a:Name>Aliment consommé</a:Name>
+<a:Code>ALIMENT_CONSOMME</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {6F4A5B46-D3EA-4199-92BE-200AB9345F40}
+DAT 1698158068</a:History>
+<c:Identifiers>
+<o:Identifier Id="o41">
+<a:ObjectID>6C2D3567-4871-4513-88CF-E74326B54FFD</a:ObjectID>
+<a:Name>Identifiant_1</a:Name>
+<a:Code>IDENTIFIANT_1</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {BAFFB898-C9D1-4BAE-B80C-F897494445AF}
+DAT 1698158068</a:History>
+<c:Identifier.Attributes>
+<o:EntityAttribute Ref="o42"/>
+</c:Identifier.Attributes>
+</o:Identifier>
+</c:Identifiers>
+<c:PrimaryIdentifier>
+<o:Identifier Ref="o41"/>
+</c:PrimaryIdentifier>
+<c:Attributes>
+<o:EntityAttribute Id="o42">
+<a:ObjectID>FAF32367-27E8-49F9-A4D6-D999FDFDF143</a:ObjectID>
+<a:Name>id_repas</a:Name>
+<a:Code>ID_REPAS</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {716238B8-07D4-4C9B-8B81-9A9F1A1B2860}
+DAT 1698158068</a:History>
+<a:DataType>I</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o43">
+<a:ObjectID>32436E92-051D-4200-BB09-2A42E2F14409</a:ObjectID>
+<a:Name>id_user</a:Name>
+<a:Code>ID_USER</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {0D4E440F-BF6C-4AF5-B079-3212A0D36822},{D883B3C6-08E5-4399-859A-8A2BF9EE7F12}
+DAT 1698158068</a:History>
+<a:DataType>I</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
+<a:AutoMigrated>1</a:AutoMigrated>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o44">
+<a:ObjectID>CE46D66D-D290-40EA-9D7C-2B2D92ACF121</a:ObjectID>
+<a:Name>id_aliment</a:Name>
+<a:Code>ID_ALIMENT</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {F9B12B43-66E2-4C41-8563-1339A6013198},{3CBFEA16-9A0F-42F7-B31C-8902C52E99C3}
+DAT 1698158068</a:History>
+<a:DataType>I</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
+<a:AutoMigrated>1</a:AutoMigrated>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o45">
+<a:ObjectID>15C39A09-43B3-4218-B21D-AECEBE15BA8B</a:ObjectID>
+<a:Name>date</a:Name>
+<a:Code>DATE</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {6AC496A7-77B7-4449-AD6F-3414BB9522FF}
+DAT 1698158068</a:History>
+<a:DataType>D</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o46">
+<a:ObjectID>9BA3E2C6-F5CA-4E32-8274-0743DCBED569</a:ObjectID>
+<a:Name>quantité</a:Name>
+<a:Code>QUANTITE</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {561CA386-A267-4B2E-A9EC-515867F109A3}
+DAT 1698158068</a:History>
+<a:DataType>F</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
+</o:EntityAttribute>
+</c:Attributes>
+</o:Entity>
+<o:Entity Id="o19">
+<a:ObjectID>C66D8CF6-774D-4E0A-A5CD-4E11FA4D8A53</a:ObjectID>
+<a:Name>composition</a:Name>
+<a:Code>COMPOSITION</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {3F0349C9-66D8-4374-8CF9-6BE69EA7DD27}
+DAT 1698158068</a:History>
+<c:Identifiers>
+<o:Identifier Id="o47">
+<a:ObjectID>BD1950A3-FFB2-4A27-BD87-97B7BEA222F1</a:ObjectID>
+<a:Name>Identifiant_1</a:Name>
+<a:Code>IDENTIFIANT_1</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<c:Identifier.Attributes>
+<o:EntityAttribute Ref="o48"/>
+<o:EntityAttribute Ref="o49"/>
+</c:Identifier.Attributes>
+</o:Identifier>
+</c:Identifiers>
+<c:PrimaryIdentifier>
+<o:Identifier Ref="o47"/>
+</c:PrimaryIdentifier>
+<c:Attributes>
+<o:EntityAttribute Id="o48">
+<a:ObjectID>DF335964-CFF7-4578-B145-95B35BCDECDF</a:ObjectID>
+<a:Name>id_aliment</a:Name>
+<a:Code>ID_ALIMENT</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {F9B12B43-66E2-4C41-8563-1339A6013198},{D3FBA9C2-B104-4206-914C-AC05928CD895}
+DAT 1698158068</a:History>
+<a:DataType>I</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
+<a:AutoMigrated>1</a:AutoMigrated>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o49">
+<a:ObjectID>0B56B25E-0C19-4A29-939E-77A31B38D8B9</a:ObjectID>
+<a:Name>Ali_id_aliment</a:Name>
+<a:Code>ALI_ID_ALIMENT</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {F9B12B43-66E2-4C41-8563-1339A6013198},{F5C20D67-17F9-4C2F-82A3-80CE8D2D4D4B}
+DAT 1698158068</a:History>
+<a:DataType>I</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
+<a:AutoMigrated>1</a:AutoMigrated>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o50">
+<a:ObjectID>F684B7BD-8F85-42DA-BD11-41B0BB6715C5</a:ObjectID>
+<a:Name>quantité du composant</a:Name>
+<a:Code>QUANTITE_DU_COMPOSANT</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:History>ORG {000E3389-8512-49DF-AF22-185D59F4E560}
+DAT 1698158068</a:History>
+<a:DataType>F</a:DataType>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
 </o:EntityAttribute>
 </c:Attributes>
 </o:Entity>
 </c:Entities>
-<c:DataItems>
-<o:DataItem Id="o29">
-<a:ObjectID>03F08F95-A2B1-42EC-985B-C1B42D20754E</a:ObjectID>
-<a:Name>energie</a:Name>
-<a:Code>ENERGIE</a:Code>
-<a:CreationDate>1698152741</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698153220</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:DataType>F</a:DataType>
-</o:DataItem>
-<o:DataItem Id="o31">
-<a:ObjectID>5365688E-8718-4756-B085-9CDB107C5965</a:ObjectID>
-<a:Name>matière grasse</a:Name>
-<a:Code>MATIERE_GRASSE</a:Code>
-<a:CreationDate>1698152741</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698153220</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:DataType>F</a:DataType>
-</o:DataItem>
-<o:DataItem Id="o33">
-<a:ObjectID>7F1B1182-97D8-4B0D-9211-39BA238131FB</a:ObjectID>
-<a:Name>sucre</a:Name>
-<a:Code>SUCRE</a:Code>
-<a:CreationDate>1698152741</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698153220</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:DataType>F</a:DataType>
-</o:DataItem>
-<o:DataItem Id="o35">
-<a:ObjectID>4B06F00A-51B9-4E6F-A7EB-D025E4057A52</a:ObjectID>
-<a:Name>protéine</a:Name>
-<a:Code>PROTEINE</a:Code>
-<a:CreationDate>1698152741</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698153220</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:DataType>F</a:DataType>
-</o:DataItem>
-<o:DataItem Id="o37">
-<a:ObjectID>6BF078F3-5C58-4282-84C0-8D92F8E92128</a:ObjectID>
-<a:Name>sel</a:Name>
-<a:Code>SEL</a:Code>
-<a:CreationDate>1698152741</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698153220</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:DataType>F</a:DataType>
-</o:DataItem>
-<o:DataItem Id="o39">
-<a:ObjectID>DE24C83C-36CE-4131-84DB-67B9733FD823</a:ObjectID>
-<a:Name>id_aliment</a:Name>
-<a:Code>ID_ALIMENT</a:Code>
-<a:CreationDate>1698152741</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698153220</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:DataType>I</a:DataType>
-</o:DataItem>
-<o:DataItem Id="o41">
-<a:ObjectID>DC9095D6-6533-4BC6-8913-ED91CE898228</a:ObjectID>
-<a:Name>fibre alimentaire</a:Name>
-<a:Code>FIBRE_ALIMENTAIRE</a:Code>
-<a:CreationDate>1698153233</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698153570</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:DataType>F</a:DataType>
-</o:DataItem>
-<o:DataItem Id="o43">
-<a:ObjectID>0B9BE1B2-93FC-4AB9-9D5D-9D085CCAA7F7</a:ObjectID>
-<a:Name>Alcool</a:Name>
-<a:Code>ALCOOL</a:Code>
-<a:CreationDate>1698153233</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698153570</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:DataType>F</a:DataType>
-</o:DataItem>
-<o:DataItem Id="o45">
-<a:ObjectID>62172100-5AC8-4D89-9FBC-BF94F42BE2B1</a:ObjectID>
-<a:Name>indice NOVA</a:Name>
-<a:Code>INDICE_NOVA</a:Code>
-<a:CreationDate>1698153233</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698153570</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:DataType>I</a:DataType>
-</o:DataItem>
-<o:DataItem Id="o47">
-<a:ObjectID>30F8ACD0-7213-4E97-A486-74FF241ADFAD</a:ObjectID>
-<a:Name>nom</a:Name>
-<a:Code>NOM</a:Code>
-<a:CreationDate>1698154149</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698155487</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:DataType>TXT</a:DataType>
-</o:DataItem>
-<o:DataItem Id="o70">
-<a:ObjectID>5354DFC2-2A7D-4159-A001-3E33BF2ED7E8</a:ObjectID>
-<a:Name>quantité du composant</a:Name>
-<a:Code>QUANTITE_DU_COMPOSANT</a:Code>
-<a:CreationDate>1698155130</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698155236</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:DataType>DC8,0</a:DataType>
-<a:Length>8</a:Length>
-</o:DataItem>
-<o:DataItem Id="o51">
-<a:ObjectID>ECA41979-CC7E-49DC-B543-9D11C9B16158</a:ObjectID>
-<a:Name>id_user</a:Name>
-<a:Code>ID_USER</a:Code>
-<a:CreationDate>1698155263</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698155297</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:DataType>I</a:DataType>
-</o:DataItem>
-<o:DataItem Id="o54">
-<a:ObjectID>ECF266B9-87E4-4740-9414-62B80569C53E</a:ObjectID>
-<a:Name>renom</a:Name>
-<a:Code>RENOM</a:Code>
-<a:CreationDate>1698155263</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698155487</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:DataType>TXT</a:DataType>
-</o:DataItem>
-<o:DataItem Id="o56">
-<a:ObjectID>319EB078-BE54-4240-B400-62DE57124318</a:ObjectID>
-<a:Name>age</a:Name>
-<a:Code>AGE</a:Code>
-<a:CreationDate>1698155299</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698155487</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:DataType>I</a:DataType>
-</o:DataItem>
-<o:DataItem Id="o58">
-<a:ObjectID>67965AAA-56A0-480D-BFE6-90A6BDF23A24</a:ObjectID>
-<a:Name>sexe</a:Name>
-<a:Code>SEXE</a:Code>
-<a:CreationDate>1698155299</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698155487</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:DataType>TXT</a:DataType>
-</o:DataItem>
-<o:DataItem Id="o60">
-<a:ObjectID>526C5180-AEE3-4B28-B6F2-AE3AFC2F8502</a:ObjectID>
-<a:Name>poids</a:Name>
-<a:Code>POIDS</a:Code>
-<a:CreationDate>1698155299</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698155564</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:DataType>F</a:DataType>
-</o:DataItem>
-<o:DataItem Id="o62">
-<a:ObjectID>6C2E9B95-2012-4ABC-ABB3-1262F59325CE</a:ObjectID>
-<a:Name>taille</a:Name>
-<a:Code>TAILLE</a:Code>
-<a:CreationDate>1698155299</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698155564</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:DataType>F</a:DataType>
-</o:DataItem>
-<o:DataItem Id="o65">
-<a:ObjectID>869E430A-5674-4FF4-83D1-278B1F13441D</a:ObjectID>
-<a:Name>id_repas</a:Name>
-<a:Code>ID_REPAS</a:Code>
-<a:CreationDate>1698155654</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698156761</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:DataType>I</a:DataType>
-</o:DataItem>
-<o:DataItem Id="o67">
-<a:ObjectID>47705F20-6D3E-4412-9CC6-C0AF1D5CE038</a:ObjectID>
-<a:Name>date</a:Name>
-<a:Code>DATE</a:Code>
-<a:CreationDate>1698156499</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698156875</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:DataType>D</a:DataType>
-</o:DataItem>
-<o:DataItem Id="o69">
-<a:ObjectID>AA3826B8-D988-4B3D-B85E-0CB3A539EB7C</a:ObjectID>
-<a:Name>quantité</a:Name>
-<a:Code>QUANTITE</a:Code>
-<a:CreationDate>1698156499</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698157130</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:DataType>F</a:DataType>
-</o:DataItem>
-<o:DataItem Id="o49">
-<a:ObjectID>3867671B-4733-419A-AAEF-7A84013C92A1</a:ObjectID>
-<a:Name>isLiquid</a:Name>
-<a:Code>ISLIQUID</a:Code>
-<a:CreationDate>1698157132</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698157273</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:DataType>BL</a:DataType>
-</o:DataItem>
-</c:DataItems>
-<c:Associations>
-<o:Association Id="o24">
-<a:ObjectID>3F0349C9-66D8-4374-8CF9-6BE69EA7DD27</a:ObjectID>
-<a:Name>composition</a:Name>
-<a:Code>COMPOSITION</a:Code>
-<a:CreationDate>1698155116</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698155236</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<c:Attributes>
-<o:AssociationAttribute Id="o71">
-<a:ObjectID>000E3389-8512-49DF-AF22-185D59F4E560</a:ObjectID>
-<a:CreationDate>1698155130</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698155236</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
-<c:DataItem>
-<o:DataItem Ref="o70"/>
-</c:DataItem>
-</o:AssociationAttribute>
-</c:Attributes>
-</o:Association>
-<o:Association Id="o26">
-<a:ObjectID>D883B3C6-08E5-4399-859A-8A2BF9EE7F12</a:ObjectID>
+<c:Relationships>
+<o:Relationship Id="o8">
+<a:ObjectID>7F085FA1-EFA6-4C7E-B0B7-F27421D7AB73</a:ObjectID>
 <a:Name>consomme</a:Name>
 <a:Code>CONSOMME</a:Code>
-<a:CreationDate>1698157309</a:CreationDate>
+<a:CreationDate>1698158068</a:CreationDate>
 <a:Creator>donia</a:Creator>
-<a:ModificationDate>1698157375</a:ModificationDate>
+<a:ModificationDate>1698158068</a:ModificationDate>
 <a:Modifier>donia</a:Modifier>
-</o:Association>
-<o:Association Id="o27">
-<a:ObjectID>3CBFEA16-9A0F-42F7-B31C-8902C52E99C3</a:ObjectID>
-<a:Name>Association_3</a:Name>
-<a:Code>ASSOCIATION_3</a:Code>
-<a:CreationDate>1698157396</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698157396</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-</o:Association>
-</c:Associations>
-<c:AssociationsLinks>
-<o:AssociationLink Id="o7">
-<a:ObjectID>D3FBA9C2-B104-4206-914C-AC05928CD895</a:ObjectID>
-<a:CreationDate>1698155116</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698155116</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:Cardinality>0,n</a:Cardinality>
+<a:History>ORG {D883B3C6-08E5-4399-859A-8A2BF9EE7F12}
+DAT 1698158068</a:History>
+<a:Entity1ToEntity2RoleCardinality>0,n</a:Entity1ToEntity2RoleCardinality>
+<a:Entity2ToEntity1RoleCardinality>1,1</a:Entity2ToEntity1RoleCardinality>
 <c:Object1>
-<o:Association Ref="o24"/>
+<o:Entity Ref="o20"/>
 </c:Object1>
 <c:Object2>
-<o:Entity Ref="o22"/>
+<o:Entity Ref="o18"/>
 </c:Object2>
-</o:AssociationLink>
-<o:AssociationLink Id="o9">
-<a:ObjectID>F5C20D67-17F9-4C2F-82A3-80CE8D2D4D4B</a:ObjectID>
-<a:CreationDate>1698155116</a:CreationDate>
+<c:Joins>
+<o:RelationshipJoin Id="o51">
+<a:ObjectID>761C82D5-FBDA-4A54-8E92-277BBF8D5F26</a:ObjectID>
+<a:CreationDate>1698158068</a:CreationDate>
 <a:Creator>donia</a:Creator>
-<a:ModificationDate>1698155116</a:ModificationDate>
+<a:ModificationDate>1698158068</a:ModificationDate>
 <a:Modifier>donia</a:Modifier>
-<a:Cardinality>0,n</a:Cardinality>
 <c:Object1>
-<o:Association Ref="o24"/>
+<o:EntityAttribute Ref="o34"/>
 </c:Object1>
 <c:Object2>
-<o:Entity Ref="o22"/>
+<o:EntityAttribute Ref="o43"/>
 </c:Object2>
-</o:AssociationLink>
-<o:AssociationLink Id="o13">
-<a:ObjectID>F3D8ECA5-01AD-48C3-B2A2-DCC6C81F5345</a:ObjectID>
-<a:CreationDate>1698157309</a:CreationDate>
+</o:RelationshipJoin>
+</c:Joins>
+<c:ParentIdentifier>
+<o:Identifier Ref="o33"/>
+</c:ParentIdentifier>
+</o:Relationship>
+<o:Relationship Id="o11">
+<a:ObjectID>FFAA2901-7DDA-4159-AF49-3CBB80E100BD</a:ObjectID>
+<a:Name>est</a:Name>
+<a:Code>EST</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
 <a:Creator>donia</a:Creator>
-<a:ModificationDate>1698157309</a:ModificationDate>
+<a:ModificationDate>1698158068</a:ModificationDate>
 <a:Modifier>donia</a:Modifier>
-<a:Cardinality>0,n</a:Cardinality>
+<a:History>ORG {3CBFEA16-9A0F-42F7-B31C-8902C52E99C3}
+DAT 1698158068</a:History>
+<a:Entity1ToEntity2RoleCardinality>1,1</a:Entity1ToEntity2RoleCardinality>
+<a:Entity2ToEntity1RoleCardinality>0,n</a:Entity2ToEntity1RoleCardinality>
 <c:Object1>
-<o:Association Ref="o26"/>
+<o:Entity Ref="o17"/>
 </c:Object1>
 <c:Object2>
-<o:Entity Ref="o23"/>
+<o:Entity Ref="o20"/>
 </c:Object2>
-</o:AssociationLink>
-<o:AssociationLink Id="o16">
-<a:ObjectID>6CB3D92E-6643-4FDF-8F87-703E75D53059</a:ObjectID>
-<a:CreationDate>1698157309</a:CreationDate>
+<c:Joins>
+<o:RelationshipJoin Id="o52">
+<a:ObjectID>C027B64E-D87E-4CF5-91FD-3E0A5D7C6E31</a:ObjectID>
+<a:CreationDate>1698158068</a:CreationDate>
 <a:Creator>donia</a:Creator>
-<a:ModificationDate>1698157354</a:ModificationDate>
+<a:ModificationDate>1698158068</a:ModificationDate>
 <a:Modifier>donia</a:Modifier>
-<a:Cardinality>1,1</a:Cardinality>
 <c:Object1>
-<o:Association Ref="o26"/>
+<o:EntityAttribute Ref="o22"/>
 </c:Object1>
 <c:Object2>
-<o:Entity Ref="o25"/>
+<o:EntityAttribute Ref="o44"/>
 </c:Object2>
-</o:AssociationLink>
-<o:AssociationLink Id="o19">
-<a:ObjectID>278B1F30-B91F-44D3-9582-CAEF9384340E</a:ObjectID>
-<a:CreationDate>1698157396</a:CreationDate>
-<a:Creator>donia</a:Creator>
-<a:ModificationDate>1698157396</a:ModificationDate>
-<a:Modifier>donia</a:Modifier>
-<a:Cardinality>0,n</a:Cardinality>
+</o:RelationshipJoin>
+</c:Joins>
+<c:ParentIdentifier>
+<o:Identifier Ref="o21"/>
+</c:ParentIdentifier>
+</o:Relationship>
+<o:Relationship Id="o14">
+<a:ObjectID>2D1C1048-BC37-44E2-8F8E-01969069B236</a:ObjectID>
+<a:Name>composition2</a:Name>
+<a:Code>COMPOSITION2</a:Code>
+<a:CreationDate>0</a:CreationDate>
+<a:Creator/>
+<a:ModificationDate>0</a:ModificationDate>
+<a:Modifier/>
+<a:History>ORG {D3FBA9C2-B104-4206-914C-AC05928CD895}
+DAT 1698158068</a:History>
+<a:DependentRole>A</a:DependentRole>
+<a:Entity1ToEntity2RoleCardinality>1,1</a:Entity1ToEntity2RoleCardinality>
+<a:Entity2ToEntity1RoleCardinality>0,n</a:Entity2ToEntity1RoleCardinality>
 <c:Object1>
-<o:Association Ref="o27"/>
+<o:Entity Ref="o17"/>
 </c:Object1>
 <c:Object2>
-<o:Entity Ref="o25"/>
+<o:Entity Ref="o19"/>
 </c:Object2>
-</o:AssociationLink>
-<o:AssociationLink Id="o21">
-<a:ObjectID>6F3B7727-9BCB-4EB8-8CDE-188881F27DDC</a:ObjectID>
-<a:CreationDate>1698157396</a:CreationDate>
+<c:Joins>
+<o:RelationshipJoin Id="o53">
+<a:ObjectID>7340A91A-70F7-4B50-A9CC-9FA738BF9AF7</a:ObjectID>
+<a:CreationDate>1698158068</a:CreationDate>
 <a:Creator>donia</a:Creator>
-<a:ModificationDate>1698157396</a:ModificationDate>
+<a:ModificationDate>1698158068</a:ModificationDate>
 <a:Modifier>donia</a:Modifier>
-<a:Cardinality>0,n</a:Cardinality>
 <c:Object1>
-<o:Association Ref="o27"/>
+<o:EntityAttribute Ref="o22"/>
 </c:Object1>
 <c:Object2>
-<o:Entity Ref="o22"/>
+<o:EntityAttribute Ref="o48"/>
 </c:Object2>
-</o:AssociationLink>
-</c:AssociationsLinks>
+</o:RelationshipJoin>
+</c:Joins>
+<c:ParentIdentifier>
+<o:Identifier Ref="o21"/>
+</c:ParentIdentifier>
+</o:Relationship>
+<o:Relationship Id="o16">
+<a:ObjectID>F2A2FEA4-7E01-4C9A-8D39-C2127B7973AE</a:ObjectID>
+<a:Name>composition</a:Name>
+<a:Code>COMPOSITION</a:Code>
+<a:CreationDate>0</a:CreationDate>
+<a:Creator/>
+<a:ModificationDate>0</a:ModificationDate>
+<a:Modifier/>
+<a:History>ORG {F5C20D67-17F9-4C2F-82A3-80CE8D2D4D4B}
+DAT 1698158068</a:History>
+<a:DependentRole>A</a:DependentRole>
+<a:Entity1ToEntity2RoleCardinality>1,1</a:Entity1ToEntity2RoleCardinality>
+<a:Entity2ToEntity1RoleCardinality>0,n</a:Entity2ToEntity1RoleCardinality>
+<c:Object1>
+<o:Entity Ref="o17"/>
+</c:Object1>
+<c:Object2>
+<o:Entity Ref="o19"/>
+</c:Object2>
+<c:Joins>
+<o:RelationshipJoin Id="o54">
+<a:ObjectID>C599B3C9-A32E-48E0-89E3-AB230D7E8B5E</a:ObjectID>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<c:Object1>
+<o:EntityAttribute Ref="o22"/>
+</c:Object1>
+<c:Object2>
+<o:EntityAttribute Ref="o49"/>
+</c:Object2>
+</o:RelationshipJoin>
+</c:Joins>
+<c:ParentIdentifier>
+<o:Identifier Ref="o21"/>
+</c:ParentIdentifier>
+</o:Relationship>
+</c:Relationships>
+<c:TargetModels>
+<o:TargetModel Id="o55">
+<a:ObjectID>CE592042-1DBE-4444-8CF5-0ED028F3D4E4</a:ObjectID>
+<a:Name>TraqueTaBouffe</a:Name>
+<a:Code>TRAQUETABOUFFE</a:Code>
+<a:CreationDate>1698158068</a:CreationDate>
+<a:Creator>donia</a:Creator>
+<a:ModificationDate>1698158068</a:ModificationDate>
+<a:Modifier>donia</a:Modifier>
+<a:TargetModelURL>file:///C|/wamp64/www/Projet_IDAW/TraqueTaBouffe2.mcd</a:TargetModelURL>
+<a:TargetModelID>88B3D7C6-5253-45D3-BE4A-00B9CBF89E18</a:TargetModelID>
+<a:TargetModelClassID>1E597170-9350-11D1-AB3C-0020AF71E433</a:TargetModelClassID>
+<a:TargetModelLastModificationDate>1698159845</a:TargetModelLastModificationDate>
+<c:SessionShortcuts>
+<o:Shortcut Ref="o3"/>
+</c:SessionShortcuts>
+</o:TargetModel>
+</c:TargetModels>
 </o:Model>
 </c:Children>
 </o:RootObject>
