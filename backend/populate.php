@@ -176,51 +176,51 @@
 
       // energie_kcal
       $request = $pdo->prepare("INSERT INTO EST_COMPOSE (
-        ID_NUTRIMENT_FK, ID_ALIMENT_FK, POURCENTAGE
+        ID_NUTRIMENT_FK, ID_ALIMENT_FK, POUR_100G
       ) VALUES(
-        1, {$id}, {$nutriments['energie_kcal']}
+        1, {$id},".number_format($nutriments['energie_kcal'], 2)."
       );");
       $request->execute();
       // sel
       $request = $pdo->prepare("INSERT INTO EST_COMPOSE (
-        ID_NUTRIMENT_FK, ID_ALIMENT_FK, POURCENTAGE
+        ID_NUTRIMENT_FK, ID_ALIMENT_FK, POUR_100G
       ) VALUES(
-        2, {$id}, {$nutriments['sel']}
-        $request->execute();
+        2, {$id},".number_format($nutriments['sel'], 2)."
       );");
+      $request->execute();
       // sucre
       $request = $pdo->prepare("INSERT INTO EST_COMPOSE (
-        ID_NUTRIMENT_FK, ID_ALIMENT_FK, POURCENTAGE
+        ID_NUTRIMENT_FK, ID_ALIMENT_FK, POUR_100G
       ) VALUES(
-        3, {$id}, {$nutriments['sucre']}
+        3, {$id},".number_format($nutriments['sucre'], 2)."
       );");
       $request->execute();
       // proteines
       $request = $pdo->prepare("INSERT INTO EST_COMPOSE (
-        ID_NUTRIMENT_FK, ID_ALIMENT_FK, POURCENTAGE
+        ID_NUTRIMENT_FK, ID_ALIMENT_FK, POUR_100G
       ) VALUES(
-        4, {$id}, {$nutriments['proteines']}
+        4, {$id},".number_format($nutriments['proteines'], 2)."
       );");
       $request->execute();
       // fibre_alimentaire
       $request = $pdo->prepare("INSERT INTO EST_COMPOSE (
-        ID_NUTRIMENT_FK, ID_ALIMENT_FK, POURCENTAGE
+        ID_NUTRIMENT_FK, ID_ALIMENT_FK, POUR_100G
       ) VALUES(
-        5, {$id}, {$nutriments['fibre_alimentaire']}
+        5, {$id},".number_format($nutriments['fibre_alimentaire'], 2)."
       );");
       $request->execute();
       // matieres_grasses
       $request = $pdo->prepare("INSERT INTO EST_COMPOSE (
-        ID_NUTRIMENT_FK, ID_ALIMENT_FK, POURCENTAGE
+        ID_NUTRIMENT_FK, ID_ALIMENT_FK, POUR_100G
       ) VALUES(
-        6, {$id}, {$nutriments['matieres_grasses']}
+        6, {$id},".number_format($nutriments['matieres_grasses'], 2)."
       );");
       $request->execute();
       // alcool
       $request = $pdo->prepare("INSERT INTO EST_COMPOSE (
-        ID_NUTRIMENT_FK, ID_ALIMENT_FK, POURCENTAGE
+        ID_NUTRIMENT_FK, ID_ALIMENT_FK, POUR_100G
       ) VALUES(
-        7, {$id}, {$nutriments['alcool']}
+        7, {$id},".number_format($nutriments['alcool'], 2)."
       );");
       $request->execute();
     }catch(PDOException $erreur){

@@ -6,6 +6,8 @@
 
   $request->execute();
 
+  require_once('populate.php');
+
   /*** close the database connection ***/
   $pdo = null;
 ?>

@@ -8,7 +8,7 @@
 
 ### __GET__ Récupérer un aliment en particulier
 
-___/backend/api/aliments.php/{id}___
+___/backend/aliments.php/{id}___
 
 > Description :\
 > Renvoi l'aliment spécifié par l'id dans l'URL.\
@@ -23,13 +23,16 @@ __Format :__
   "response": _string_,
   "result": {
     "aliment": {
-      "nom": _string_,
+      "id_aliment": _int_,
+      "nom_aliment": _string_,
+      "isliquid": _int_,
+      "indice_nova": _int_,
       "energie_kcal": _float_,
       "sucre": _float_,
       "proteines": _float_,
       "fibre_alimentaire": _float_,
-      "alcool": _float_,
-      "matieres_grasses": _float_
+      "matieres_grasses": _float_,
+      "alcool": _float_
     }
   }
 }
@@ -37,7 +40,7 @@ __Format :__
 
 ### __GET__ Récupérer tous les aliments
 
-___/backend/api/aliments.php___
+___/backend/aliments.php___
 
 > Description :\
 > Renvoi tous les aliments.
@@ -49,26 +52,26 @@ __Format :__
 {
   "http_status": _int_,
   "response": _string_,
-  "result": [
-    {
-      "aliment": {
-        "nom": _string_,
-        "energie_kcal": _float_,
-        "sucre": _float_,
-        "proteines": _float_,
-        "fibre_alimentaire": _float_,
-        "alcool": _float_,
-        "matieres_grasses": _float_
-      }
-    },
-    ...
-  ]
+  "result": {
+    "aliments": [
+      {
+          "nom": _string_,
+          "energie_kcal": _float_,
+          "sucre": _float_,
+          "proteines": _float_,
+          "fibre_alimentaire": _float_,
+          "alcool": _float_,
+          "matieres_grasses": _float_
+      },
+      ...
+    ]
+  }
 }
 ```
 
 ### __POST__ Ajouter un nouvel aliment
 
-___/backend/api/aliments.php___
+___/backend/aliments.php___
 
 > Description :\
 > Ajoute un nouvel élément dans les aliments.\
@@ -114,7 +117,7 @@ __Format :__
 
 ### __PUT__ Changer les paramètres d'un aliment
 
-___/backend/api/aliments.php/{id}___
+___/backend/aliments.php/{id}___
 
 > Description :\
 > Permet de changer le nom et/ou les valeurs des nutriments.
@@ -150,7 +153,7 @@ __Format :__
 
 ### __POST__ Faire d'un aliment, l'ingrédient d'un autre
 
-___/backend/api/aliments.php___
+___/backend/aliments.php___
 
 > Description :\
 > Permet de d'ajouter dans la base de données le fait qu'un aliment est ingrédient d'un autre.
@@ -176,7 +179,7 @@ __Format :__
 
 ### __DELETE__ Supprimmer un aliment
 
-___/backend/api/aliments.php/{id}___
+___/backend/aliments.php/{id}___
 
 > Description :\
 > Permet de supprimer un aliment de la base.
@@ -196,7 +199,7 @@ __Format :__
 
 ### __DELETE__ Supprimmer un ingredient d'un aliment
 
-___/backend/api/aliments.php/ingredient/{id}___
+___/backend/aliments.php/ingredient/{id}___
 
 > Description :\
 > Permet de supprimer un ingrédient d'un aliment.
