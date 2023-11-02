@@ -1,5 +1,5 @@
 .recommendation{
-    background-color: rgba(220, 20, 60, 0.58);
+    background-color: rgba(78, 23, 78, 0.92);
     margin-top: 30px;
     width: 15em;
     height: 10em;
@@ -15,8 +15,77 @@
     width: 15em;
     overflow: hidden;
 
+}
+.rr {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 
+h1 {
+    margin-right: auto; /* Pousse le titre à gauche (au début de la ligne) */
+}
+
+.dropdown {
+    position: relative; /* Utilisez une position relative pour ajuster la position du contenu du menu déroulant */
+}
+
+.side-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    right: 0; /* Alignez le contenu du menu déroulant à droite */
+    border-radius: 10px;
+}
+
+.dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    color: #333;
+    font-size: 15px;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+    border-radius: 10px;
+}
+
+/* Affichage du menu déroulant au survol */
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 
+.margin-bottom{
+    margin-bottom: 1em;
+}
 
+.action-button-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 300px;
+}
+.arrow-down {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #ffffff; /* Couleur de la flèche (noir dans cet exemple) */
+    margin-left: 5px; /* Espacement entre le texte et la flèche */
+    bottom: 3px;
+}
