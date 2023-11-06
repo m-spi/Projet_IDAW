@@ -36,7 +36,7 @@
                         <li>Alcool : '.$item['alcool'].'</li>
                     </ul>
                 </td>
-                <td   >
+                <td>
                 <div class="action-button-container">
                     <button class="action-button" onclick="editRow('.$item['id'].')">
                         <i class="fas fa-pencil-alt"></i>

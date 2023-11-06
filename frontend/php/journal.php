@@ -5,7 +5,27 @@
                 <h1 class="mt-4">Mon journal</h1>
                 <button class="side-btn" id="selectedBtn">Ajouter <i class="fas fa-plus-circle"></i></button>
             </div>
-            <?php
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>' . $tableTitle . '
+                </div>
+                <div class="card-body">
+                    <table id="journalDataTable">
+                        <thead>
+                        <tr>
+                            <th>Aliments/Plats consommé</th>
+                            <th>Date de consommation</th>
+                            <th>Valeurs nutritionnelles (100g ou 100ml)</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody id="journalTableBody">
+                        </tbody>
+                    </table>
+                </div>
+    </main>
+
+    <?php/*
             require_once ('codeFactorisé/dataTables.php');
             $dataJSON =
                 '[
@@ -37,7 +57,5 @@
 
             displayDataTable($dataJSON, 'Mes aliments consommés');
 
-            ?>
-        </div>
-    </main>
+            */?>
 

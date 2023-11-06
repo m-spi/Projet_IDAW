@@ -6,6 +6,7 @@
                 <div class="dropdown">
                     <button class="side-btn"  id="selectedBtn">Sélectionner un bilan<span class="arrow-down"></span></button>
                     <div class="dropdown-content">
+                        <a href="bilan.php?jours=7">Aujourd'hui</a>
                         <a href="bilan.php?jours=7">7 derniers jours</a>
                         <a href="bilan.php?jours=14">14 derniers jours</a>
                         <a href="bilan.php?jours=30">30 derniers jours</a>
@@ -16,9 +17,24 @@
             <div class="row"> <!--Etiquettes-->
                 <?php
                 require_once ('codeFactorisé/recommandation.php');
-                displayRecommendation('reco1', 'index.html');
-                displayRecommendation('reco2', 'index.html');
+                displayRecommendation('Attention vous consommez trop de sel !', 'index.php?page=warningSel');
+                displayRecommendation('Attention vous consommez trop de matière grasse !', 'index.php?page=warningMatiereGrasse');
+                displayRecommendation('Attention vous consommer trop de sucre !', 'index.php?page=warningSucre');
+                displayRecommendation('Attention vous consommez trop de proteine !', 'index.php?page=warningProteine');
+                displayRecommendation('Attention vous consommez trop de calories!', 'index.php?page=warningEnergie');
                 ?>
+            </div>
+            <div class="rr">
+                <h1 class="mt-4 h3Size">Mon bilan en graphiques</h1>
+                <div class="dropdown">
+                    <button class="side-btn smallSize"  id="selectedBtn">Sélectionner une donnée<span class="arrow-down"></span></button>
+                    <div class="dropdown-content ">
+                        <a href="bilan.php?jours=7">sucre</a>
+                        <a href="bilan.php?jours=7">sel</a>
+                        <a href="bilan.php?jours=14">matière grasse</a>
+                        <a href="bilan.php?jours=30">alcool</a>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-xl-6">
