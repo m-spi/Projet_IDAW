@@ -32,8 +32,16 @@ __Format :__
       "sucre": _float_,
       "proteines": _float_,
       "fibre_alimentaire": _float_,
-      "matieres_grasses": _float_,
-      "alcool": _float_
+      "matiere_grasses": _float_,
+      "alcool": _float_,
+      "ingredient_de": [
+        _int_,                      // ID de l'aliment composé par celui-ci,
+        ...
+      ],
+      "compose_par": [
+        _int_,                      // ID de l'aliment qui compose celui-ci
+        ...
+      ]
     }
   }
 }
@@ -66,7 +74,15 @@ __Format :__
         "proteines": _float_,
         "fibre_alimentaire": _float_,
         "matieres_grasses": _float_,
-        "alcool": _float_
+        "alcool": _float_,
+        "ingredient_de": [
+          _int_,                      // ID de l'aliment composé par celui-ci,
+          ...
+        ],
+        "compose_par": [
+          _int_,                      // ID de l'aliment qui compose celui-ci
+          ...
+        ]
       },
       ...
     ]
@@ -208,7 +224,7 @@ __Format :__
 
 ### __DELETE__ : Supprimmer un ingredient d'un aliment
 
-___/backend/aliments.php/ingredient/{id}___
+___/backend/aliments.php/{id_aliment}/ingredient/{id_ingredient}___
 
 > Description :\
 > Permet de supprimer un ingrédient d'un aliment.
@@ -221,7 +237,8 @@ __Format :__
   "http_status": _int_,
   "response": _string_,
   "result": {
-    "id": _int_         # ID de l'ingrédient supprimé.
+    "id_aliment": _int_,
+    "id_ingredient": _int_
   }
 }
 ```

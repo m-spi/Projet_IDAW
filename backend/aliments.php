@@ -1,6 +1,7 @@
 <?php
   require_once('init_pdo.php');
   require_once('endpoints_aliments.php');
+  //global $pdo;
 
   header("Access-Control-Allow-Origin: *");
   // header("Access-Control-Allow-Methods: *");
@@ -19,29 +20,34 @@
       checkCT();
 
       $input = json_decode(file_get_contents('php://input'));
-      createOne($pdo, $input);
+      if(isset($input->id_aliment) &&
+         isset($input->id_ingredient) &&
+         isset($input->pourcentage_ingredient)
+      ) addOneIngredient($pdo, $input);
+      else
+        createOne($pdo, $input);
 
       break;
 
-    /*case 'PUT':
+    case 'PUT':
       checkCT();
 
-      $uri = explode('/', $_SERVER['REQUEST_URI']);
-      $user = $uri[5];
       $input = json_decode(file_get_contents('php://input'));
-      updateUser($pdo, $user, $input);
+      if($id = getID())
+        updateOne($pdo, $id, $input);
+      else
+        echo "Erreur : Veuillez spécifier l'id dans l'URL.";
 
-      break;*/
+      break;
 
     case 'DELETE':
-      if($id = getID()){
-        $uri = $_SERVER['REQUEST_URI'];
-        $ingredient = substr($uri, strrpos($uri, '/')-10, 10) == 'ingredient';
-
-        if($ingredient)
-          deleteOneIngredient($pdo, $id);
+      if($id_aliment = getFirstID()){
+        if($id_ingredient = getID())
+          deleteOneIngredient($pdo, $id_aliment, $id_ingredient);
         else
-          deleteOne($pdo, $id);
+          echo "Erreur : Veuillez spécifier l'id de l'ingrédient dans l'URL.";
+      }elseif($id = getID()){
+        deleteOne($pdo, $id);
       }else echo "Erreur : Veuillez spécifier l'id dans l'URL.";
 
       break;
@@ -55,12 +61,27 @@
   function getID(){
     $uri = $_SERVER['REQUEST_URI'];
     $id = substr($uri, strrpos($uri, '/')+1);
+
     if(strlen($id) == 0)
       return false;
-    elseif($id[0] == 'a')
+    elseif(!is_numeric($id))
       return false;
     else
       return $id;
+  }
+
+  function getFirstID(){
+    $uri = $_SERVER['REQUEST_URI'];
+    if($pos = strrpos($uri, 'ingredient')){
+      $uri = substr($uri, 0, $pos-1); // Get URI until before '/ingredient'
+      $pos = strrpos($uri, '/');
+      $first_id = substr($uri, $pos+1);
+
+      if(is_numeric($first_id))
+        return $first_id;
+    }
+
+    return false;
   }
 
   // Check if the input Content-Type is application/json

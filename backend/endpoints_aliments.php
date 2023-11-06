@@ -14,13 +14,46 @@
          ON C.ID_ALIMENT_FK = A.ID_ALIMENT
          INNER JOIN NUTRIMENTS AS N
          ON C.ID_NUTRIMENT_FK = N.ID_NUTRIMENT
-         GROUP BY A.ID_ALIMENT"
+         GROUP BY A.ID_ALIMENT
+         ORDER BY nom"
       );
 
       $request->execute();
       $res = $request->fetchAll(PDO::FETCH_ASSOC);
-      $res = array("aliments" => $res);
 
+      $request = $pdo->prepare("
+        SELECT ID_ALIMENT AS id_aliment, ID_ALIMENT_FK AS lien, '1' as is_ingredient
+        FROM COMPOSITION
+        JOIN ALIMENTS
+        ON ID_ALIMENT = ID_COMPOSANT_FK
+        UNION
+        SELECT ID_ALIMENT AS id_aliment, ID_COMPOSANT_FK AS lien, '0' as is_ingredient
+        FROM COMPOSITION
+        JOIN ALIMENTS
+        ON ID_ALIMENT = ID_ALIMENT_FK
+        ORDER BY ID_ALIMENT
+      ");
+      $request->execute();
+      $res_comp = $request->fetchAll(PDO::FETCH_ASSOC);
+
+      for($i=0; $i<sizeof($res); $i++){
+        $res[$i] = array_merge($res[$i], array(
+            "ingredient_de" => array(),
+            "compose_par" => array()
+        ));
+        $count_ingr = 0;
+        $count_comp = 0;
+        foreach($res_comp as $r){
+          if($r['id_aliment'] != $res[$i]['id'])
+            continue;
+          if($r['is_ingredient'])
+            $res[$i]['ingredient_de'][] = $r['lien'];
+          else
+            $res[$i]['compose_par'][] = $r['lien'];
+        }
+      }
+
+      $res = array("aliments" => $res);
       $res = array(
         "http_status" => 200,
         "response" => "OK",
@@ -51,9 +84,39 @@
       );
       $request->execute();
       $res = $request->fetchAll(PDO::FETCH_ASSOC);
+      $res = $res[0];
 
-      $res = array("aliment" => $res[0]);
+      $request = $pdo->prepare("
+          SELECT ID_ALIMENT AS id_aliment, ID_ALIMENT_FK AS lien, '1' as is_ingredient
+          FROM COMPOSITION
+          JOIN ALIMENTS
+          ON ID_ALIMENT = ID_COMPOSANT_FK
+          WHERE ID_ALIMENT = {$id}
+          UNION
+          SELECT ID_ALIMENT AS id_aliment, ID_COMPOSANT_FK AS lien, '0' as is_ingredient
+          FROM COMPOSITION
+          JOIN ALIMENTS
+          ON ID_ALIMENT = ID_ALIMENT_FK
+          WHERE ID_ALIMENT = {$id}
+          ORDER BY ID_ALIMENT
+      ");
+      $request->execute();
+      $res_comp = $request->fetchAll(PDO::FETCH_ASSOC);
 
+      $res = array_merge($res, array(
+          "ingredient_de" => array(),
+          "compose_par" => array()
+      ));
+      foreach($res_comp as $r){
+        if($r['id_aliment'] != $res['id'])
+          continue;
+        if($r['is_ingredient'])
+          $res['ingredient_de'][] = $r['lien'];
+        else
+          $res['compose_par'][] = $r['lien'];
+      }
+
+      $res = array("aliment" => $res);
       $res = array(
         "http_status" => 200,
         "response" => "OK",
@@ -66,6 +129,7 @@
 
   function createOne($pdo, $input){
       if(!isset($input->nom) ||
+         strlen($input->nom) < 1 ||
          !isset($input->is_liquid) ||
          !isset($input->indice_nova) ||
          !isset($input->energie_kcal) ||
@@ -113,7 +177,9 @@
         foreach ($input->ingredient_de as $value) {
           if(!isset($value->id) || !isset($value->pourcentage_ingredient))
             continue;
-            
+          if($value->pourcentage_ingredient == 0)
+            continue;
+
           $request = $pdo->prepare(
             "INSERT INTO COMPOSITION (ID_COMPOSANT_FK, ID_ALIMENT_FK, POURCENTAGE)
              VALUES ({$last_id}, {$value->id}, {$value->pourcentage_ingredient})"
@@ -135,29 +201,76 @@
         http_response_code(500);
       }
   }
-  //
-  // function updateUser($pdo, $user, $input){
-  //     if(!isset($input->name) || !isset($input->email)){
-  //       echo 'Erreur : Il manque au moins un paramètre.';
-  //       http_response_code(400);
-  //     }else{
-  //       try{
-  //         $request = $pdo->prepare("UPDATE users SET name='{$input->name}', email='{$input->email}' WHERE id='{$user}'");
-  //
-  //         if(!$request->execute()){
-  //           echo 'Erreur : Aucun utilisateur avec cet id.';
-  //           http_response_code(400);
-  //         }else{
-  //           echo "\nSuccessfully updated user {$user}\n";
-  //           http_response_code(202);
-  //         }
-  //       }catch(Exception $err){
-  //         echo 'Erreur : '.$err->getMessage();
-  //         http_response_code(500);
-  //       }
-  //     }
-  // }
-  //
+
+  function addOneIngredient($pdo, $input){
+    try{
+      $request = $pdo->prepare(
+        "INSERT INTO COMPOSITION (ID_COMPOSANT_FK, ID_ALIMENT_FK, POURCENTAGE)
+         VALUES ({$input->id_ingredient}, {$input->id_aliment}, {$input->pourcentage_ingredient})"
+      );
+      $request->execute();
+
+      $res = array(
+        "http_status" => 202,
+        "response" => "Ingrédient ajouté avec succès."
+      );
+      http_response_code(202);
+      echo json_encode($res);
+    }catch(PDOException $erreur){
+      echo 'Erreur : '.$erreur->getMessage();
+      http_response_code(500);
+    }
+  }
+
+  function updateOne($pdo, $id, $input){
+    try{
+      $request_string =
+          "UPDATE EST_COMPOSE SET POUR_100G =
+            (CASE ID_NUTRIMENT_FK";
+
+      $res = array();
+      $map = array(
+          "energie_kcal" => 1,
+          "sel" => 2,
+          "sucre" => 3,
+          "proteines" => 4,
+          "fibre_alimentaire" => 5,
+          "matiere_grasses" => 6,
+          "alcool" => 7
+      );
+
+      for($i=0; $i<7; $i++) {
+        $key = array_keys($map)[$i];
+        if(isset($input->$key)) {
+          echo 'a';
+          echo $input->$key;
+          $request_string .= ' WHEN '. $i+1 .' THEN '.$input->$key;
+          $res[] = $key.'='.$input->$key;
+          echo 'b';
+        }else{
+          echo 'c';
+          $request_string .= ' WHEN '. $i+1 .' THEN POUR_100G';
+          echo 'd';
+        }
+      }
+      $request_string .= ' ELSE POUR_100G END) WHERE ID_ALIMENT_FK = '.$id;
+      $request = $pdo->prepare($request_string);
+
+      $request->execute();
+
+      $res = array(
+        "http_status" => 202,
+        "response" => "Aliment mis à jour avec succès.",
+        "result" => $res
+      );
+      http_response_code(202);
+      echo json_encode($res);
+      }catch(PDOException $erreur){
+        echo 'Erreur : '.$erreur->getMessage();
+        http_response_code(500);
+      }
+  }
+
   function deleteOne($pdo, $id){
       try{
         $request = $pdo->prepare("DELETE FROM ALIMENTS WHERE ID_ALIMENT={$id}");
@@ -170,6 +283,29 @@
           $res = array(
             "http_status" => 202,
             "response" => "Aliment supprimé avec succès.",
+            "result" => $res
+          );
+          http_response_code(202);
+          echo json_encode($res);
+        }
+      }catch(Exception $err){
+        echo 'Erreur : '.$err->getMessage();
+        http_response_code(500);
+      }
+  }
+
+  function deleteOneIngredient($pdo, $id_aliment, $id_ingredient){
+      try{
+        $request = $pdo->prepare("DELETE FROM COMPOSITION WHERE ID_ALIMENT_FK={$id_aliment} AND ID_COMPOSANT_FK={$id_ingredient}");
+
+        if(!$request->execute()){
+          echo 'Erreur : Cet ingrédient ne compose pas cet aliment (mauvaise paire d\'IDs).';
+          http_response_code(400);
+        }else{
+          $res = array("id_aliment" => $id_aliment, "id_ingredient" => $id_ingredient);
+          $res = array(
+            "http_status" => 202,
+            "response" => "Ingrédient supprimé avec succès.",
             "result" => $res
           );
           http_response_code(202);
