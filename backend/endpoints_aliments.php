@@ -27,6 +27,7 @@
         "result" => $res
       );
 
+      http_response_code(200);
       echo json_encode($res);
   }
 
@@ -59,40 +60,57 @@
         "result" => $res
       );
 
+      http_response_code(200);
       echo json_encode($res);
   }
 
-  // function createUser($pdo, $input){
-  //     if(!isset($input->name) || !isset($input->email)){
-  //       echo 'Erreur : Il manque au moins un paramètre.';
-  //       http_response_code(400);
-  //     }else{
-  //       try{
-  //         if(isset($input->name) && isset($input->email)){
-  //           $name = $input->name;
-  //           $email = $input->email;
-  //
-  //           try{
-  //             $request = $pdo->prepare("INSERT INTO users (id, name, email) VALUES (NULL, '{$name}', '{$email}')");
-  //             $request->execute();
-  //             echo "\nSuccessfully created user {$pdo->lastInsertId()}\n";
-  //             http_response_code(201);
-  //           }catch(PDOException $erreur){
-  //             echo 'Erreur : '.$erreur->getMessage();
-  //             http_response_code(500);
-  //           }
-  //         }
-  //
-  //         else{
-  //           echo 'Veuillez envoyer un nom et une adresse mail valide.';
-  //           http_response_code(400);
-  //         }
-  //       }catch(ErrorException $err){
-  //         echo 'Erreur : '.$err->getMessage();
-  //         http_response_code(500);
-  //       }
-  //     }
-  // }
+  function createOne($pdo, $input){
+      if(!isset($input->nom) ||
+         !isset($input->is_liquid) ||
+         !isset($input->indice_nova) ||
+         !isset($input->energie_kcal) ||
+         !isset($input->sucre) ||
+         !isset($input->proteines) ||
+         !isset($input->fibre_alimentaire) ||
+         !isset($input->alcool) ||
+         !isset($input->matieres_grasses) ||
+         !isset($input->ingredient_de)
+      ){
+        echo 'Erreur : Il manque au moins un paramètre.';
+        http_response_code(400);
+      }
+
+      try{
+        $request = $pdo->prepare(
+          "INSERT INTO ALIMENTS (ID_ALIMENT, INDICE_NOVA, NOM_ALIMENT, ISLIQUID)
+           VALUES (NULL, {$input->indice_nova}, ?, {$input->is_liquid})"
+        );
+        $request->bindParam(1, $input->nom, PDO::PARAM_STR);
+        $request->execute();
+
+        $last_id = $pdo->lastInsertId();
+        foreach ($input->ingredient_de as $value) {
+          $request = $pdo->prepare(
+            "INSERT INTO COMPOSITION (ID_COMPOSANT_FK, ID_ALIMENT_FK, POURCENTAGE)
+             VALUES ({$last_id}, {$value->id}, {$value->pour_100g})"
+          );
+          $request->execute();
+        }
+
+        $res = array("id" => $last_id);
+        $res = array(
+          "http_status" => 201,
+          "response" => "Aliment inséré avec succès.",
+          "result" => $res
+        );
+
+        http_response_code(201);
+        echo json_encode($res);
+      }catch(PDOException $erreur){
+        echo 'Erreur : '.$erreur->getMessage();
+        http_response_code(500);
+      }
+  }
   //
   // function updateUser($pdo, $user, $input){
   //     if(!isset($input->name) || !isset($input->email)){

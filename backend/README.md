@@ -6,7 +6,7 @@
 
 ## Aliments
 
-### __GET__ Récupérer un aliment en particulier
+### __GET__ : Récupérer un aliment en particulier
 
 ___/backend/aliments.php/{id}___
 
@@ -23,11 +23,12 @@ __Format :__
   "response": _string_,
   "result": {
     "aliment": {
-      "id_aliment": _int_,
-      "nom_aliment": _string_,
-      "isliquid": _int_,
+      "id": _int_,
+      "nom": _string_,
+      "is_liquid": _int_,
       "indice_nova": _int_,
       "energie_kcal": _float_,
+      "sel": _float_,
       "sucre": _float_,
       "proteines": _float_,
       "fibre_alimentaire": _float_,
@@ -38,7 +39,7 @@ __Format :__
 }
 ```
 
-### __GET__ Récupérer tous les aliments
+### __GET__ : Récupérer tous les aliments
 
 ___/backend/aliments.php___
 
@@ -55,13 +56,17 @@ __Format :__
   "result": {
     "aliments": [
       {
-          "nom": _string_,
-          "energie_kcal": _float_,
-          "sucre": _float_,
-          "proteines": _float_,
-          "fibre_alimentaire": _float_,
-          "alcool": _float_,
-          "matieres_grasses": _float_
+        "id": _int_,
+        "nom": _string_,
+        "is_liquid": _int_,
+        "indice_nova": _int_,
+        "energie_kcal": _float_,
+        "sel": _float_,
+        "sucre": _float_,
+        "proteines": _float_,
+        "fibre_alimentaire": _float_,
+        "matieres_grasses": _float_,
+        "alcool": _float_
       },
       ...
     ]
@@ -69,7 +74,7 @@ __Format :__
 }
 ```
 
-### __POST__ Ajouter un nouvel aliment
+### __POST__ : Ajouter un nouvel aliment
 
 ___/backend/aliments.php___
 
@@ -82,7 +87,10 @@ __Paramètre POST :__
 ```json
 {
   "nom": _string_,
+  "is_liquid": _int_,
+  "indice_nova": _int_,
   "energie_kcal": _float_,
+  "sel": _float_,
   "sucre": _float_,
   "proteines": _float_,
   "fibre_alimentaire": _float_,
@@ -90,8 +98,8 @@ __Paramètre POST :__
   "matieres_grasses": _float_,
   "ingredient_de": [
     {
-      "id_aliment": _int_,
-      "quantite": _float_
+      "id": _int_,
+      "pour_100g": _float_
     },
     ...
   ]
@@ -115,7 +123,7 @@ __Format :__
 }
 ```
 
-### __PUT__ Changer les paramètres d'un aliment
+### __PUT__ : Changer les paramètres d'un aliment
 
 ___/backend/aliments.php/{id}___
 
@@ -126,6 +134,7 @@ __Parmètre PUT :__
 ```json
 {
   "energie_kcal": _float_,
+  "sel": _float_,
   "sucre": _float_,
   "proteines": _float_,
   "fibre_alimentaire": _float_,
@@ -145,13 +154,13 @@ __Format :__
   "http_status": _int_,
   "response": _string_,
   "result": [           # Tableau avec l'ensemble des noms des valeurs modifiées.
-    _string_,
+    _string_,           # Exemple : "energie_kcal=200"
     ...
   ]
 }
 ```
 
-### __POST__ Faire d'un aliment, l'ingrédient d'un autre
+### __POST__ : Faire d'un aliment, l'ingrédient d'un autre
 
 ___/backend/aliments.php___
 
@@ -177,7 +186,7 @@ __Format :__
 }
 ```
 
-### __DELETE__ Supprimmer un aliment
+### __DELETE__ : Supprimmer un aliment
 
 ___/backend/aliments.php/{id}___
 
@@ -197,7 +206,7 @@ __Format :__
 }
 ```
 
-### __DELETE__ Supprimmer un ingredient d'un aliment
+### __DELETE__ : Supprimmer un ingredient d'un aliment
 
 ___/backend/aliments.php/ingredient/{id}___
 

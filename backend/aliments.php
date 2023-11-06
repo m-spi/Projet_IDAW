@@ -15,15 +15,15 @@
 
       break;
 
-    /*case 'POST':
+    case 'POST':
       checkCT();
 
       $input = json_decode(file_get_contents('php://input'));
-      createUser($pdo, $input);
+      createOne($pdo, $input);
 
       break;
 
-    case 'PUT':
+    /*case 'PUT':
       checkCT();
 
       $uri = explode('/', $_SERVER['REQUEST_URI']);
@@ -58,24 +58,24 @@
   }
 
   // Check if the input Content-Type is application/json
-  // function checkCT(){
-  //     if(str_contains($_SERVER["SERVER_SOFTWARE"], 'Apache') ||
-  //        str_contains($_SERVER["SERVER_SOFTWARE"], 'apache') ||
-  //        str_contains($_SERVER["SERVER_SOFTWARE"], 'APACHE')
-  //     ){
-  //       $headers = apache_request_headers();
-  //       $h = $headers['Content-Type'];
-  //       if(!str_contains($h, 'application/json')){
-  //         echo 'Erreur : Mauvais Content-Type dans le request header.';
-  //         http_response_code(400);
-  //         exit(1);
-  //       }
-  //     }else{
-  //       if(!str_contains($_SERVER['HTTP_CONTENT_TYPE'], 'application/json')){
-  //         echo 'Erreur : Mauvais Content-Type dans le request header.';
-  //         http_response_code(400);
-  //         exit(1);
-  //       }
-  //     }
-  // }
+  function checkCT(){
+      if(str_contains($_SERVER["SERVER_SOFTWARE"], 'Apache') ||
+         str_contains($_SERVER["SERVER_SOFTWARE"], 'apache') ||
+         str_contains($_SERVER["SERVER_SOFTWARE"], 'APACHE')
+      ){
+        $headers = apache_request_headers();
+        $h = $headers['Content-Type'];
+        if(!str_contains($h, 'application/json')){
+          echo 'Erreur : Mauvais Content-Type dans le request header.';
+          http_response_code(400);
+          exit(1);
+        }
+      }else{
+        if(!str_contains($_SERVER['HTTP_CONTENT_TYPE'], 'application/json')){
+          echo 'Erreur : Mauvais Content-Type dans le request header.';
+          http_response_code(400);
+          exit(1);
+        }
+      }
+  }
 ?>
