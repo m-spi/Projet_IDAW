@@ -99,7 +99,7 @@ __Paramètre POST :__
   "ingredient_de": [
     {
       "id": _int_,
-      "pour_100g": _float_
+      "pourcentage_ingredient": _float_
     },
     ...
   ]

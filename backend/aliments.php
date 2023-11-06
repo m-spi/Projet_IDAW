@@ -31,14 +31,20 @@
       $input = json_decode(file_get_contents('php://input'));
       updateUser($pdo, $user, $input);
 
-      break;
+      break;*/
 
     case 'DELETE':
-      $uri = explode('/', $_SERVER['REQUEST_URI']);
-      $user = $uri[5];
-      deleteUser($pdo, $user);
+      if($id = getID()){
+        $uri = $_SERVER['REQUEST_URI'];
+        $ingredient = substr($uri, strrpos($uri, '/')-10, 10) == 'ingredient';
 
-      break;*/
+        if($ingredient)
+          deleteOneIngredient($pdo, $id);
+        else
+          deleteOne($pdo, $id);
+      }else echo "Erreur : Veuillez spécifier l'id dans l'URL.";
+
+      break;
 
     default:
       exit(1);

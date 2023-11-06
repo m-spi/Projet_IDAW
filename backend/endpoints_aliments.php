@@ -69,6 +69,7 @@
          !isset($input->is_liquid) ||
          !isset($input->indice_nova) ||
          !isset($input->energie_kcal) ||
+         !isset($input->sel) ||
          !isset($input->sucre) ||
          !isset($input->proteines) ||
          !isset($input->fibre_alimentaire) ||
@@ -78,6 +79,7 @@
       ){
         echo 'Erreur : Il manque au moins un paramètre.';
         http_response_code(400);
+        exit(1);
       }
 
       try{
@@ -89,10 +91,32 @@
         $request->execute();
 
         $last_id = $pdo->lastInsertId();
+
+        $request = $pdo->prepare(
+          "INSERT INTO EST_COMPOSE (ID_NUTRIMENT_FK, ID_ALIMENT_FK, POUR_100G)
+           VALUES ( 1, {$last_id}, {$input->energie_kcal} );
+           INSERT INTO EST_COMPOSE (ID_NUTRIMENT_FK, ID_ALIMENT_FK, POUR_100G)
+           VALUES ( 2, {$last_id}, {$input->sel} );
+           INSERT INTO EST_COMPOSE (ID_NUTRIMENT_FK, ID_ALIMENT_FK, POUR_100G)
+           VALUES ( 3, {$last_id}, {$input->sucre} );
+           INSERT INTO EST_COMPOSE (ID_NUTRIMENT_FK, ID_ALIMENT_FK, POUR_100G)
+           VALUES ( 4, {$last_id}, {$input->proteines} );
+           INSERT INTO EST_COMPOSE (ID_NUTRIMENT_FK, ID_ALIMENT_FK, POUR_100G)
+           VALUES ( 5, {$last_id}, {$input->fibre_alimentaire} );
+           INSERT INTO EST_COMPOSE (ID_NUTRIMENT_FK, ID_ALIMENT_FK, POUR_100G)
+           VALUES ( 6, {$last_id}, {$input->matieres_grasses} );
+           INSERT INTO EST_COMPOSE (ID_NUTRIMENT_FK, ID_ALIMENT_FK, POUR_100G)
+           VALUES ( 7, {$last_id}, {$input->alcool} );"
+        );
+        $request->execute();
+
         foreach ($input->ingredient_de as $value) {
+          if(!isset($value->id) || !isset($value->pourcentage_ingredient))
+            continue;
+            
           $request = $pdo->prepare(
             "INSERT INTO COMPOSITION (ID_COMPOSANT_FK, ID_ALIMENT_FK, POURCENTAGE)
-             VALUES ({$last_id}, {$value->id}, {$value->pour_100g})"
+             VALUES ({$last_id}, {$value->id}, {$value->pourcentage_ingredient})"
           );
           $request->execute();
         }
@@ -134,20 +158,26 @@
   //     }
   // }
   //
-  // function deleteUser($pdo, $user){
-  //     try{
-  //       $request = $pdo->prepare("DELETE FROM users WHERE id='{$user}'");
-  //
-  //       if(!$request->execute()){
-  //         echo 'Erreur : Aucun utilisateur avec cette id.';
-  //         http_response_code(400);
-  //       }else{
-  //         echo 'Successfully deleted user {$user}';
-  //         http_response_code(202);
-  //       }
-  //     }catch(Exception $err){
-  //       echo 'Erreur : '.$err->getMessage();
-  //       http_response_code(500);
-  //     }
-  // }
+  function deleteOne($pdo, $id){
+      try{
+        $request = $pdo->prepare("DELETE FROM ALIMENTS WHERE ID_ALIMENT={$id}");
+
+        if(!$request->execute()){
+          echo 'Erreur : Aucun aliment avec cet id.';
+          http_response_code(400);
+        }else{
+          $res = array("id" => $id);
+          $res = array(
+            "http_status" => 202,
+            "response" => "Aliment supprimé avec succès.",
+            "result" => $res
+          );
+          http_response_code(202);
+          echo json_encode($res);
+        }
+      }catch(Exception $err){
+        echo 'Erreur : '.$err->getMessage();
+        http_response_code(500);
+      }
+  }
 ?>
