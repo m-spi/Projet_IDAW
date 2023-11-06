@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="171mm" xmlns="http://www.w3.org/2000/svg" height="169mm" version="1.1" viewBox="0 0 647 641" xmlns:xlink="http://www.w3.org/1999/xlink">
+   <polyline fill="none" points="178,100 178,221 386,221" stroke="#8080ff" stroke-width="1"/>
+   <text x="190" y="125" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="middle">0,n</text>
+   <polyline fill="none" points="162,100 162,237 392,237" stroke="#8080ff" stroke-width="1"/>
+   <text x="174" y="125" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="middle">0,n</text>
+   <polyline fill="none" points="341,431 220,431" stroke="#8080ff" stroke-width="1"/>
+   <text x="313" y="440" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="middle">0,n</text>
+   <polyline fill="none" points="133,567 158,567 158,468" stroke="#8080ff" stroke-width="1"/>
+   <text x="162" y="564" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="middle">1,1</text>
+   <polyline fill="none" points="53,567 53,294" stroke="#8080ff" stroke-width="1"/>
+   <text x="41" y="548" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="middle">1,1</text>
+   <polyline fill="none" points="110,58 47,58 47,250" stroke="#8080ff" stroke-width="1"/>
+   <text x="82" y="67" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="middle">0,n</text>
+   <polyline fill="none" points="568,88 489,88" stroke="#8080ff" stroke-width="1"/>
+   <text x="540" y="98" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="middle">0,n</text>
+   <polyline fill="none" points="214,88 391,88" stroke="#8080ff" stroke-width="1"/>
+   <text x="242" y="85" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="middle">1,n</text>
+   <a target="_parent" xlink:href="Rapp12.htm#29">
+      <defs>
+         <linearGradient id="Gradient1" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+            <stop offset="5%" stop-color="#ffffff"/>
+            <stop offset="95%" stop-color="#b0ffff"/>
+         </linearGradient>
+      </defs>
+      <rect x="110" y="16" fill="url(#Gradient1)" width="104" height="84" stroke="#00aaaa" stroke-width="1"/>
+      <text x="162" y="27" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="middle">Aliments</text>
+      <line x1="110" x2="214" y1="33" y2="33" stroke="#00aaaa" stroke-width="1"/>
+      <text x="115" y="43" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="start" text-decoration="underline">id_aliment</text>
+      <text x="115" y="56" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="start">indice NOVA</text>
+      <text x="115" y="69" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="start">nom</text>
+      <text x="115" y="82" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="start">isLiquid</text>
+   </a>
+   <a target="_parent" xlink:href="Rapp20.htm#67">
+      <defs>
+         <linearGradient id="Gradient2" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+            <stop offset="5%" stop-color="#ffffff"/>
+            <stop offset="95%" stop-color="#b0ffff"/>
+         </linearGradient>
+      </defs>
+      <rect x="341" y="316" fill="url(#Gradient2)" width="81" height="122" stroke="#00aaaa" stroke-width="1"/>
+      <text x="381" y="327" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="middle">User</text>
+      <line x1="341" x2="422" y1="333" y2="333" stroke="#00aaaa" stroke-width="1"/>
+      <text x="346" y="343" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="start" text-decoration="underline">id_user</text>
+      <text x="346" y="356" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="start">nom</text>
+      <text x="346" y="369" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="start">age</text>
+      <text x="346" y="382" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="start">isMale</text>
+      <text x="346" y="395" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="start">poids</text>
+      <text x="346" y="408" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="start">taille</text>
+      <text x="346" y="421" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="start">degresDactivité</text>
+      <text x="346" y="434" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="start">prenom</text>
+   </a>
+   <a target="_parent" xlink:href="Rapp2.htm#2">
+      <defs>
+         <linearGradient id="Gradient3" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+            <stop offset="5%" stop-color="#ffffff"/>
+            <stop offset="95%" stop-color="#d0d0ff"/>
+         </linearGradient>
+      </defs>
+      <rect x="386" y="201" rx="15" ry="20" fill="url(#Gradient3)" width="143" height="40" stroke="#8080ff" stroke-width="1"/>
+      <text x="457" y="212" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="middle">composition</text>
+      <line x1="386" x2="529" y1="218" y2="218" stroke="#8080ff" stroke-width="1"/>
+      <text x="406" y="228" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="start">quantité du composa</text>
+   </a>
+   <a target="_parent" xlink:href="Rapp8.htm#10">
+      <defs>
+         <linearGradient id="Gradient4" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+            <stop offset="5%" stop-color="#ffffff"/>
+            <stop offset="95%" stop-color="#b0ffff"/>
+         </linearGradient>
+      </defs>
+      <rect x="37" y="567" fill="url(#Gradient4)" width="96" height="59" stroke="#00aaaa" stroke-width="1"/>
+      <text x="85" y="578" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="middle">Aliment consommé</text>
+      <line x1="37" x2="133" y1="584" y2="584" stroke="#00aaaa" stroke-width="1"/>
+      <text x="41" y="594" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="start" text-decoration="underline">id_repas</text>
+      <text x="41" y="607" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="start">date</text>
+      <text x="41" y="620" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="start">quantité</text>
+   </a>
+   <defs>
+      <linearGradient id="Gradient5" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+         <stop offset="5%" stop-color="#ffffff"/>
+         <stop offset="95%" stop-color="#d0d0ff"/>
+      </linearGradient>
+   </defs>
+   <rect x="146" y="424" rx="16" ry="22" fill="url(#Gradient5)" width="78" height="44" stroke="#8080ff" stroke-width="1"/>
+   <text x="185" y="440" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="middle">consomme</text>
+   <line x1="146" x2="224" y1="446" y2="446" stroke="#8080ff" stroke-width="1"/>
+   <defs>
+      <linearGradient id="Gradient6" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+         <stop offset="5%" stop-color="#ffffff"/>
+         <stop offset="95%" stop-color="#d0d0ff"/>
+      </linearGradient>
+   </defs>
+   <rect x="15" y="250" rx="16" ry="22" fill="url(#Gradient6)" width="64" height="44" stroke="#8080ff" stroke-width="1"/>
+   <text x="47" y="266" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="middle">est</text>
+   <line x1="15" x2="79" y1="272" y2="272" stroke="#8080ff" stroke-width="1"/>
+   <a target="_parent" xlink:href="Rapp17.htm#52">
+      <defs>
+         <linearGradient id="Gradient7" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+            <stop offset="5%" stop-color="#ffffff"/>
+            <stop offset="95%" stop-color="#b0ffff"/>
+         </linearGradient>
+      </defs>
+      <rect x="568" y="50" fill="url(#Gradient7)" width="64" height="53" stroke="#00aaaa" stroke-width="1"/>
+      <text x="600" y="61" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="middle">Nutriments</text>
+      <line x1="568" x2="632" y1="67" y2="67" stroke="#00aaaa" stroke-width="1"/>
+      <text x="573" y="77" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="start" text-decoration="underline">id_nutriment</text>
+      <text x="573" y="90" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="start">nom</text>
+   </a>
+   <defs>
+      <linearGradient id="Gradient8" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+         <stop offset="5%" stop-color="#ffffff"/>
+         <stop offset="95%" stop-color="#d0d0ff"/>
+      </linearGradient>
+   </defs>
+   <rect x="391" y="68" rx="15" ry="20" fill="url(#Gradient8)" width="98" height="40" stroke="#8080ff" stroke-width="1"/>
+   <text x="440" y="79" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="middle">est composé</text>
+   <line x1="391" x2="489" y1="85" y2="85" stroke="#8080ff" stroke-width="1"/>
+   <text x="411" y="95" fill="#000000" font-size="10" font-family="'Arial Unicode MS','Arial'" text-anchor="start">pourcentage</text>
+</svg>
