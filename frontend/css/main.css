@@ -37,12 +37,13 @@ h1 {
 }
 
 .side-btn {
-    background-color: #3498db;
+    background-color:#8bab36;
     color: white;
     padding: 10px;
     border: none;
     cursor: pointer;
     border-radius: 10px;
+    font-size: large;
 }
 
 .dropdown-content {
@@ -129,3 +130,21 @@ h1 {
     line-height: 1.5;
 }
 
+.column {
+    display: flex;
+    flex-direction: column;
+    width: 15em;
+    margin :10px;
+}
+
+.side-btn:hover{
+    background-color: white;
+    color :  #8bab36;
+}
+.mt-4 {
+    margin-bottom: 36px;
+}
+.italic {
+    font-style: italic;
+    font-size: small;
+}
