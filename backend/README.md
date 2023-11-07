@@ -260,6 +260,8 @@ __Format :__
 }
 ```
 
+---
+
 ## Journal
 
 > __Note__ :\
@@ -428,6 +430,163 @@ __Format :__
     "response": _string_,
     "result": {
         "id": _int_       // ID de l'entrée supprimé
+    }
+}
+```
+
+---
+
+## Utilisateurs
+
+### __GET__ : Récupérer un utilisateur
+
+___/backend/users.php/{id}___
+
+> Description :\
+> Renvoi l'utilisateur spécifié par l'id dans l'URL.
+
+#### Réponse
+
+__Format :__
+```json
+{
+    "http_status": _int_,
+    "response": _string_,
+    "result": {
+        "utilisateur": {
+            "id": _int_,
+            "email": _string_,
+            "nom": _string_,
+            "prenom": _string_,
+            "age": _int_,
+            "is_male": _bool_,
+            "poids": _float_,
+            "taille": _float_,
+            "sport": _int_
+        }
+    }
+}
+```
+
+### __GET__ : Récupérer tous les utilisateurs
+
+___/backend/users.php___
+
+> Description :\
+> Renvoi tous les utilisateurs.
+
+#### Réponse
+
+__Format :__
+```json
+{
+    "http_status": _int_,
+    "response": _string_,
+    "result": {
+        "utilisateurs": [
+            {
+                "id": _int_,
+                "email": _string_,
+                "nom": _string_,
+                "prenom": _string_,
+                "age": _int_,
+                "is_male": _bool_,
+                "poids": _float_,
+                "taille": _float_,
+                "sport": _int_
+            },
+            ...
+        ]
+    }
+}
+```
+
+### __POST__ : Créer un utilisateur
+
+___/backend/users.php___
+
+> Description :\
+> Crée un utilisateur.
+
+__Paramètre POST :__
+```json
+{
+    "email": _string_,
+    "nom": _string_,
+    "prenom": _string_,
+    "age": _int_,
+    "is_male": _bool_,
+    "poids": _float_,
+    "taille": _float_,
+    "sport": _int_
+}
+```
+
+#### Réponse
+
+__Format :__
+```json
+{
+    "http_status": _int_,
+    "response": _string_,
+    "result": {
+        "id": _int_
+    }
+}
+```
+
+### __PUT__ : Changer les attributs d'un utilisateur
+
+___/backend/users.php/{id}___
+
+> Description :\
+> Modifie l'utilisateur spécifiée par l'id dans l'URL.\
+> Chaque paramètre est optionnel.
+
+__Paramètre PUT :__
+```json
+{
+    "email": _string_,
+    "nom": _string_,
+    "prenom": _string_,
+    "age": _int_,
+    "is_male": _bool_,
+    "poids": _float_,
+    "taille": _float_,
+    "sport": _int_
+}
+```
+
+#### Réponse
+
+__Format :__
+```json
+{
+    "http_status": _int_,
+    "response": _string_,
+    "result": [             // Tableau avec l'ensemble des noms des valeurs modifiées.
+        _string_,           // Exemple : "quantite=200"
+        ...
+    ]
+}
+```
+
+### __DELETE__ : Supprimer un utilisateur
+
+___/backend/users.php/{id}___
+
+> Description :\
+> Supprime un utilisateur.
+
+#### Réponse
+
+__Format :__
+```json
+{
+    "http_status": _int_,
+    "response": _string_,
+    "result": {
+        "id": _int_       // ID de l'utilisateur supprimé
     }
 }
 ```
