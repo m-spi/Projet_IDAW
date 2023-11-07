@@ -15,6 +15,7 @@
                         <tr>
                             <th>Aliment</th>
                             <th> Nutriments (pour 100g ou 100ml)</th>
+                            <th>Composé / Composition </th>
                             <th>Actions</th>
                         </tr>
                         </thead>

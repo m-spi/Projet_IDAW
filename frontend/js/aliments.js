@@ -16,10 +16,11 @@ $(document).ready(function () {
             console.log('popup')
 
     }
+
     let table = new DataTable('#alimentsDataTable');
     let alimentsTable = []; // stock l'id et le nom des aliments dans un tableau
     let count = 0; // compteur pour ajouter qu'une fois une ligne vide
-    let ischecked = 0;
+
     // affiche le tableau aliments
     $.ajax({
         // L'URL de la requête
@@ -33,8 +34,24 @@ $(document).ready(function () {
         .done(function(response) {
             var aliments = response.result.aliments;
             table.clear().draw();
-            aliments.forEach(function(aliment) {
+            aliments.forEach(function (aliment){
                 alimentsTable.push({ id: aliment.id, nom: aliment.nom });
+
+                });
+            function trouverNomAlimentAvecId(idIngredient) {
+
+                var nomIngredient = "Inconnu";
+                alimentsTable.forEach(function(aliment) {
+                    if (aliment.id == idIngredient) {
+                        nomIngredient = aliment.nom;
+                    }
+                });
+
+                return nomIngredient;
+            }
+
+            aliments.forEach(function(aliment) {
+
                 var nutrimentsData = '<ul>';
 
                 if (aliment.indice_nova !== 0 && aliment.indice_nova !== "") {
@@ -52,6 +69,32 @@ $(document).ready(function () {
                     '<li>Matières grasses : ' + aliment.matieres_grasses + 'g</li>' +
                     '<li>Alcool : ' + aliment.alcool + '%</li>' +
                     '</ul>';
+                //creer le liste pour affficher les ingredient_de
+                var composé = '<ol class="composéCompositionColonne"> Ingrédient de : ';
+                if (aliment.ingredient_de.length > 0) {
+                    //aliment parent = ingrédient de quoi d'un aliment parent
+                    aliment.ingredient_de.forEach(function(idAlimentParent) {
+                        var nomAlimentParent = trouverNomAlimentAvecId(idAlimentParent);
+                        composé += '<li class="ingredient_deListe">' + nomIngredient + '</li>';
+                    });
+
+                } else {
+                    composé += '<span class="aucuneInfo">Aucune informations spécifiés</span>';
+                }
+                composé += '</ol> ';
+                //creer le liste pour afficher les compose_par
+                var composition = '<ol class="composéCompositionColonne"> Composé de : ';
+                if (aliment.compose_par.length > 0) {
+                    //alimentEnfant = un ingrédient
+                    aliment.compose_par.forEach(function(idAlimentEnfant) {
+                        var nomIngredient = trouverNomAlimentAvecId(idAlimentEnfant);
+                        composition += '<li class="ingredient_deListe">' + nomIngredient + '</li>';
+                    });
+                } else {
+                    composition += '<span class="aucuneInfo">Aucun ingrédients spécifiés</span>';
+                }
+                composition += '</ol> ';
+
 
                 var buttons = '<div class="action-button-container" >' +
                     '<button class="action-button" >' +
@@ -64,11 +107,11 @@ $(document).ready(function () {
             table.row.add([
                     aliment.nom,
                     nutrimentsData,
+                    composé + composition,
                     buttons,
                 ]).draw(false);
             });
-            popMessage("test");
-            console.log("test2");
+
         })
 
         // Ce code sera éxécuté en cas d'échec - L'erreur est passée à fail()
@@ -95,8 +138,9 @@ $(document).ready(function () {
             '<li><input type="text" id="fibreInput" placeholder="Fibre alimentaire (g)" /></li>' +
             '<li><input type="text" id="matieresInput" placeholder="Matières grasses (g)" /></li>' +
             '<li><input type="text" id="alcoolInput" placeholder="Alcool (ml)" /></li>' +
-            '</ul>' +
-            '<span>' +
+            '</ul>',
+            '<div style="display: flex; flex-direction: column">'+
+            '<span style="margin: 10px">' +
             '<select id="isLiquidInput">' +
             '<option value=""> Est-il liquide ?*</option>' +
             '<option value="0">Non liquide</option>' +
@@ -104,7 +148,7 @@ $(document).ready(function () {
 
             '</select>' +
             '</span>' +
-            '<span> <input type="checkbox" id="estIngredientCheckbox"> Est-il un ingrédient d\'un plat ?</span>' +
+            '<span> <input type="checkbox" id="estIngredientCheckbox" > Ingrédient d\'un plat ?</span>' +
             // montrer les lignes qui suivent seulement si le checkbox est check
             '<div class="column ingredient-de-column" style="display:none;">' +
             'Ingredient de* : ' +
@@ -115,17 +159,18 @@ $(document).ready(function () {
             }) +
             '</select>' +
             '</div>' +
-            '<div class="column pourcentage-composition-column" style="display:none;">' +
+            /*'<div class="column pourcentage-composition-column" style="display:none;">' +
             'Pourcentage de composition : ' +
             '<input type="text" id="pourcentageCompositionInput" placeholder="Pourcentage de l\'ingrédient*" />' +
-            '</div>', // fin des lignes à montrer seulement si l'input est checked
-            '<div class="action-button-container" >' +
+            '</div>'+ */
+            '</div>',// fin des lignes à montrer seulement si l'input est checked
+            '<div class="valider-button-container" >' +
             '<button class="action-button" id="validerBtn"> Valider ' +
             '</button>' +
             '<button class="action-button" id="annulerBtn"> Annuler' +
             '</button>' +
             '</div>'
-            + '<span class="italic" style="font-size: small; font-style: italic">Les champs avec un * sont obligatoires</span>'
+            + '<span class="italic" >Les champs avec un * sont obligatoires</span>'
         ]).draw(false);
         count++;
     }
@@ -145,20 +190,22 @@ $(document).ready(function () {
 
     // Gestionnaire d'événements pour la case à cocher "Est-il un ingrédient d'un plat ?"
     $(document).on('change', '#estIngredientCheckbox', function () {
-        if (this.checked) {
+        if ($(this).is(':checked')) {
             $('.ingredient-de-column').show();
-            $('.pourcentage-composition-column').show();
-            ischecked = 1;
+            /*$('.pourcentage-composition-column').show();*/
         } else {
             $('.ingredient-de-column').hide();
-            $('.pourcentage-composition-column').hide();
+            /*$('.pourcentage-composition-column').hide();*/
         }
     });
 
 
     $(document).on('click', '#annulerBtn', function(){
+        count = 0;
+        console.log(count);
         var lastIndex = table.rows().count() - 1;
         table.row(lastIndex).remove().draw(false);
+
     });
 
 
@@ -185,18 +232,21 @@ $(document).ready(function () {
         // on vérifie que les champs sont bien complétés
         if (nom == ""){
             alert("Veuillez completer le champs nom de l'aliment");
-        }  else if (indiceNova === ""){
-            indiceNova = "pas d'indice";
-            ok = 1;
-            console.log("requete lancé");
-        } else if (isLiquid === ""){
-            alert("Veuillez indiquez s'il s'agit d'un liquide ou non");
-        } else if (ischecked === 1 && ingredientDe =="" && pourcentageComposition ==""){
-            alert ("Veuillez completer les champs liées à l'ingrédient");
-        } else {
-            ok = 1;
-            console.log("requete lancé");
         }
+        if (indiceNova === "") {
+            indiceNova = 0;
+        }
+        if (energie == ""){
+                energie = 0;
+        }
+        if (isLiquid === ""){
+            alert("Veuillez indiquez s'il s'agit d'un liquide ou non");
+        }
+        if ( $('#estIngredientCheckbox').is(':checked') && ingredientDe =="" /*&& pourcentageComposition ==""*/){
+            alert ("Veuillez completer les champs liées à l'ingrédient");
+        }
+            ok = 1;
+
 
         // Créer un objet avec les données
         var alimentData = {
@@ -213,7 +263,7 @@ $(document).ready(function () {
             "ingredient_de": [
                 {
                     "id": ingredientDe,
-                    "pourcentage_composition": pourcentageComposition,
+                    "pourcentage_ingredient": pourcentageComposition,
                 }
             ]
         };
