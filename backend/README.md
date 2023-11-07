@@ -118,6 +118,13 @@ __Paramètre POST :__
       "pourcentage_ingredient": _float_
     },
     ...
+  ],
+  "compose_par": [
+    {
+      "id": _int_,
+      "pourcentage_ingredient": _float_
+    },
+    ...
   ]
 }
 ```
@@ -125,6 +132,7 @@ __Paramètre POST :__
 > Note :\
 > Si l'aliment ne compose pas d'autre aliments, le champ `ingredient_de` doit être un tableau vide.\
 > Il ne peut pas être `null` !
+> Même chose pour le `compose_par`
 
 #### Réponse
 
@@ -265,7 +273,7 @@ __Format :__
 ## Journal
 
 > __Note__ :\
-> Les String pour les dates sont sous le format 'YYYY-MM-DD HH:MM:SS.UUUUUU', 
+> Les String pour les dates sont sous le format 'YYYY-MM-DD HH:MM:SS.UUUUUU',
 > les 'U' étant les microsecondes, ces derniers sont optionnels.
 
 ### __GET__ : Récupérer une entrée du journal
@@ -288,7 +296,7 @@ __Format :__
             "id_aliment": _int_,
             "id_user": _int_,
             "date": _string_,
-            ""quantite": float
+            "quantite": float
         }
     }
 }

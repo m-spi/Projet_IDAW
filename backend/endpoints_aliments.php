@@ -139,7 +139,8 @@
          !isset($input->fibre_alimentaire) ||
          !isset($input->alcool) ||
          !isset($input->matieres_grasses) ||
-         !isset($input->ingredient_de)
+         !isset($input->ingredient_de) ||
+         !isset($input->compose_par)
       ){
         echo 'Erreur : Il manque au moins un paramètre.';
         http_response_code(400);
@@ -174,16 +175,32 @@
         );
         $request->execute();
 
+        $request_string = "";
+        $no_request = true;
         foreach ($input->ingredient_de as $value) {
           if(!isset($value->id) || !isset($value->pourcentage_ingredient))
             continue;
           if($value->pourcentage_ingredient == 0)
             continue;
+          $no_request = false;
 
-          $request = $pdo->prepare(
+          $request_string .=
             "INSERT INTO COMPOSITION (ID_COMPOSANT_FK, ID_ALIMENT_FK, POURCENTAGE)
-             VALUES ({$last_id}, {$value->id}, {$value->pourcentage_ingredient})"
-          );
+             VALUES ({$last_id}, {$value->id}, {$value->pourcentage_ingredient}); ";
+        }
+        foreach ($input->compose_par as $value) {
+          if(!isset($value->id) || !isset($value->pourcentage_ingredient))
+            continue;
+          if($value->pourcentage_ingredient == 0)
+            continue;
+          $no_request = false;
+
+          $request_string .=
+            "INSERT INTO COMPOSITION (ID_COMPOSANT_FK, ID_ALIMENT_FK, POURCENTAGE)
+             VALUES ({$value->id}, {$last_id}, {$value->pourcentage_ingredient}); ";
+        }
+        if(!$no_request){
+          $request = $pdo->prepare($request_string);
           $request->execute();
         }
 
