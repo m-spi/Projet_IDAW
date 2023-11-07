@@ -20,6 +20,7 @@ $(document).ready(function () {
     let table = new DataTable('#alimentsDataTable');
     let alimentsTable = []; // stock l'id et le nom des aliments dans un tableau
     let count = 0; // compteur pour ajouter qu'une fois une ligne vide
+    let enModification = 0;
 
     // affiche le tableau aliments
     $.ajax({
@@ -75,7 +76,7 @@ $(document).ready(function () {
                     //aliment parent = ingrédient de quoi d'un aliment parent
                     aliment.ingredient_de.forEach(function(idAlimentParent) {
                         var nomAlimentParent = trouverNomAlimentAvecId(idAlimentParent);
-                        composé += '<li class="ingredient_deListe">' + nomIngredient + '</li>';
+                        composé += '<li class="ingredient_deListe">' + nomAlimentParent + '</li>';
                     });
 
                 } else {
@@ -97,7 +98,7 @@ $(document).ready(function () {
 
 
                 var buttons = '<div class="action-button-container" >' +
-                    '<button class="action-button" >' +
+                    '<button class="action-button" id="modifier-Btn">' +
                     '<i class="fas fa-pencil-alt"></i>' +
                     '</button>' +
                     '<button class=action-button" id="delete-Btn" data-id="' + aliment.id + '">' +
@@ -109,7 +110,7 @@ $(document).ready(function () {
                     nutrimentsData,
                     composé + composition,
                     buttons,
-                ]).draw(false);
+                ]).draw();
             });
 
         })
@@ -179,10 +180,14 @@ $(document).ready(function () {
 
     // Gestionnaire d'événements pour le bouton "Ajouter Aliment"
     $('#ajouterAlimentsBtn').click(function () {
-        if (count === 0) {
-            ajouterLigne();
+        if (enModification != 0){
+            alert("Une action à la fois, terminé d'abord la modification !");
         } else {
-            alert("Formulaire déjà présent, ajoutez d'abord votre aliment");
+            if (count === 0) {
+                ajouterLigne();
+            } else {
+                alert("Formulaire déjà présent, ajoutez d'abord votre aliment");
+            }
         }
     });
 
@@ -208,80 +213,13 @@ $(document).ready(function () {
 
     });
 
-
-
-    // Gestionnaire d'événements pour le bouton "Valider"
-    $(document).on('click', '#validerBtn', function () {
-        // Récupérer les données des champs d'entrée
-        console.log("test2");
-        let ok = 0;
-
-        var pourcentageComposition = $('#pourcentageCompositionInput').val();
-        var ingredientDe = $('#ingredientDeInput').val();
-        var isLiquid = $('#isLiquidInput').val();
-        var sel = $('#selInput').val();
-        var nom = $('#nomInput').val();
-        var indiceNova = $('#indiceNovaInput').val();
-        var energie = $('#energieInput').val();
-        var sucre = $('#sucreInput').val();
-        var proteines = $('#proteinesInput').val();
-        var fibre = $('#fibreInput').val();
-        var matieres = $('#matieresInput').val();
-        var alcool = $('#alcoolInput').val();
-
-        // on vérifie que les champs sont bien complétés
-        if (nom == ""){
-            alert("Veuillez completer le champs nom de l'aliment");
-        }
-        if (indiceNova === "") {
-            indiceNova = 0;
-        }
-        if (energie == ""){
-                energie = 0;
-        }
-        if (isLiquid === ""){
-            alert("Veuillez indiquez s'il s'agit d'un liquide ou non");
-        }
-        if ( $('#estIngredientCheckbox').is(':checked') && ingredientDe =="" /*&& pourcentageComposition ==""*/){
-            alert ("Veuillez completer les champs liées à l'ingrédient");
-        }
-            ok = 1;
-
-
-        // Créer un objet avec les données
-        var alimentData = {
-            "nom": nom,
-            "is_liquid": isLiquid, // Mettez la valeur appropriée
-            "indice_nova": indiceNova,
-            "energie_kcal": energie,
-            "sel":sel,
-            "sucre": sucre,
-            "proteines": proteines,
-            "fibre_alimentaire": fibre,
-            "matieres_grasses": matieres,
-            "alcool": alcool,
-            "ingredient_de": [
-                {
-                    "id": ingredientDe,
-                    "pourcentage_ingredient": pourcentageComposition,
-                }
-            ]
-        };
-        console.log(alimentData);
-        if (ok === 1) {
-            // Effectuer une requête AJAX pour ajouter l'aliment (à implémenter)
-            ajouterAliment(alimentData);
-        }
-    });
-
-
     // Fonction pour effectuer la requête AJAX pour ajouter l'aliment
     function ajouterAliment(data) {
         $.ajax({
             url: "http://localhost/Projet_IDAW/backend/aliments.php",
             method: "POST", // Utilisez la méthode appropriée (POST, PUT, etc.)
             dataType: "json",
-            data: JSON.stringify(data),
+            data: data,
             contentType: "application/json",
         })
             .done(function(response) {
@@ -295,12 +233,92 @@ $(document).ready(function () {
             });
     }
 
+    // Gestionnaire d'événements pour le bouton "Valider"
+    $(document).on('click', '#validerBtn', function () {
+            // Récupérer les données des champs d'entrée
+            let ok = 1 ;
+
+            var pourcentageComposition = $('#pourcentageCompositionInput').val();
+            console.log("%" + pourcentageComposition);
+            var ingredientDe = $('#ingredientDeInput').val();
+            var isLiquid = $('#isLiquidInput').val();
+            var sel = $('#selInput').val();
+            var nom = $('#nomInput').val();
+            var indiceNova = $('#indiceNovaInput').val();
+            var energie = $('#energieInput').val();
+            var sucre = $('#sucreInput').val();
+            var proteines = $('#proteinesInput').val();
+            var fibre = $('#fibreInput').val();
+            var matieres = $('#matieresInput').val();
+            var alcool = $('#alcoolInput').val();
+
+            // on vérifie que les champs sont bien complétés
+            if (nom == "") {
+                alert("Veuillez completer le champs nom de l'aliment");
+                ok = 0;
+            }
+            if( indiceNova > 4){
+                alert ("Indice Nova est entre 1 et 4");
+                ok = 0;
+            }
+            if (indiceNova === "") {
+                indiceNova = 0;
+
+            }
+            if (energie == "") {
+                energie = 0;
+
+            }
+            if (isLiquid === "") {
+                alert("Veuillez indiquez s'il s'agit d'un liquide ou non");
+                ok = 0;
+            }
+            if ($('#estIngredientCheckbox').is(':checked') && ingredientDe == "" /*&& pourcentageComposition ==""*/) {
+                alert("Veuillez completer les champs liées à l'ingrédient");
+                ok = 0;
+            }
+                console.log(ok)
+            // Créer un objet avec les données
+            var alimentData = {
+                "nom": nom,
+                "is_liquid": isLiquid, // Mettez la valeur appropriée
+                "indice_nova": indiceNova,
+                "energie_kcal": energie,
+                "sel": sel,
+                "sucre": sucre,
+                "proteines": proteines,
+                "fibre_alimentaire": fibre,
+                "matieres_grasses": matieres,
+                "alcool": alcool,
+                "ingredient_de": [
+                    {
+                        "id": ingredientDe,
+                        "pourcentage_ingredient":0
+                    }
+                ],
+                "compose_par": [
+                ]
+            };
+            console.log(alimentData);
+            console.log(typeof alimentData);
+            if (ok === 1) {
+                // Effectuer une requête AJAX pour ajouter l'aliment (à implémenter)
+                var data = JSON.stringify(alimentData);
+                console.log("data"+data);
+                ajouterAliment(data);
+            }
+
+    });
+
+
+
+
 
     //supprimé un aliment
     $(document).on('click', '#delete-Btn', function () {
         console.log("testeeeee");
         var idAliment = $(this).data('id'); // Récupérer l'ID de l'aliment à partir de l'attribut data-id
-        if (confirm("Êtes-vous sûr de vouloir supprimer cet aliment ?")) {
+        if (confirm("Êtes-vous sûr de vouloir supprimer cet aliment ? Cela supprimera tous les plats associé dans le journal")) {
 
             deleteAliment(idAliment);
         }
@@ -323,4 +341,232 @@ $(document).ready(function () {
                 console.error("Erreur lors de la suppression de l'aliment id :"+ alimentsTable.find((nom) => idAliment), error);
             });
     }
+
+
+
+    //modification d'un aliment
+
+
+
+    // Fonction pour effectuer la requête AJAX pour mettre à jour l'aliment
+    function modifierAliment(data,idAliment) {
+        $.ajax({
+            url: "http://localhost/Projet_IDAW/backend/aliments.php/" + idAliment,
+            method: "PUT",
+            dataType: "json",
+            data: data,
+            contentType: "application/json",
+        })
+            .done(function(response) {
+                // Traitement en cas de succès
+                console.log("Aliment mis à jour avec succès :", response);
+                //location.reload();
+            })
+            .fail(function(error) {
+                // Traitement en cas d'échec
+                console.error("Erreur lors de la mise à jour de l'aliment :", error);
+            })
+
+    }
+
+
+
+    function trouverIdAlimentAvecNom(nomAliment) {
+
+        var idAliment;
+        alimentsTable.forEach(function(aliment) {
+            if (aliment.nom == nomAliment) {
+                idAliment = aliment.id;
+            }
+        });
+
+        return idAliment;
+    }
+
+    function getAlimentByID(idAliment, callback) {
+        $.ajax({
+            url: "http://localhost/Projet_IDAW/backend/aliments.php/" + idAliment,
+            method: "GET",
+            dataType: "json"
+        })
+            .done(function(response) {
+                callback(response);
+            })
+            .fail(function(error) {
+                console.error("Erreur lors de la récupération des données de l'aliment : ", idAliment, error);
+            });
+    }
+
+    function trouverNomAlimentAvecId(idIngredient) {
+        var nomIngredient = "Inconnu";
+        alimentsTable.forEach(function(aliment) {
+            if (aliment.id == idIngredient) {
+                nomIngredient = aliment.nom;
+            }
+        });
+        return nomIngredient;
+    }
+
+    function transformerLigneEnInputs(row) {
+        var data = row.find('td'); // Sélectionnez les cellules dans la ligne
+        var nomAliment = $(data[0]).text();
+        var idAliment = trouverIdAlimentAvecNom(nomAliment);
+//on fait un get pour recup les infos et remplir les champs
+        getAlimentByID(idAliment, function(alimentData) {
+            console.log("Données de l'aliment du getById pour remplir les champs " + nomAliment + " : ", alimentData);
+
+            var inputs = '<td><input type="text" id="newNomInput" value="' + nomAliment + '" placeholder="Nom de l\'aliment*"/><input type="hidden" id="idAliment" value="'+idAliment+'"/></td>';
+            inputs += '<td><ul>' +
+                '<li><label>Indice Nova (sur 4)  </label><input class="modifyInput" type="text" id="newIndiceNovaInput" value="' + alimentData.result.aliment.indice_nova + '" placeholder="Indice Nova" /></li>' +
+                '<li><label>Energie (en kcal)  </label><input class="modifyInput" type="text" id="newEnergieInput" value="' + alimentData.result.aliment.energie_kcal + '" placeholder="Energie (kcal)" /></li>' +
+                '<li><label>Sel (g) </label><input class="modifyInput" type="text" id="newSelInput" value="' + alimentData.result.aliment.sel + '" placeholder="Sel (g)" /></li>' +
+                '<li><label>Sucre (g)  </label><input class="modifyInput" type="text" id="newSucreInput" value="' + alimentData.result.aliment.sucre + '" placeholder="Sucre (g)" /></li>' +
+                '<li><label>Protéines (g)   </label><input class="modifyInput" type="text" id="newProteineInput" value="' + alimentData.result.aliment.proteines + '" placeholder="Protéines (g)" /></li>' +
+                '<li><label>Fibre Alimentaire (g) </label><input class="modifyInput" type="text" id="newFibreAlimentaireInput" value="' + alimentData.result.aliment.fibre_alimentaire + '" placeholder="Fibre Alimentaire (g)" /></li>' +
+                '<li><label>Matière grasse (g)  </label><input class="modifyInput" type="text" id="newMatiereGrasseInput" value="' + alimentData.result.aliment.matieres_grasses + '" placeholder="Matière grasse (g)" /></li>' +
+                '<li><label>Alcool (en %)  </label><input class="modifyInput" type="text" id="newAlcoolInput" value="' + alimentData.result.aliment.alcool + '" placeholder="Alcool (en %)" /></li>' +
+                '</ul></td>';
+
+            inputs += '<td>' +
+                '<div style="display: flex; flex-direction: column">' +
+                '<span style="margin: 10px">' +
+                '<select id="newIsLiquidInput">';
+
+            if (alimentData.result.aliment.is_liquid === 0) {
+                inputs += '<option value="0">Non liquide</option>' +
+                    '<option value="1">Liquide</option>';
+            } else {
+                inputs += '<option value="1">Liquide</option>' +
+                    '<option value="0">Non liquide</option>';
+            }
+
+            inputs += '</select>' +
+                '</span>' +
+                '<span>';
+
+            /*if (alimentData.result.aliment.ingredient_de.length > 0) {
+                inputs += '<input type="checkbox" id="estIngredientCheckbox" checked> Ingrédient d\'un plat ?</span>';
+
+            } */
+            inputs += '<input type="checkbox" id="estIngredientCheckbox"> Ingrédient d\'un plat ?</span>';
+
+
+            inputs += '<div class="column ingredient-de-column" style="display:none;">' +
+                'Ingredient de* : ' +
+                '<select id="newIngredientDeInput">'+
+            '<option value=""> Choisir un plat/aliment </option>'
+            /*if (alimentData.result.aliment.ingredient_de.length > 0) {
+              inputs += '<option value="' + alimentData.result.aliment.ingredient_de[0] + '">' + trouverNomAlimentAvecId(alimentData.result.aliment.ingredient_de[0]) +'</option>
+            }*/
+
+            inputs += alimentsTable.map(function(aliment) {
+                return '<option value="' + aliment.id + '">' + aliment.nom + '</option>';
+            }).join('');  // Utilisez join('') pour fusionner les éléments du tableau en une chaîne.
+
+            inputs += '</select>' +
+                '</div></div></td>';
+
+            row.html(inputs);
+
+
+            var buttons =  '<div class="action-button-container" style="display: flex ; flex-direction: column; height: 150px; margin:60px" >' +
+                '<button class="action-button" id="validerModificationBtn"> Valider ' +
+                '</button>' +
+                '<button class="action-button" id="annulerModificationBtn"> Annuler' +
+                '</button>' +
+                '</div>'
+                + '<span class="italic" >Les champs avec un * sont obligatoires</span>'
+            row.append(buttons);
+        });
+    }
+
+
+    $(document).on('click', '#modifier-Btn', function() {
+        if (count != 0){
+            alert ("Une seule action à la fois annulé d'abord l'ajout");
+        } else {
+            enModification = 1;
+            var row = $(this).closest('tr'); // Obtenez la ligne que vous souhaitez modifier
+            transformerLigneEnInputs(row);
+        }
+    });
+    $(document).on('click', '#annulerModificationBtn', function() {
+        location.reload();
+    });
+    $(document).on('click', '#validerModificationBtn', function() {
+        let modifOk = 1;
+        var pourcentageComposition = $('#pourcentageCompositionInput').val();
+        var newIngredientDe = $('#newIngredientDeInput').val();
+        var newIsLiquid = $('#newIsLiquidInput').val();
+        var newsel = $('#newSelInput').val();
+        var newNom = $('#newNomInput').val();
+        var newIndiceNova = $('#newIndiceNovaInput').val();
+        var newEnergie = $('#newEnergieInput').val();
+        var newSucre = $('#newSucreInput').val();
+        var newProteines = $('#newProteinesInput').val();
+        var newFibre = $('#newFibreAlimentaireInput').val();
+        var newMatieres = $('#newMatiereGrasseInput').val();
+        var newAlcool = $('#newAlcoolInput').val();
+        var idAliment = $('#idAliment').val();
+
+        // on vérifie que les champs sont bien complétés
+        if (newNom == "") {
+            alert("Veuillez completer le champs nom de l'aliment");
+            modifOk = 0;
+        }
+        if( newIndiceNova > 4){
+            alert ("Indice Nova est entre 1 et 4");
+            modifOk = 0;
+        }
+        if (newIndiceNova === "") {
+            indiceNova = 0;
+
+        }
+        if (newEnergie == "") {
+            energie = 0;
+
+        }
+        if (newIsLiquid === "") {
+            alert("Veuillez indiquez s'il s'agit d'un liquide ou non");
+            modifOk = 0;
+        }
+        if ($('#estIngredientCheckbox').is(':checked') && newIngredientDe == "" /*&& pourcentageComposition ==""*/) {
+            alert("Veuillez completer les champs liées à l'ingrédient");
+            modifOk = 0;
+        }
+
+
+        // Créer un objet avec les données
+        var newAliment = {
+            "nom": newNom,
+            "is_liquid": newIsLiquid,
+            "indice_nova": newIndiceNova,
+            "energie_kcal": newEnergie,
+            "sel": newsel,
+            "sucre": newSucre,
+            "proteines": newProteines,
+            "fibre_alimentaire": newFibre,
+            "matieres_grasses": newMatieres,
+            "alcool": newAlcool,
+            "ingredient_de": [
+                {
+                    "id_aliment": newIngredientDe,
+                    "pourcentage_ingredient":0
+                }
+            ],
+            "compose_par": []
+        };
+
+
+
+        console.log(idAliment);
+
+
+        console.log(modifOk);
+        if (modifOk == 1) {
+            console.log("newAliment: " + JSON.stringify(newAliment));
+            // Effectuer une requête AJAX pour ajouter l'aliment (à implémenter)
+            modifierAliment(JSON.stringify(newAliment),idAliment);
+        }
+    })
 });

@@ -171,3 +171,8 @@ h1 {
     height: 100px;
     margin-bottom: 70px;
 }
+.modifyInput {
+    width: 60px;
+    margin-left: 15px;
+    margin-bottom: 5px;
+}
