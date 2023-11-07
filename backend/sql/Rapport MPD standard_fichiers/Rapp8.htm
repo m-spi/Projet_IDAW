@@ -1,0 +1,2541 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Rapport de listes MPD
+</title>
+<link href="Theme_BleuClair.css" type="text/css" rel="stylesheet">
+</head>
+<!--Ce fichier a été généré automatiquement par PowerDesigner.-->
+<body>
+<h1>
+<a name="12">Tables</a> 
+</h1>
+<h1>
+<a name="13">Tables au niveau du modèle</a> 
+</h1>
+<h2>
+<a name="14">Table ALIMENT_CONSOMME</a> 
+</h2>
+<h3>
+<a name="15">Fiche de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Nom
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#14">Aliment consommé</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Code
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#14">ALIMENT_CONSOMME</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">SGBD
+</p>
+</td>
+<td width="75%">
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="16">Nom de contrainte de paramètre de contrôle de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">TK_ALIMENT_CONSOMME
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="17">Règle de validation serveur de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">%RULES%
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="18">Aperçu du code de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">alter table ALIMENT_CONSOMME <br />
+   drop foreign key FK_ALIMENT__CONSOMME_USER;<br />
+<br />
+alter table ALIMENT_CONSOMME <br />
+   drop foreign key FK_ALIMENT__EST_ALIMENTS;<br />
+<br />
+<br />
+alter table ALIMENT_CONSOMME <br />
+   drop foreign key FK_ALIMENT__CONSOMME_USER;<br />
+<br />
+alter table ALIMENT_CONSOMME <br />
+   drop foreign key FK_ALIMENT__EST_ALIMENTS;<br />
+<br />
+drop table if exists ALIMENT_CONSOMME;<br />
+<br />
+/*==============================================================*/<br />
+/* Table : ALIMENT_CONSOMME                                     */<br />
+/*==============================================================*/<br />
+create table ALIMENT_CONSOMME<br />
+(<br />
+   ID_REPAS             int not null auto_increment  comment '',<br />
+   ID_ALIMENT_FK        int not null  comment '',<br />
+   ID_USER_FK           int not null  comment '',<br />
+   DATE                 datetime not null  comment '',<br />
+   QUANTITE             float not null  comment '',<br />
+   primary key (ID_REPAS)<br />
+);<br />
+<br />
+alter table ALIMENT_CONSOMME add constraint FK_ALIMENT__CONSOMME_USER foreign key (ID_USER_FK)<br />
+      references USER (ID_USER) on delete restrict on update restrict;<br />
+<br />
+alter table ALIMENT_CONSOMME add constraint FK_ALIMENT__EST_ALIMENTS foreign key (ID_ALIMENT_FK)<br />
+      references ALIMENTS (ID_ALIMENT) on delete restrict on update restrict;<br />
+
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="19">Liste des diagrammes contenant la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><a href="Rapp1.htm#5">TraqueTaBouffe</a>
+</p>
+</td>
+<td>
+<p align="left"><a href="Rapp1.htm#5">TRAQUETABOUFFE</a>
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="20">Liste des références sortantes de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+<td class="Header">
+<p align="center">Colonnes de clé étrangère
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><a href="Rapp16.htm#15">consomme</a>
+</p>
+</td>
+<td>
+<p align="left"><a href="Rapp16.htm#15">CONSOMME</a>
+</p>
+</td>
+<td>
+<p align="left">ID_USER_FK
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left"><a href="Rapp17.htm#21">est</a>
+</p>
+</td>
+<td class="TD2">
+<p align="left"><a href="Rapp17.htm#21">EST</a>
+</p>
+</td>
+<td class="TD2">
+<p align="left">ID_ALIMENT_FK
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="21">Liste de tous les objets dépendant de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de classe
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><a href="Rapp16.htm#15">consomme</a>
+</p>
+</td>
+<td>
+<p align="left"><a href="Rapp16.htm#15">CONSOMME</a>
+</p>
+</td>
+<td>
+<p align="left">Référence
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left"><a href="Rapp17.htm#21">est</a>
+</p>
+</td>
+<td class="TD2">
+<p align="left"><a href="Rapp17.htm#21">EST</a>
+</p>
+</td>
+<td class="TD2">
+<p align="left">Référence
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="22">Liste des attributs étendus de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Type de données
+</p>
+</td>
+<td class="Header">
+<p align="center">Valeur
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de la cible
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">Temporary
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="23">Liste des colonnes de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><a href="Rapp8.htm#24">id_repas</a>
+</p>
+</td>
+<td>
+<p align="left"><a href="Rapp8.htm#24">ID_REPAS</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left"><a href="Rapp8.htm#31">id_aliment_fk</a>
+</p>
+</td>
+<td class="TD2">
+<p align="left"><a href="Rapp8.htm#31">ID_ALIMENT_FK</a>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><a href="Rapp8.htm#38">id_user_fk</a>
+</p>
+</td>
+<td>
+<p align="left"><a href="Rapp8.htm#38">ID_USER_FK</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left"><a href="Rapp8.htm#45">date</a>
+</p>
+</td>
+<td class="TD2">
+<p align="left"><a href="Rapp8.htm#45">DATE</a>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><a href="Rapp8.htm#51">quantité</a>
+</p>
+</td>
+<td>
+<p align="left"><a href="Rapp8.htm#51">QUANTITE</a>
+</p>
+</td>
+</tr>
+</table><br />
+<h2>
+<a name="24">Colonne ID_REPAS de la table ALIMENT_CONSOMME</a> 
+</h2>
+<h3>
+<a name="25">Fiche de la colonne ID_REPAS de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Nom
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#24">id_repas</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Code
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#24">ID_REPAS</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Type de données
+</p>
+</td>
+<td width="75%">
+<p align="left">int
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Obligatoire
+</p>
+</td>
+<td width="75%">
+<p align="left">Oui
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="26">Nom de contrainte de paramètre de contrôle de la colonne ID_REPAS de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">CK_ID_REPAS
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="27">Contrôles standard de la colonne ID_REPAS de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur minimale
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur maximale
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur par défaut
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Unité
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Format
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Non modifiable
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Liste des valeurs
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="28">Règle de validation serveur de la colonne ID_REPAS de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">%MINMAX% and %LISTVAL% and %CASE% and %RULES%
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="29">Liste de tous les objets dépendant de la colonne de table ID_REPAS</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de classe
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">id_repas
+</p>
+</td>
+<td>
+<p align="left">ID_REPAS
+</p>
+</td>
+<td>
+<p align="left">Colonne d'index
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left"><a href="Rapp8.htm#58">Identifiant_1</a>
+</p>
+</td>
+<td class="TD2">
+<p align="left"><a href="Rapp8.htm#58">IDENTIFIANT_1</a>
+</p>
+</td>
+<td class="TD2">
+<p align="left">Clé
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="30">Liste des attributs étendus de la colonne de table ID_REPAS</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Type de données
+</p>
+</td>
+<td class="Header">
+<p align="center">Valeur
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de la cible
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">CharSet
+</p>
+</td>
+<td>
+<p align="left">CharSets
+</p>
+</td>
+<td>
+<p align="left">&nbsp; 
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left">Collate
+</p>
+</td>
+<td class="TD2">
+<p align="left">(Chaîne)
+</p>
+</td>
+<td class="TD2">
+<p align="left">&nbsp; 
+</p>
+</td>
+<td class="TD2">
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">National
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left">Unsigned
+</p>
+</td>
+<td class="TD2">
+<p align="left">(Booléen)
+</p>
+</td>
+<td class="TD2">
+<p align="left">false
+</p>
+</td>
+<td class="TD2">
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">ZeroFill
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+</table><br />
+<h2>
+<a name="31">Colonne ID_ALIMENT_FK de la table ALIMENT_CONSOMME</a> 
+</h2>
+<h3>
+<a name="32">Fiche de la colonne ID_ALIMENT_FK de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Nom
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#31">id_aliment_fk</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Code
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#31">ID_ALIMENT_FK</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Type de données
+</p>
+</td>
+<td width="75%">
+<p align="left">int
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Obligatoire
+</p>
+</td>
+<td width="75%">
+<p align="left">Oui
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="33">Nom de contrainte de paramètre de contrôle de la colonne ID_ALIMENT_FK de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">CK_ID_ALIMENT_FK
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="34">Contrôles standard de la colonne ID_ALIMENT_FK de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur minimale
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur maximale
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur par défaut
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Unité
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Format
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Non modifiable
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Liste des valeurs
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="35">Règle de validation serveur de la colonne ID_ALIMENT_FK de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">%MINMAX% and %LISTVAL% and %CASE% and %RULES%
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="36">Liste de tous les objets dépendant de la colonne de table ID_ALIMENT_FK</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de classe
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">&lt;Inconnu&gt;
+</p>
+</td>
+<td>
+<p align="left">&lt;Inconnu&gt;
+</p>
+</td>
+<td>
+<p align="left">Jointure de référence
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left">id_aliment_fk
+</p>
+</td>
+<td class="TD2">
+<p align="left">ID_ALIMENT_FK
+</p>
+</td>
+<td class="TD2">
+<p align="left">Colonne d'index
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="37">Liste des attributs étendus de la colonne de table ID_ALIMENT_FK</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Type de données
+</p>
+</td>
+<td class="Header">
+<p align="center">Valeur
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de la cible
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">CharSet
+</p>
+</td>
+<td>
+<p align="left">CharSets
+</p>
+</td>
+<td>
+<p align="left">&nbsp; 
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left">Collate
+</p>
+</td>
+<td class="TD2">
+<p align="left">(Chaîne)
+</p>
+</td>
+<td class="TD2">
+<p align="left">&nbsp; 
+</p>
+</td>
+<td class="TD2">
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">National
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left">Unsigned
+</p>
+</td>
+<td class="TD2">
+<p align="left">(Booléen)
+</p>
+</td>
+<td class="TD2">
+<p align="left">false
+</p>
+</td>
+<td class="TD2">
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">ZeroFill
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+</table><br />
+<h2>
+<a name="38">Colonne ID_USER_FK de la table ALIMENT_CONSOMME</a> 
+</h2>
+<h3>
+<a name="39">Fiche de la colonne ID_USER_FK de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Nom
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#38">id_user_fk</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Code
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#38">ID_USER_FK</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Type de données
+</p>
+</td>
+<td width="75%">
+<p align="left">int
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Obligatoire
+</p>
+</td>
+<td width="75%">
+<p align="left">Oui
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="40">Nom de contrainte de paramètre de contrôle de la colonne ID_USER_FK de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">CK_ID_USER_FK
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="41">Contrôles standard de la colonne ID_USER_FK de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur minimale
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur maximale
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur par défaut
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Unité
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Format
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Non modifiable
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Liste des valeurs
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="42">Règle de validation serveur de la colonne ID_USER_FK de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">%MINMAX% and %LISTVAL% and %CASE% and %RULES%
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="43">Liste de tous les objets dépendant de la colonne de table ID_USER_FK</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de classe
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">&lt;Inconnu&gt;
+</p>
+</td>
+<td>
+<p align="left">&lt;Inconnu&gt;
+</p>
+</td>
+<td>
+<p align="left">Jointure de référence
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left">id_user_fk
+</p>
+</td>
+<td class="TD2">
+<p align="left">ID_USER_FK
+</p>
+</td>
+<td class="TD2">
+<p align="left">Colonne d'index
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="44">Liste des attributs étendus de la colonne de table ID_USER_FK</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Type de données
+</p>
+</td>
+<td class="Header">
+<p align="center">Valeur
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de la cible
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">CharSet
+</p>
+</td>
+<td>
+<p align="left">CharSets
+</p>
+</td>
+<td>
+<p align="left">&nbsp; 
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left">Collate
+</p>
+</td>
+<td class="TD2">
+<p align="left">(Chaîne)
+</p>
+</td>
+<td class="TD2">
+<p align="left">&nbsp; 
+</p>
+</td>
+<td class="TD2">
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">National
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left">Unsigned
+</p>
+</td>
+<td class="TD2">
+<p align="left">(Booléen)
+</p>
+</td>
+<td class="TD2">
+<p align="left">false
+</p>
+</td>
+<td class="TD2">
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">ZeroFill
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+</table><br />
+<h2>
+<a name="45">Colonne DATE de la table ALIMENT_CONSOMME</a> 
+</h2>
+<h3>
+<a name="46">Fiche de la colonne DATE de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Nom
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#45">date</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Code
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#45">DATE</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Type de données
+</p>
+</td>
+<td width="75%">
+<p align="left">datetime
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Obligatoire
+</p>
+</td>
+<td width="75%">
+<p align="left">Oui
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="47">Nom de contrainte de paramètre de contrôle de la colonne DATE de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">CK_DATE
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="48">Contrôles standard de la colonne DATE de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur minimale
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur maximale
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur par défaut
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Unité
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Format
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Non modifiable
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Liste des valeurs
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="49">Règle de validation serveur de la colonne DATE de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">%MINMAX% and %LISTVAL% and %CASE% and %RULES%
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="50">Liste des attributs étendus de la colonne de table DATE</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Type de données
+</p>
+</td>
+<td class="Header">
+<p align="center">Valeur
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de la cible
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">CharSet
+</p>
+</td>
+<td>
+<p align="left">CharSets
+</p>
+</td>
+<td>
+<p align="left">&nbsp; 
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left">Collate
+</p>
+</td>
+<td class="TD2">
+<p align="left">(Chaîne)
+</p>
+</td>
+<td class="TD2">
+<p align="left">&nbsp; 
+</p>
+</td>
+<td class="TD2">
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">National
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left">Unsigned
+</p>
+</td>
+<td class="TD2">
+<p align="left">(Booléen)
+</p>
+</td>
+<td class="TD2">
+<p align="left">false
+</p>
+</td>
+<td class="TD2">
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">ZeroFill
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+</table><br />
+<h2>
+<a name="51">Colonne QUANTITE de la table ALIMENT_CONSOMME</a> 
+</h2>
+<h3>
+<a name="52">Fiche de la colonne QUANTITE de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Nom
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#51">quantité</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Code
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#51">QUANTITE</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Type de données
+</p>
+</td>
+<td width="75%">
+<p align="left">float
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Obligatoire
+</p>
+</td>
+<td width="75%">
+<p align="left">Oui
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="53">Nom de contrainte de paramètre de contrôle de la colonne QUANTITE de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">CK_QUANTITE
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="54">Contrôles standard de la colonne QUANTITE de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur minimale
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur maximale
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur par défaut
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Unité
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Format
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Non modifiable
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Liste des valeurs
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="55">Règle de validation serveur de la colonne QUANTITE de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">%MINMAX% and %LISTVAL% and %CASE% and %RULES%
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="56">Liste des attributs étendus de la colonne de table QUANTITE</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Type de données
+</p>
+</td>
+<td class="Header">
+<p align="center">Valeur
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de la cible
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">CharSet
+</p>
+</td>
+<td>
+<p align="left">CharSets
+</p>
+</td>
+<td>
+<p align="left">&nbsp; 
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left">Collate
+</p>
+</td>
+<td class="TD2">
+<p align="left">(Chaîne)
+</p>
+</td>
+<td class="TD2">
+<p align="left">&nbsp; 
+</p>
+</td>
+<td class="TD2">
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">National
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left">Unsigned
+</p>
+</td>
+<td class="TD2">
+<p align="left">(Booléen)
+</p>
+</td>
+<td class="TD2">
+<p align="left">false
+</p>
+</td>
+<td class="TD2">
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">ZeroFill
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="57">Liste des clés de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+<td class="Header">
+<p align="center">Primaire
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><a href="Rapp8.htm#58">Identifiant_1</a>
+</p>
+</td>
+<td>
+<p align="left"><a href="Rapp8.htm#58">IDENTIFIANT_1</a>
+</p>
+</td>
+<td>
+<p align="left">X
+</p>
+</td>
+</tr>
+</table><br />
+<h2>
+<a name="58">Clé IDENTIFIANT_1 de la table ALIMENT_CONSOMME</a> 
+</h2>
+<h3>
+<a name="59">Fiche de la clé IDENTIFIANT_1 de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Nom
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#58">Identifiant_1</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Code
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#58">IDENTIFIANT_1</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Table
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#14">ALIMENT_CONSOMME</a>
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="60">Aperçu du code de la clé IDENTIFIANT_1 de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">alter table ALIMENT_CONSOMME<br />
+   drop primary key;<br />
+
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="61">Liste des colonnes de la clé de table IDENTIFIANT_1</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><a href="Rapp8.htm#24">id_repas</a>
+</p>
+</td>
+<td>
+<p align="left"><a href="Rapp8.htm#24">ID_REPAS</a>
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="62">Liste de tous les objets dépendant de la clé de table IDENTIFIANT_1</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de classe
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><a href="Rapp8.htm#65">ALIMENT_CONSOMME_PK</a>
+</p>
+</td>
+<td>
+<p align="left"><a href="Rapp8.htm#65">ALIMENT_CONSOMME_PK</a>
+</p>
+</td>
+<td>
+<p align="left">Index
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="63">Liste des attributs étendus de la clé de table IDENTIFIANT_1</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Type de données
+</p>
+</td>
+<td class="Header">
+<p align="center">Valeur
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de la cible
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">ExtUnique
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="64">Liste des index de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+<td class="Header">
+<p align="center">Unique
+</p>
+</td>
+<td class="Header">
+<p align="center">Cluster
+</p>
+</td>
+<td class="Header">
+<p align="center">Primaire
+</p>
+</td>
+<td class="Header">
+<p align="center">Clé étrangère
+</p>
+</td>
+<td class="Header">
+<p align="center">Clé alternative
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><a href="Rapp8.htm#65">ALIMENT_CONSOMME_PK</a>
+</p>
+</td>
+<td>
+<p align="left"><a href="Rapp8.htm#65">ALIMENT_CONSOMME_PK</a>
+</p>
+</td>
+<td>
+<p align="left">X
+</p>
+</td>
+<td>
+<p align="left">&nbsp; 
+</p>
+</td>
+<td>
+<p align="left">X
+</p>
+</td>
+<td>
+<p align="left">&nbsp; 
+</p>
+</td>
+<td>
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left"><a href="Rapp8.htm#70">CONSOMME_FK</a>
+</p>
+</td>
+<td class="TD2">
+<p align="left"><a href="Rapp8.htm#70">CONSOMME_FK</a>
+</p>
+</td>
+<td class="TD2">
+<p align="left">&nbsp; 
+</p>
+</td>
+<td class="TD2">
+<p align="left">&nbsp; 
+</p>
+</td>
+<td class="TD2">
+<p align="left">&nbsp; 
+</p>
+</td>
+<td class="TD2">
+<p align="left">X
+</p>
+</td>
+<td class="TD2">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><a href="Rapp8.htm#75">EST_FK</a>
+</p>
+</td>
+<td>
+<p align="left"><a href="Rapp8.htm#75">EST_FK</a>
+</p>
+</td>
+<td>
+<p align="left">&nbsp; 
+</p>
+</td>
+<td>
+<p align="left">&nbsp; 
+</p>
+</td>
+<td>
+<p align="left">&nbsp; 
+</p>
+</td>
+<td>
+<p align="left">X
+</p>
+</td>
+<td>
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+</table><br />
+<h2>
+<a name="65">Index ALIMENT_CONSOMME_PK de la table ALIMENT_CONSOMME</a> 
+</h2>
+<h3>
+<a name="66">Fiche de l'index ALIMENT_CONSOMME_PK de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Nom
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#65">ALIMENT_CONSOMME_PK</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Code
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#65">ALIMENT_CONSOMME_PK</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Unique
+</p>
+</td>
+<td width="75%">
+<p align="left">Oui
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Cluster
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Primaire
+</p>
+</td>
+<td width="75%">
+<p align="left">Oui
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Clé étrangère
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Clé alternative
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Table
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#14">ALIMENT_CONSOMME</a>
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="67">Aperçu du code de l'index ALIMENT_CONSOMME_PK de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left"># L'aperçu est vide en raison des paramètres définis.<br />
+# Vérifiez les options de génération.
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="68">Liste des colonnes d'index de l'index de table ALIMENT_CONSOMME_PK</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">id_repas
+</p>
+</td>
+<td>
+<p align="left">ID_REPAS
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="69">Liste des attributs étendus de l'index de table ALIMENT_CONSOMME_PK</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Type de données
+</p>
+</td>
+<td class="Header">
+<p align="center">Valeur
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de la cible
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">FullText
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+</table><br />
+<h2>
+<a name="70">Index CONSOMME_FK de la table ALIMENT_CONSOMME</a> 
+</h2>
+<h3>
+<a name="71">Fiche de l'index CONSOMME_FK de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Nom
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#70">CONSOMME_FK</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Code
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#70">CONSOMME_FK</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Unique
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Cluster
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Primaire
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Clé étrangère
+</p>
+</td>
+<td width="75%">
+<p align="left">Oui
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Clé alternative
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Table
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#14">ALIMENT_CONSOMME</a>
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="72">Aperçu du code de l'index CONSOMME_FK de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left"># L'aperçu est vide en raison des paramètres définis.<br />
+# Vérifiez les options de génération.
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="73">Liste des colonnes d'index de l'index de table CONSOMME_FK</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">id_user_fk
+</p>
+</td>
+<td>
+<p align="left">ID_USER_FK
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="74">Liste des attributs étendus de l'index de table CONSOMME_FK</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Type de données
+</p>
+</td>
+<td class="Header">
+<p align="center">Valeur
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de la cible
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">FullText
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+</table><br />
+<h2>
+<a name="75">Index EST_FK de la table ALIMENT_CONSOMME</a> 
+</h2>
+<h3>
+<a name="76">Fiche de l'index EST_FK de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Nom
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#75">EST_FK</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Code
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#75">EST_FK</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Unique
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Cluster
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Primaire
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Clé étrangère
+</p>
+</td>
+<td width="75%">
+<p align="left">Oui
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Clé alternative
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Table
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp8.htm#14">ALIMENT_CONSOMME</a>
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="77">Aperçu du code de l'index EST_FK de la table ALIMENT_CONSOMME</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left"># L'aperçu est vide en raison des paramètres définis.<br />
+# Vérifiez les options de génération.
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="78">Liste des colonnes d'index de l'index de table EST_FK</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">id_aliment_fk
+</p>
+</td>
+<td>
+<p align="left">ID_ALIMENT_FK
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="79">Liste des attributs étendus de l'index de table EST_FK</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Type de données
+</p>
+</td>
+<td class="Header">
+<p align="center">Valeur
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de la cible
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">FullText
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+</table><br />
+<hr />
+<table><tr>
+<td><table class="NavGroup"><tr><td><a class="NavButton" href="Rapp7.htm">Précédent</a></td></tr></table></td>
+<td width=4></td>
+<td><table class="NavGroup"><tr><td><a class="NavButton" href="Accueil_BleuClair.html">Accueil</a></td></tr></table></td>
+<td width=4></td>
+<td><table class="NavGroup"><tr><td><a class="NavButton" href="Rapp9.htm">Suivant</a></td></tr></table></td></tr></table>
+<br />
+<br />
+</body>
+</html>

@@ -1,0 +1,2038 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Rapport de listes MPD
+</title>
+<link href="Theme_BleuClair.css" type="text/css" rel="stylesheet">
+</head>
+<!--Ce fichier a été généré automatiquement par PowerDesigner.-->
+<body>
+<h2>
+<a name="128">Table COMPOSITION</a> 
+</h2>
+<h3>
+<a name="129">Fiche de la table COMPOSITION</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Nom
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp10.htm#128">composition</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Code
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp10.htm#128">COMPOSITION</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">SGBD
+</p>
+</td>
+<td width="75%">
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="130">Nom de contrainte de paramètre de contrôle de la table COMPOSITION</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">TK_COMPOSITION
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="131">Règle de validation serveur de la table COMPOSITION</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">%RULES%
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="132">Aperçu du code de la table COMPOSITION</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">alter table COMPOSITION <br />
+   drop foreign key FK_COMPOSIT_COMPOSITI_ALIMENTS;<br />
+<br />
+alter table COMPOSITION <br />
+   drop foreign key FK_COMPOSIT_COMPOSITI_ALIMENTS;<br />
+<br />
+<br />
+alter table COMPOSITION <br />
+   drop foreign key FK_COMPOSIT_COMPOSITI_ALIMENTS;<br />
+<br />
+alter table COMPOSITION <br />
+   drop foreign key FK_COMPOSIT_COMPOSITI_ALIMENTS;<br />
+<br />
+drop table if exists COMPOSITION;<br />
+<br />
+/*==============================================================*/<br />
+/* Table : COMPOSITION                                          */<br />
+/*==============================================================*/<br />
+create table COMPOSITION<br />
+(<br />
+   ID_COMPOSANT_FK      int not null  comment '',<br />
+   ID_ALIMENT_FK2       int not null  comment '',<br />
+   QUANTITE_DU_COMPOSANT float not null  comment '',<br />
+   primary key (ID_COMPOSANT_FK, ID_ALIMENT_FK2)<br />
+);<br />
+<br />
+alter table COMPOSITION add constraint FK_COMPOSIT_COMPOSITI_ALIMENTS foreign key (ID_COMPOSANT_FK)<br />
+      references ALIMENTS (ID_ALIMENT) on delete restrict on update restrict;<br />
+<br />
+alter table COMPOSITION add constraint FK_COMPOSIT_COMPOSITI_ALIMENTS foreign key (ID_ALIMENT_FK2)<br />
+      references ALIMENTS (ID_ALIMENT) on delete restrict on update restrict;<br />
+
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="133">Liste des diagrammes contenant la table COMPOSITION</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><a href="Rapp1.htm#5">TraqueTaBouffe</a>
+</p>
+</td>
+<td>
+<p align="left"><a href="Rapp1.htm#5">TRAQUETABOUFFE</a>
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="134">Liste des références sortantes de la table COMPOSITION</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+<td class="Header">
+<p align="center">Colonnes de clé étrangère
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><a href="Rapp14.htm#3">composition</a>
+</p>
+</td>
+<td>
+<p align="left"><a href="Rapp14.htm#3">COMPOSITION</a>
+</p>
+</td>
+<td>
+<p align="left">ID_COMPOSANT_FK
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left"><a href="Rapp15.htm#9">composition2</a>
+</p>
+</td>
+<td class="TD2">
+<p align="left"><a href="Rapp15.htm#9">COMPOSITION2</a>
+</p>
+</td>
+<td class="TD2">
+<p align="left">ID_ALIMENT_FK2
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="135">Liste de tous les objets dépendant de la table COMPOSITION</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de classe
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><a href="Rapp14.htm#3">composition</a>
+</p>
+</td>
+<td>
+<p align="left"><a href="Rapp14.htm#3">COMPOSITION</a>
+</p>
+</td>
+<td>
+<p align="left">Référence
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left"><a href="Rapp15.htm#9">composition2</a>
+</p>
+</td>
+<td class="TD2">
+<p align="left"><a href="Rapp15.htm#9">COMPOSITION2</a>
+</p>
+</td>
+<td class="TD2">
+<p align="left">Référence
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="136">Liste des attributs étendus de la table COMPOSITION</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Type de données
+</p>
+</td>
+<td class="Header">
+<p align="center">Valeur
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de la cible
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">Temporary
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="137">Liste des colonnes de la table COMPOSITION</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><a href="Rapp10.htm#138">id_composant_fk</a>
+</p>
+</td>
+<td>
+<p align="left"><a href="Rapp10.htm#138">ID_COMPOSANT_FK</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left"><a href="Rapp10.htm#145">id_aliment_fk2</a>
+</p>
+</td>
+<td class="TD2">
+<p align="left"><a href="Rapp10.htm#145">ID_ALIMENT_FK2</a>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><a href="Rapp10.htm#152">quantité du composant</a>
+</p>
+</td>
+<td>
+<p align="left"><a href="Rapp10.htm#152">QUANTITE_DU_COMPOSANT</a>
+</p>
+</td>
+</tr>
+</table><br />
+<h2>
+<a name="138">Colonne ID_COMPOSANT_FK de la table COMPOSITION</a> 
+</h2>
+<h3>
+<a name="139">Fiche de la colonne ID_COMPOSANT_FK de la table COMPOSITION</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Nom
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp10.htm#138">id_composant_fk</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Code
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp10.htm#138">ID_COMPOSANT_FK</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Type de données
+</p>
+</td>
+<td width="75%">
+<p align="left">int
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Obligatoire
+</p>
+</td>
+<td width="75%">
+<p align="left">Oui
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="140">Nom de contrainte de paramètre de contrôle de la colonne ID_COMPOSANT_FK de la table COMPOSITION</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">CK_ID_COMPOSANT_FK
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="141">Contrôles standard de la colonne ID_COMPOSANT_FK de la table COMPOSITION</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur minimale
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur maximale
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur par défaut
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Unité
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Format
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Non modifiable
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Liste des valeurs
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="142">Règle de validation serveur de la colonne ID_COMPOSANT_FK de la table COMPOSITION</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">%MINMAX% and %LISTVAL% and %CASE% and %RULES%
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="143">Liste de tous les objets dépendant de la colonne de table ID_COMPOSANT_FK</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de classe
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">&lt;Inconnu&gt;
+</p>
+</td>
+<td>
+<p align="left">&lt;Inconnu&gt;
+</p>
+</td>
+<td>
+<p align="left">Jointure de référence
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left">id_composant_fk
+</p>
+</td>
+<td class="TD2">
+<p align="left">ID_COMPOSANT_FK
+</p>
+</td>
+<td class="TD2">
+<p align="left">Colonne d'index
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">id_composant_fk
+</p>
+</td>
+<td>
+<p align="left">ID_COMPOSANT_FK
+</p>
+</td>
+<td>
+<p align="left">Colonne d'index
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left"><a href="Rapp10.htm#159">Identifiant_1</a>
+</p>
+</td>
+<td class="TD2">
+<p align="left"><a href="Rapp10.htm#159">IDENTIFIANT_1</a>
+</p>
+</td>
+<td class="TD2">
+<p align="left">Clé
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="144">Liste des attributs étendus de la colonne de table ID_COMPOSANT_FK</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Type de données
+</p>
+</td>
+<td class="Header">
+<p align="center">Valeur
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de la cible
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">CharSet
+</p>
+</td>
+<td>
+<p align="left">CharSets
+</p>
+</td>
+<td>
+<p align="left">&nbsp; 
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left">Collate
+</p>
+</td>
+<td class="TD2">
+<p align="left">(Chaîne)
+</p>
+</td>
+<td class="TD2">
+<p align="left">&nbsp; 
+</p>
+</td>
+<td class="TD2">
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">National
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left">Unsigned
+</p>
+</td>
+<td class="TD2">
+<p align="left">(Booléen)
+</p>
+</td>
+<td class="TD2">
+<p align="left">false
+</p>
+</td>
+<td class="TD2">
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">ZeroFill
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+</table><br />
+<h2>
+<a name="145">Colonne ID_ALIMENT_FK2 de la table COMPOSITION</a> 
+</h2>
+<h3>
+<a name="146">Fiche de la colonne ID_ALIMENT_FK2 de la table COMPOSITION</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Nom
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp10.htm#145">id_aliment_fk2</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Code
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp10.htm#145">ID_ALIMENT_FK2</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Type de données
+</p>
+</td>
+<td width="75%">
+<p align="left">int
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Obligatoire
+</p>
+</td>
+<td width="75%">
+<p align="left">Oui
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="147">Nom de contrainte de paramètre de contrôle de la colonne ID_ALIMENT_FK2 de la table COMPOSITION</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">CK_ID_ALIMENT_FK2
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="148">Contrôles standard de la colonne ID_ALIMENT_FK2 de la table COMPOSITION</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur minimale
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur maximale
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur par défaut
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Unité
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Format
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Non modifiable
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Liste des valeurs
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="149">Règle de validation serveur de la colonne ID_ALIMENT_FK2 de la table COMPOSITION</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">%MINMAX% and %LISTVAL% and %CASE% and %RULES%
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="150">Liste de tous les objets dépendant de la colonne de table ID_ALIMENT_FK2</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de classe
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">&lt;Inconnu&gt;
+</p>
+</td>
+<td>
+<p align="left">&lt;Inconnu&gt;
+</p>
+</td>
+<td>
+<p align="left">Jointure de référence
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left">id_aliment_fk2
+</p>
+</td>
+<td class="TD2">
+<p align="left">ID_ALIMENT_FK2
+</p>
+</td>
+<td class="TD2">
+<p align="left">Colonne d'index
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">id_aliment_fk2
+</p>
+</td>
+<td>
+<p align="left">ID_ALIMENT_FK2
+</p>
+</td>
+<td>
+<p align="left">Colonne d'index
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left"><a href="Rapp10.htm#159">Identifiant_1</a>
+</p>
+</td>
+<td class="TD2">
+<p align="left"><a href="Rapp10.htm#159">IDENTIFIANT_1</a>
+</p>
+</td>
+<td class="TD2">
+<p align="left">Clé
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="151">Liste des attributs étendus de la colonne de table ID_ALIMENT_FK2</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Type de données
+</p>
+</td>
+<td class="Header">
+<p align="center">Valeur
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de la cible
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">CharSet
+</p>
+</td>
+<td>
+<p align="left">CharSets
+</p>
+</td>
+<td>
+<p align="left">&nbsp; 
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left">Collate
+</p>
+</td>
+<td class="TD2">
+<p align="left">(Chaîne)
+</p>
+</td>
+<td class="TD2">
+<p align="left">&nbsp; 
+</p>
+</td>
+<td class="TD2">
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">National
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left">Unsigned
+</p>
+</td>
+<td class="TD2">
+<p align="left">(Booléen)
+</p>
+</td>
+<td class="TD2">
+<p align="left">false
+</p>
+</td>
+<td class="TD2">
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">ZeroFill
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+</table><br />
+<h2>
+<a name="152">Colonne QUANTITE_DU_COMPOSANT de la table COMPOSITION</a> 
+</h2>
+<h3>
+<a name="153">Fiche de la colonne QUANTITE_DU_COMPOSANT de la table COMPOSITION</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Nom
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp10.htm#152">quantité du composant</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Code
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp10.htm#152">QUANTITE_DU_COMPOSANT</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Type de données
+</p>
+</td>
+<td width="75%">
+<p align="left">float
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Obligatoire
+</p>
+</td>
+<td width="75%">
+<p align="left">Oui
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="154">Nom de contrainte de paramètre de contrôle de la colonne QUANTITE_DU_COMPOSANT de la table COMPOSITION</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">CK_QUANTITE_DU_COMPOSANT
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="155">Contrôles standard de la colonne QUANTITE_DU_COMPOSANT de la table COMPOSITION</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur minimale
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur maximale
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Valeur par défaut
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Unité
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Format
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Non modifiable
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Liste des valeurs
+</p>
+</td>
+<td width="75%">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="156">Règle de validation serveur de la colonne QUANTITE_DU_COMPOSANT de la table COMPOSITION</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">%MINMAX% and %LISTVAL% and %CASE% and %RULES%
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="157">Liste des attributs étendus de la colonne de table QUANTITE_DU_COMPOSANT</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Type de données
+</p>
+</td>
+<td class="Header">
+<p align="center">Valeur
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de la cible
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">CharSet
+</p>
+</td>
+<td>
+<p align="left">CharSets
+</p>
+</td>
+<td>
+<p align="left">&nbsp; 
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left">Collate
+</p>
+</td>
+<td class="TD2">
+<p align="left">(Chaîne)
+</p>
+</td>
+<td class="TD2">
+<p align="left">&nbsp; 
+</p>
+</td>
+<td class="TD2">
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">National
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left">Unsigned
+</p>
+</td>
+<td class="TD2">
+<p align="left">(Booléen)
+</p>
+</td>
+<td class="TD2">
+<p align="left">false
+</p>
+</td>
+<td class="TD2">
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">ZeroFill
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="158">Liste des clés de la table COMPOSITION</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+<td class="Header">
+<p align="center">Primaire
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><a href="Rapp10.htm#159">Identifiant_1</a>
+</p>
+</td>
+<td>
+<p align="left"><a href="Rapp10.htm#159">IDENTIFIANT_1</a>
+</p>
+</td>
+<td>
+<p align="left">X
+</p>
+</td>
+</tr>
+</table><br />
+<h2>
+<a name="159">Clé IDENTIFIANT_1 de la table COMPOSITION</a> 
+</h2>
+<h3>
+<a name="160">Fiche de la clé IDENTIFIANT_1 de la table COMPOSITION</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Nom
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp10.htm#159">Identifiant_1</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Code
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp10.htm#159">IDENTIFIANT_1</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Table
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp10.htm#128">COMPOSITION</a>
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="161">Aperçu du code de la clé IDENTIFIANT_1 de la table COMPOSITION</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">alter table COMPOSITION<br />
+   drop primary key;<br />
+
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="162">Liste des colonnes de la clé de table IDENTIFIANT_1</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><a href="Rapp10.htm#138">id_composant_fk</a>
+</p>
+</td>
+<td>
+<p align="left"><a href="Rapp10.htm#138">ID_COMPOSANT_FK</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left"><a href="Rapp10.htm#145">id_aliment_fk2</a>
+</p>
+</td>
+<td class="TD2">
+<p align="left"><a href="Rapp10.htm#145">ID_ALIMENT_FK2</a>
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="163">Liste de tous les objets dépendant de la clé de table IDENTIFIANT_1</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de classe
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><a href="Rapp10.htm#166">COMPOSITION_PK</a>
+</p>
+</td>
+<td>
+<p align="left"><a href="Rapp10.htm#166">COMPOSITION_PK</a>
+</p>
+</td>
+<td>
+<p align="left">Index
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="164">Liste des attributs étendus de la clé de table IDENTIFIANT_1</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Type de données
+</p>
+</td>
+<td class="Header">
+<p align="center">Valeur
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de la cible
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">ExtUnique
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="165">Liste des index de la table COMPOSITION</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+<td class="Header">
+<p align="center">Unique
+</p>
+</td>
+<td class="Header">
+<p align="center">Cluster
+</p>
+</td>
+<td class="Header">
+<p align="center">Primaire
+</p>
+</td>
+<td class="Header">
+<p align="center">Clé étrangère
+</p>
+</td>
+<td class="Header">
+<p align="center">Clé alternative
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><a href="Rapp10.htm#166">COMPOSITION_PK</a>
+</p>
+</td>
+<td>
+<p align="left"><a href="Rapp10.htm#166">COMPOSITION_PK</a>
+</p>
+</td>
+<td>
+<p align="left">X
+</p>
+</td>
+<td>
+<p align="left">&nbsp; 
+</p>
+</td>
+<td>
+<p align="left">X
+</p>
+</td>
+<td>
+<p align="left">&nbsp; 
+</p>
+</td>
+<td>
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left"><a href="Rapp10.htm#171">COMPOSITION_FK</a>
+</p>
+</td>
+<td class="TD2">
+<p align="left"><a href="Rapp10.htm#171">COMPOSITION_FK</a>
+</p>
+</td>
+<td class="TD2">
+<p align="left">&nbsp; 
+</p>
+</td>
+<td class="TD2">
+<p align="left">&nbsp; 
+</p>
+</td>
+<td class="TD2">
+<p align="left">&nbsp; 
+</p>
+</td>
+<td class="TD2">
+<p align="left">X
+</p>
+</td>
+<td class="TD2">
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><a href="Rapp10.htm#176">COMPOSITION2_FK</a>
+</p>
+</td>
+<td>
+<p align="left"><a href="Rapp10.htm#176">COMPOSITION2_FK</a>
+</p>
+</td>
+<td>
+<p align="left">&nbsp; 
+</p>
+</td>
+<td>
+<p align="left">&nbsp; 
+</p>
+</td>
+<td>
+<p align="left">&nbsp; 
+</p>
+</td>
+<td>
+<p align="left">X
+</p>
+</td>
+<td>
+<p align="left">&nbsp; 
+</p>
+</td>
+</tr>
+</table><br />
+<h2>
+<a name="166">Index COMPOSITION_PK de la table COMPOSITION</a> 
+</h2>
+<h3>
+<a name="167">Fiche de l'index COMPOSITION_PK de la table COMPOSITION</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Nom
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp10.htm#166">COMPOSITION_PK</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Code
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp10.htm#166">COMPOSITION_PK</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Unique
+</p>
+</td>
+<td width="75%">
+<p align="left">Oui
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Cluster
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Primaire
+</p>
+</td>
+<td width="75%">
+<p align="left">Oui
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Clé étrangère
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Clé alternative
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Table
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp10.htm#128">COMPOSITION</a>
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="168">Aperçu du code de l'index COMPOSITION_PK de la table COMPOSITION</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left"># L'aperçu est vide en raison des paramètres définis.<br />
+# Vérifiez les options de génération.
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="169">Liste des colonnes d'index de l'index de table COMPOSITION_PK</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">id_composant_fk
+</p>
+</td>
+<td>
+<p align="left">ID_COMPOSANT_FK
+</p>
+</td>
+</tr>
+<tr>
+<td class="TD2">
+<p align="left">id_aliment_fk2
+</p>
+</td>
+<td class="TD2">
+<p align="left">ID_ALIMENT_FK2
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="170">Liste des attributs étendus de l'index de table COMPOSITION_PK</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Type de données
+</p>
+</td>
+<td class="Header">
+<p align="center">Valeur
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de la cible
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">FullText
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+</table><br />
+<h2>
+<a name="171">Index COMPOSITION_FK de la table COMPOSITION</a> 
+</h2>
+<h3>
+<a name="172">Fiche de l'index COMPOSITION_FK de la table COMPOSITION</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Nom
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp10.htm#171">COMPOSITION_FK</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Code
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp10.htm#171">COMPOSITION_FK</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Unique
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Cluster
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Primaire
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Clé étrangère
+</p>
+</td>
+<td width="75%">
+<p align="left">Oui
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Clé alternative
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Table
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp10.htm#128">COMPOSITION</a>
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="173">Aperçu du code de l'index COMPOSITION_FK de la table COMPOSITION</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left"># L'aperçu est vide en raison des paramètres définis.<br />
+# Vérifiez les options de génération.
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="174">Liste des colonnes d'index de l'index de table COMPOSITION_FK</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">id_composant_fk
+</p>
+</td>
+<td>
+<p align="left">ID_COMPOSANT_FK
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="175">Liste des attributs étendus de l'index de table COMPOSITION_FK</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Type de données
+</p>
+</td>
+<td class="Header">
+<p align="center">Valeur
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de la cible
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">FullText
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+</table><br />
+<h2>
+<a name="176">Index COMPOSITION2_FK de la table COMPOSITION</a> 
+</h2>
+<h3>
+<a name="177">Fiche de l'index COMPOSITION2_FK de la table COMPOSITION</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Nom
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp10.htm#176">COMPOSITION2_FK</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Code
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp10.htm#176">COMPOSITION2_FK</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Unique
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Cluster
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Primaire
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Clé étrangère
+</p>
+</td>
+<td width="75%">
+<p align="left">Oui
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Clé alternative
+</p>
+</td>
+<td width="75%">
+<p align="left">Non
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Table
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp10.htm#128">COMPOSITION</a>
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="178">Aperçu du code de l'index COMPOSITION2_FK de la table COMPOSITION</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left"># L'aperçu est vide en raison des paramètres définis.<br />
+# Vérifiez les options de génération.
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="179">Liste des colonnes d'index de l'index de table COMPOSITION2_FK</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">id_aliment_fk2
+</p>
+</td>
+<td>
+<p align="left">ID_ALIMENT_FK2
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="180">Liste des attributs étendus de l'index de table COMPOSITION2_FK</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Type de données
+</p>
+</td>
+<td class="Header">
+<p align="center">Valeur
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de la cible
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">FullText
+</p>
+</td>
+<td>
+<p align="left">(Booléen)
+</p>
+</td>
+<td>
+<p align="left">false
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+</table><br />
+<hr />
+<table><tr>
+<td><table class="NavGroup"><tr><td><a class="NavButton" href="Rapp9.htm">Précédent</a></td></tr></table></td>
+<td width=4></td>
+<td><table class="NavGroup"><tr><td><a class="NavButton" href="Accueil_BleuClair.html">Accueil</a></td></tr></table></td>
+<td width=4></td>
+<td><table class="NavGroup"><tr><td><a class="NavButton" href="Rapp11.htm">Suivant</a></td></tr></table></td></tr></table>
+<br />
+<br />
+</body>
+</html>

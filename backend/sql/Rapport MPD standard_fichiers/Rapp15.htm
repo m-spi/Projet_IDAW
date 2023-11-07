@@ -1,0 +1,172 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Rapport de listes MPD
+</title>
+<link href="Theme_BleuClair.css" type="text/css" rel="stylesheet">
+</head>
+<!--Ce fichier a été généré automatiquement par PowerDesigner.-->
+<body>
+<h2>
+<a name="9">Référence COMPOSITION2</a> 
+</h2>
+<h3>
+<a name="10">Fiche de la référence COMPOSITION2</a> 
+</h3>
+<table class="Form" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header" width="25%">
+<p align="left">Nom
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp15.htm#9">composition2</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Code
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp15.htm#9">COMPOSITION2</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Table parent
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp9.htm#80">ALIMENTS</a>
+</p>
+</td>
+</tr>
+<tr>
+<td class="Header" width="25%">
+<p align="left">Table enfant
+</p>
+</td>
+<td width="75%">
+<p align="left"><a href="Rapp10.htm#128">COMPOSITION</a>
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="11">Aperçu du code de la référence COMPOSITION2</a> 
+</h3>
+<table class="Text" border="1" cellpadding="3" cellspacing="1" width="100%"><tr><td>
+<p align="left">alter table COMPOSITION <br />
+   drop foreign key FK_COMPOSIT_COMPOSITI_ALIMENTS;<br />
+<br />
+alter table COMPOSITION add constraint FK_COMPOSIT_COMPOSITI_ALIMENTS foreign key (ID_ALIMENT_FK2)<br />
+      references ALIMENTS (ID_ALIMENT) on delete restrict on update restrict;<br />
+
+</p>
+</td></tr>
+</table><br />
+<h3>
+<a name="12">Liste des diagrammes contenant la référence COMPOSITION2</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Code
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><a href="Rapp1.htm#5">TraqueTaBouffe</a>
+</p>
+</td>
+<td>
+<p align="left"><a href="Rapp1.htm#5">TRAQUETABOUFFE</a>
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="13">Liste des jointures de référence de la référence COMPOSITION2</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Colonne de la table parent
+</p>
+</td>
+<td class="Header">
+<p align="center">Colonne de la table enfant
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><a href="Rapp9.htm#90">ID_ALIMENT</a>
+</p>
+</td>
+<td>
+<p align="left"><a href="Rapp10.htm#145">ID_ALIMENT_FK2</a>
+</p>
+</td>
+</tr>
+</table><br />
+<h3>
+<a name="14">Liste des attributs étendus de la référence COMPOSITION2</a> 
+</h3>
+<table class="Grid" border="1" cellspacing="1" width="100%">
+<tr>
+<td class="Header">
+<p align="center">Nom
+</p>
+</td>
+<td class="Header">
+<p align="center">Type de données
+</p>
+</td>
+<td class="Header">
+<p align="center">Valeur
+</p>
+</td>
+<td class="Header">
+<p align="center">Nom de la cible
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left">ReferenceMatch
+</p>
+</td>
+<td>
+<p align="left">ReferenceMatchType
+</p>
+</td>
+<td>
+<p align="left">&nbsp; 
+</p>
+</td>
+<td>
+<p align="left">MySQL 5.0
+</p>
+</td>
+</tr>
+</table><br />
+<hr />
+<table><tr>
+<td><table class="NavGroup"><tr><td><a class="NavButton" href="Rapp14.htm">Précédent</a></td></tr></table></td>
+<td width=4></td>
+<td><table class="NavGroup"><tr><td><a class="NavButton" href="Accueil_BleuClair.html">Accueil</a></td></tr></table></td>
+<td width=4></td>
+<td><table class="NavGroup"><tr><td><a class="NavButton" href="Rapp16.htm">Suivant</a></td></tr></table></td></tr></table>
+<br />
+<br />
+</body>
+</html>

@@ -7,7 +7,7 @@
             </div>
             <div class="card mb-4">
                 <div class="card-header">
-                    <i class="fas fa-table me-1"></i>' . $tableTitle . '
+                    <i class="fas fa-table me-1"></i> Mon historique de consommation
                 </div>
                 <div class="card-body">
                     <table id="journalDataTable">
@@ -19,11 +19,13 @@
                             <th>Actions</th>
                         </tr>
                         </thead>
-                        <tbody id="journalTableBody">
-                        </tbody>
                     </table>
                 </div>
     </main>
+
+    <?php require_once('config.php'); ?>
+    <script type="text/javascript" src="../js/journal.js">
+    </script>
 
     <?php/*
             require_once ('codeFactorisé/dataTables.php');
