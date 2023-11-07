@@ -134,7 +134,7 @@ __Format :__
   "http_status": _int_,
   "response": _string_,
   "result": {
-    "id": _int_         # ID de l'aliment créé
+    "id": _int_         // ID de l'aliment créé
   }
 }
 ```
@@ -146,9 +146,10 @@ ___/backend/aliments.php/{id}___
 > Description :\
 > Permet de changer le nom et/ou les valeurs des nutriments.
 
-__Parmètre PUT :__
+__Paramètre PUT :__
 ```json
 {
+  "nom": _string_,
   "indice_nova": _int_,
   "is_liquid": _int_,
   "energie_kcal": _float_,
@@ -185,8 +186,8 @@ __Format :__
 {
   "http_status": _int_,
   "response": _string_,
-  "result": [           # Tableau avec l'ensemble des noms des valeurs modifiées.
-    _string_,           # Exemple : "energie_kcal=200"
+  "result": [           // Tableau avec l'ensemble des noms des valeurs modifiées.
+    _string_,           // Exemple : "energie_kcal=200"
     ...
   ]
 }
@@ -233,7 +234,7 @@ __Format :__
   "http_status": _int_,
   "response": _string_,
   "result": {
-    "id": _int_         # ID de l'aliment supprimé.
+    "id": _int_         // ID de l'aliment supprimé.
   }
 }
 ```
@@ -256,5 +257,177 @@ __Format :__
     "id_aliment": _int_,
     "id_ingredient": _int_
   }
+}
+```
+
+## Journal
+
+> __Note__ :\
+> Les String pour les dates sont sous le format 'YYYY-MM-DD HH:MM:SS.UUUUUU', 
+> les 'U' étant les microsecondes, ces derniers sont optionnels.
+
+### __GET__ : Récupérer une entrée du journal
+
+___/backend/journal.php/{id}___
+
+> Description :\
+> Renvoi l'entrée spécifié par l'id dans l'URL.
+
+#### Réponse
+
+__Format :__
+```json
+{
+    "http_status": _int_,
+    "response": _string_,
+    "result": {
+        "entree": {
+            "id": _int_,
+            "id_aliment": _int_,
+            "id_user": _int_,
+            "date": _string_,
+            ""quantite": float
+        }
+    }
+}
+```
+
+### __GET__ : Récupérer tout le journal
+
+___/backend/journal.php___
+
+> Description :\
+> Renvoi toutes les entrées du journal.
+
+#### Réponse
+
+__Format :__
+```json
+{
+    "http_status": _int_,
+    "response": _string_,
+    "result": {
+        "journal": [
+            {
+                "id": _int_,
+                "id_aliment": _int_,
+                "id_user": _int_,
+                "date": _string_,
+                "quantite": float
+            },
+            ...
+        ]
+    }
+}
+```
+
+### __GET__ : Récupérer tout le journal d'un user en particulier
+
+___/backend/journal.php/user/{id}___
+
+> Description :\
+> Renvoi toutes les entrées du journal d'un user en précisant son id dans l'URL.
+
+#### Réponse
+
+__Format :__
+```json
+{
+    "http_status": _int_,
+    "response": _string_,
+    "result": {
+        "journal": [
+            {
+                "id": _int_,
+                "id_aliment": _int_,
+                "id_user": _int_,
+                "date": _string_,
+                "quantite": float
+            },
+            ...
+        ]
+    }
+}
+```
+
+### __POST__ : Créer une entrée
+
+___/backend/journal.php___
+
+> Description :\
+> Ajoute une entrée au journal.
+
+__Paramètre POST :__
+```json
+{
+    "id_aliment": _int_,
+    "id_user": _int_,
+    "date": _string_,
+    "quantite": float
+}
+```
+
+#### Réponse
+
+__Format :__
+```json
+{
+    "http_status": _int_,
+    "response": _string_,
+    "result": {
+        "id": _int_
+    }
+}
+```
+
+### __PUT__ : Mettre à jour une entrée
+
+___/backend/journal.php/{id}___
+
+> Description :\
+> Met à jour une entrée du journal spécifiée par l'id dans l'URL.\
+> Chaque paramètre est optionnel.
+
+__Paramètre PUT :__
+```json
+{
+    "id_aliment": _int_,
+    "id_user": _int_,
+    "date": _string_,
+    "quantite": float
+}
+```
+
+#### Réponse
+
+__Format :__
+```json
+{
+    "http_status": _int_,
+    "response": _string_,
+    "result": [             // Tableau avec l'ensemble des noms des valeurs modifiées.
+        _string_,           // Exemple : "quantite=200"
+        ...
+    ]
+}
+```
+
+### __DELETE__ : Supprimer une entrée
+
+___/backend/journal.php/{id}___
+
+> Description :\
+> Supprime une entrée du journal.
+
+#### Réponse
+
+__Format :__
+```json
+{
+    "http_status": _int_,
+    "response": _string_,
+    "result": {
+        "id": _int_       // ID de l'entrée supprimé
+    }
 }
 ```

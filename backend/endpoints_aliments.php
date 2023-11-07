@@ -271,19 +271,27 @@
           $res[] = $r;
         }
 
-        if(isset($input->indice_nova) && isset($input->is_liquid)){
-          $request_string .= "; UPDATE ALIMENTS SET 
-                        INDICE_NOVA = {$input->indice_nova}, 
-                        ISLIQUID = {$input->is_liquid} 
-                    WHERE ID_ALIMENT = {$id}";
-        }elseif (isset($input->indice_nova)){
-          $request_string .= "; UPDATE ALIMENTS SET 
-                        INDICE_NOVA = {$input->indice_nova} 
-                    WHERE ID_ALIMENT = {$id}";
-        }elseif (isset($input->is_liquid)){
-          $request_string .= "; UPDATE ALIMENTS SET 
-                        ISLIQUID = {$input->is_liquid} 
-                    WHERE ID_ALIMENT = {$id}";
+        $second_request = "UPDATE ALIMENTS SET";
+        $no_second_request = true;
+        if (isset($input->nom)){
+          $no_second_request = false;
+          $second_request .= " NOM_ALIMENT = '{$input->nom}',";
+          $res[] = "nom=".$input->nom;
+        }
+        if (isset($input->indice_nova)) {
+          $no_second_request = false;
+          $second_request .= " INDICE_NOVA = {$input->indice_nova},";
+          $res[] = "indice_nova=".$input->indice_nova;
+        }
+        if (isset($input->is_liquid)){
+          $no_second_request = false;
+          $second_request .= " ISLIQUID = {$input->is_liquid},";
+          $res[] = "is_liquid=".$input->is_liquid;
+        }
+        if(!$no_second_request){
+          $second_request = substr($second_request, 0, strlen($second_request)-1);
+          $second_request .= " WHERE ID_ALIMENT = {$id}";
+          $pdo->exec($second_request);
         }
 
         $request = $pdo->prepare($request_string);

@@ -1,7 +1,6 @@
 <?php
   require_once('init_pdo.php');
   require_once('endpoints_aliments.php');
-  //global $pdo;
 
   header("Access-Control-Allow-Origin: *");
   // header("Access-Control-Allow-Methods: *");
