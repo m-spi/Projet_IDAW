@@ -224,9 +224,7 @@
 
   function updateOne($pdo, $id, $input){
     try{
-      $request_string =
-          "UPDATE EST_COMPOSE SET POUR_100G =
-            (CASE ID_NUTRIMENT_FK";
+      $request_string = "UPDATE EST_COMPOSE SET POUR_100G = (CASE ID_NUTRIMENT_FK";
 
       $res = array();
       $map = array(
@@ -242,27 +240,37 @@
       for($i=0; $i<7; $i++) {
         $key = array_keys($map)[$i];
         if(isset($input->$key)) {
-          echo 'a';
-          echo $input->$key;
           $request_string .= ' WHEN '. $i+1 .' THEN '.$input->$key;
           $res[] = $key.'='.$input->$key;
-          echo 'b';
         }else{
-          echo 'c';
           $request_string .= ' WHEN '. $i+1 .' THEN POUR_100G';
-          echo 'd';
         }
       }
       $request_string .= ' ELSE POUR_100G END) WHERE ID_ALIMENT_FK = '.$id;
+
+      if(isset($input->ingredient_de)){
+        $pdo->exec("DELETE FROM COMPOSITION WHERE ID_COMPOSANT_FK = {$id}");
+        foreach ($input->ingredient_de as $ingr){
+          $ingr['id_ingredient'] = $id;
+          addOneIngredient($pdo, $ingr);
+        }
+      }
+      if(isset($input->compose_par)){
+        $pdo->exec("DELETE FROM COMPOSITION WHERE ID_ALIMENT_FK = {$id}");
+        foreach ($input->ingredient_de as $ingr){
+          $ingr['id_aliment'] = $id;
+          addOneIngredient($pdo, $ingr);
+        }
+      }
+
       $request = $pdo->prepare($request_string);
-
       $request->execute();
-
       $res = array(
-        "http_status" => 202,
-        "response" => "Aliment mis à jour avec succès.",
-        "result" => $res
-      );
+            "http_status" => 202,
+            "response" => "Aliment mis à jour avec succès.",
+            "result" => $res
+        );
+
       http_response_code(202);
       echo json_encode($res);
       }catch(PDOException $erreur){

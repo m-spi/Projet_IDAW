@@ -149,13 +149,29 @@ ___/backend/aliments.php/{id}___
 __Parmètre PUT :__
 ```json
 {
+  "indice_nova": _int_,
+  "is_liquid": _int_,
   "energie_kcal": _float_,
   "sel": _float_,
   "sucre": _float_,
   "proteines": _float_,
   "fibre_alimentaire": _float_,
   "alcool": _float_,
-  "matieres_grasses": _float_
+  "matieres_grasses": _float_,
+  "ingredient_de": [
+    {
+      "id_aliment": _int_,
+      "pourcentage_ingredient": _float_
+    },
+    ...
+  ],
+  "compose_par": [
+    {
+      "id_ingredient": _int_,
+      "pourcentage_ingredient": _float_
+    },
+    ...
+  ]
 }
 ```
 
