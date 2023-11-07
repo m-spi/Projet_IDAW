@@ -61,7 +61,7 @@
       );
 
       http_response_code(200);
-      echo json_encode($res);
+      return json_encode($res);
   }
 
   function getOne($pdo, $id){
@@ -124,7 +124,7 @@
       );
 
       http_response_code(200);
-      echo json_encode($res);
+      return json_encode($res);
   }
 
   function createOne($pdo, $input){
@@ -195,7 +195,7 @@
         );
 
         http_response_code(201);
-        echo json_encode($res);
+        return json_encode($res);
       }catch(PDOException $erreur){
         echo 'Erreur : '.$erreur->getMessage();
         http_response_code(500);
@@ -215,7 +215,7 @@
         "response" => "Ingrédient ajouté avec succès."
       );
       http_response_code(202);
-      echo json_encode($res);
+      return json_encode($res);
     }catch(PDOException $erreur){
       echo 'Erreur : '.$erreur->getMessage();
       http_response_code(500);
@@ -223,56 +223,79 @@
   }
 
   function updateOne($pdo, $id, $input){
-    try{
-      $request_string = "UPDATE EST_COMPOSE SET POUR_100G = (CASE ID_NUTRIMENT_FK";
+      try{
+        $request_string = "UPDATE EST_COMPOSE SET POUR_100G = (CASE ID_NUTRIMENT_FK";
 
-      $res = array();
-      $map = array(
-          "energie_kcal" => 1,
-          "sel" => 2,
-          "sucre" => 3,
-          "proteines" => 4,
-          "fibre_alimentaire" => 5,
-          "matiere_grasses" => 6,
-          "alcool" => 7
-      );
-
-      for($i=0; $i<7; $i++) {
-        $key = array_keys($map)[$i];
-        if(isset($input->$key)) {
-          $request_string .= ' WHEN '. $i+1 .' THEN '.$input->$key;
-          $res[] = $key.'='.$input->$key;
-        }else{
-          $request_string .= ' WHEN '. $i+1 .' THEN POUR_100G';
-        }
-      }
-      $request_string .= ' ELSE POUR_100G END) WHERE ID_ALIMENT_FK = '.$id;
-
-      if(isset($input->ingredient_de)){
-        $pdo->exec("DELETE FROM COMPOSITION WHERE ID_COMPOSANT_FK = {$id}");
-        foreach ($input->ingredient_de as $ingr){
-          $ingr['id_ingredient'] = $id;
-          addOneIngredient($pdo, $ingr);
-        }
-      }
-      if(isset($input->compose_par)){
-        $pdo->exec("DELETE FROM COMPOSITION WHERE ID_ALIMENT_FK = {$id}");
-        foreach ($input->ingredient_de as $ingr){
-          $ingr['id_aliment'] = $id;
-          addOneIngredient($pdo, $ingr);
-        }
-      }
-
-      $request = $pdo->prepare($request_string);
-      $request->execute();
-      $res = array(
-            "http_status" => 202,
-            "response" => "Aliment mis à jour avec succès.",
-            "result" => $res
+        $res = array();
+        $map = array(
+            "energie_kcal",
+            "sel",
+            "sucre",
+            "proteines",
+            "fibre_alimentaire",
+            "matiere_grasses",
+            "alcool"
         );
 
-      http_response_code(202);
-      echo json_encode($res);
+        for($i=0; $i<7; $i++) {
+          $key = $map[$i];
+          if(isset($input->$key)) {
+            $request_string .= ' WHEN '. $i+1 .' THEN '.$input->$key;
+            $res[] = $key.'='.$input->$key;
+          }else{
+            $request_string .= ' WHEN '. $i+1 .' THEN POUR_100G';
+          }
+        }
+        $request_string .= ' ELSE POUR_100G END) WHERE ID_ALIMENT_FK = '.$id;
+
+        if(isset($input->ingredient_de)){
+          $pdo->exec("DELETE FROM COMPOSITION WHERE ID_COMPOSANT_FK = {$id}");
+          $r = "ingredient_de=[";
+          foreach ($input->ingredient_de as $ingr){
+            $ingr->id_ingredient = $id;
+            addOneIngredient($pdo, $ingr);
+            $r .= $ingr->id_aliment.", ";
+          }
+          $r .= "]";
+          $res[] = $r;
+        }
+        if(isset($input->compose_par)){
+          $pdo->exec("DELETE FROM COMPOSITION WHERE ID_ALIMENT_FK = {$id}");
+          $r = "compose_par=[";
+          foreach ($input->compose_par as $ingr){
+            $ingr->id_aliment = $id;
+            addOneIngredient($pdo, $ingr);
+            $r .= $ingr->id_ingredient.", ";
+          }
+          $r .= "]";
+          $res[] = $r;
+        }
+
+        if(isset($input->indice_nova) && isset($input->is_liquid)){
+          $request_string .= "; UPDATE ALIMENTS SET 
+                        INDICE_NOVA = {$input->indice_nova}, 
+                        ISLIQUID = {$input->is_liquid} 
+                    WHERE ID_ALIMENT = {$id}";
+        }elseif (isset($input->indice_nova)){
+          $request_string .= "; UPDATE ALIMENTS SET 
+                        INDICE_NOVA = {$input->indice_nova} 
+                    WHERE ID_ALIMENT = {$id}";
+        }elseif (isset($input->is_liquid)){
+          $request_string .= "; UPDATE ALIMENTS SET 
+                        ISLIQUID = {$input->is_liquid} 
+                    WHERE ID_ALIMENT = {$id}";
+        }
+
+        $request = $pdo->prepare($request_string);
+        $request->execute();
+        $res = array(
+              "http_status" => 202,
+              "response" => "Aliment mis à jour avec succès.",
+              "result" => $res
+          );
+
+        http_response_code(202);
+        return json_encode($res);
       }catch(PDOException $erreur){
         echo 'Erreur : '.$erreur->getMessage();
         http_response_code(500);
@@ -294,7 +317,7 @@
             "result" => $res
           );
           http_response_code(202);
-          echo json_encode($res);
+          return json_encode($res);
         }
       }catch(Exception $err){
         echo 'Erreur : '.$err->getMessage();
@@ -317,11 +340,11 @@
             "result" => $res
           );
           http_response_code(202);
-          echo json_encode($res);
+          return json_encode($res);
         }
       }catch(Exception $err){
         echo 'Erreur : '.$err->getMessage();
         http_response_code(500);
       }
   }
-?>
+

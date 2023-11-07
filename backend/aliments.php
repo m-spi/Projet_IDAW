@@ -10,9 +10,9 @@
   switch($_SERVER['REQUEST_METHOD']){
     case 'GET':
       if($id = getID())
-        getOne($pdo, $id);
+        $json = getOne($pdo, $id);
       else
-        getAll($pdo);
+        $json = getAll($pdo);
 
       break;
 
@@ -23,9 +23,9 @@
       if(isset($input->id_aliment) &&
          isset($input->id_ingredient) &&
          isset($input->pourcentage_ingredient)
-      ) addOneIngredient($pdo, $input);
+      ) $json = addOneIngredient($pdo, $input);
       else
-        createOne($pdo, $input);
+        $json = createOne($pdo, $input);
 
       break;
 
@@ -34,7 +34,7 @@
 
       $input = json_decode(file_get_contents('php://input'));
       if($id = getID())
-        updateOne($pdo, $id, $input);
+        $json = updateOne($pdo, $id, $input);
       else
         echo "Erreur : Veuillez spécifier l'id dans l'URL.";
 
@@ -43,19 +43,21 @@
     case 'DELETE':
       if($id_aliment = getFirstID()){
         if($id_ingredient = getID())
-          deleteOneIngredient($pdo, $id_aliment, $id_ingredient);
+          $json = deleteOneIngredient($pdo, $id_aliment, $id_ingredient);
         else
           echo "Erreur : Veuillez spécifier l'id de l'ingrédient dans l'URL.";
       }elseif($id = getID()){
-        deleteOne($pdo, $id);
+        $json = deleteOne($pdo, $id);
       }else echo "Erreur : Veuillez spécifier l'id dans l'URL.";
 
       break;
 
     default:
       exit(1);
+
   }
 
+  echo $json;
   $pdo = null;
 
   function getID(){
@@ -105,4 +107,4 @@
         }
       }
   }
-?>
+
