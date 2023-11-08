@@ -351,7 +351,7 @@ $(document).ready(function () {
     // Fonction pour effectuer la requête AJAX pour mettre à jour l'aliment
     function modifierAliment(data,idAliment) {
         $.ajax({
-            url: "http://localhost/Projet_IDAW/backend/aliments.php/" + idAliment,
+            url: prefixeEndpoint+"/backend/aliments.php/" + idAliment,
             method: "PUT",
             dataType: "json",
             data: data,
@@ -385,7 +385,7 @@ $(document).ready(function () {
 
     function getAlimentByID(idAliment, callback) {
         $.ajax({
-            url: "http://localhost/Projet_IDAW/backend/aliments.php/" + idAliment,
+            url: prefixeEndpoint+"/backend/aliments.php/" + idAliment,
             method: "GET",
             dataType: "json"
         })
@@ -421,7 +421,7 @@ $(document).ready(function () {
                 '<li><label>Energie (en kcal)  </label><input class="modifyInput" type="text" id="newEnergieInput" value="' + alimentData.result.aliment.energie_kcal + '" placeholder="Energie (kcal)" /></li>' +
                 '<li><label>Sel (g) </label><input class="modifyInput" type="text" id="newSelInput" value="' + alimentData.result.aliment.sel + '" placeholder="Sel (g)" /></li>' +
                 '<li><label>Sucre (g)  </label><input class="modifyInput" type="text" id="newSucreInput" value="' + alimentData.result.aliment.sucre + '" placeholder="Sucre (g)" /></li>' +
-                '<li><label>Protéines (g)   </label><input class="modifyInput" type="text" id="newProteineInput" value="' + alimentData.result.aliment.proteines + '" placeholder="Protéines (g)" /></li>' +
+                '<li><label>Protéines (g)   </label><input class="modifyInput" type="text" id="newProteinesInput" value="' + alimentData.result.aliment.proteines + '" placeholder="Protéines (g)" /></li>' +
                 '<li><label>Fibre Alimentaire (g) </label><input class="modifyInput" type="text" id="newFibreAlimentaireInput" value="' + alimentData.result.aliment.fibre_alimentaire + '" placeholder="Fibre Alimentaire (g)" /></li>' +
                 '<li><label>Matière grasse (g)  </label><input class="modifyInput" type="text" id="newMatiereGrasseInput" value="' + alimentData.result.aliment.matieres_grasses + '" placeholder="Matière grasse (g)" /></li>' +
                 '<li><label>Alcool (en %)  </label><input class="modifyInput" type="text" id="newAlcoolInput" value="' + alimentData.result.aliment.alcool + '" placeholder="Alcool (en %)" /></li>' +
