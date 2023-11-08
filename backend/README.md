@@ -464,6 +464,7 @@ __Format :__
         "utilisateur": {
             "id": _int_,
             "email": _string_,
+            "password": _string_,
             "nom": _string_,
             "prenom": _string_,
             "age": _int_,
@@ -495,6 +496,7 @@ __Format :__
             {
                 "id": _int_,
                 "email": _string_,
+                "password": _string_,
                 "nom": _string_,
                 "prenom": _string_,
                 "age": _int_,
@@ -520,6 +522,7 @@ __Paramètre POST :__
 ```json
 {
     "email": _string_,
+    "password": _string_,
     "nom": _string_,
     "prenom": _string_,
     "age": _int_,
@@ -555,6 +558,7 @@ __Paramètre PUT :__
 ```json
 {
     "email": _string_,
+    "password": _string_,
     "nom": _string_,
     "prenom": _string_,
     "age": _int_,

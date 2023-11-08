@@ -3,6 +3,7 @@
     $request = $pdo->prepare("
         SELECT ID_USER AS id,
                EMAIL AS email,
+               PASSWORD as password,
                NOM AS nom,
                PRENOM AS prenom,
                AGE as age,
@@ -32,6 +33,7 @@
     $request = $pdo->prepare("
         SELECT ID_USER AS id,
                EMAIL AS email,
+               PASSWORD as password,
                NOM AS nom,
                PRENOM AS prenom,
                AGE as age,
@@ -60,6 +62,8 @@
   function createOne($pdo, $input){
     if(!isset($input->email) ||
         strlen($input->email) <1 ||
+        !isset($input->password) ||
+        strlen($input->password) <1 ||
         !isset($input->nom) ||
         strlen($input->nom) <1 ||
         !isset($input->age) ||
@@ -75,8 +79,8 @@
 
     try{
       $request = $pdo->prepare("
-        INSERT INTO USER (ID_USER, EMAIL, NOM, PRENOM, AGE, ISMALE, POIDS, TAILLE, SPORT)
-        VALUES (NULL, '{$input->email}', '{$input->nom}',"
+        INSERT INTO USER (ID_USER, EMAIL, PASSWORD, NOM, PRENOM, AGE, ISMALE, POIDS, TAILLE, SPORT)
+        VALUES (NULL, '{$input->email}', '{$input->nom}', '{$input->password}', "
                 .(isset($input->prenom) ? "'{$input->prenom}'" : "NULL").",
                 {$input->age}, {$input->is_male},
                 {$input->poids}, {$input->taille},
@@ -109,6 +113,10 @@
       if(isset($input->email)){
         $request_string .= " EMAIL = '{$input->email}',";
         $res[] = "email=".$input->email;
+      }
+      if(isset($input->password)){
+        $request_string .= " PASSWORD = '{$input->password}',";
+        $res[] = "password=".$input->password;
       }
       if(isset($input->nom)){
         $request_string .= " NOM = '{$input->nom}',";
