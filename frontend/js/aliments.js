@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    function popMessage(message) {
+    /*function popMessage(message) {
         var popup = document.createElement("div");
         popup.style.position = "fixed";
         popup.style.top = "0";
@@ -15,7 +15,7 @@ $(document).ready(function () {
         document.body.appendChild(popup);
             console.log('popup')
 
-    }
+    }*/
 
     let table = new DataTable('#alimentsDataTable');
     let alimentsTable = []; // stock l'id et le nom des aliments dans un tableau
@@ -55,14 +55,17 @@ $(document).ready(function () {
 
                 var nutrimentsData = '<ul>';
 
-                if (aliment.indice_nova !== 0 && aliment.indice_nova !== "") {
+                if (aliment.indice_nova != 0 && aliment.indice_nova !== "") {
                     nutrimentsData += '<li >Indice Nova : ' + aliment.indice_nova + '/4</li>';
                 } else {
                     nutrimentsData += '<li>Indice Nova : Non renseigné </li>';
                 }
-
+                if (aliment.energie_kcal != 0 && aliment.indice_nova !== "") {
+                    nutrimentsData += '<li >Énergie : ' + aliment.energie_kcal + 'kcal</li>';
+                } else {
+                    nutrimentsData += '<li>Énergie : Non renseigné </li>';
+                }
                 nutrimentsData +=
-                    '<li >Énergie : ' + aliment.energie_kcal + 'kcal</li>' +
                     '<li>Sel : ' + aliment.sel + 'g</li>' +
                     '<li>Sucre : ' + aliment.sucre + 'g</li>' +
                     '<li>Protéines : ' + aliment.proteines + 'g</li>' +
@@ -345,9 +348,6 @@ $(document).ready(function () {
 
 
     //modification d'un aliment
-
-
-
     // Fonction pour effectuer la requête AJAX pour mettre à jour l'aliment
     function modifierAliment(data,idAliment) {
         $.ajax({
@@ -360,7 +360,7 @@ $(document).ready(function () {
             .done(function(response) {
                 // Traitement en cas de succès
                 console.log("Aliment mis à jour avec succès :", response);
-                //location.reload();
+                location.reload();
             })
             .fail(function(error) {
                 // Traitement en cas d'échec
@@ -557,7 +557,23 @@ $(document).ready(function () {
             "compose_par": []
         };
 
-
+        if (newAliment.ingredient_de[0].id_aliment === "" || newAliment.ingredient_de[0].id_aliment === null || newAliment.ingredient_de[0].id_aliment === undefined) {
+            // Crée un nouvel newAliment avec "ingredient_de" comme un tableau vide
+            newAliment = {
+                "nom": newNom,
+                "is_liquid": newIsLiquid,
+                "indice_nova": newIndiceNova,
+                "energie_kcal": newEnergie,
+                "sel": newsel,
+                "sucre": newSucre,
+                "proteines": newProteines,
+                "fibre_alimentaire": newFibre,
+                "matieres_grasses": newMatieres,
+                "alcool": newAlcool,
+                "ingredient_de": [],
+                "compose_par": []
+            };
+        }
 
         console.log(idAliment);
 
