@@ -3,7 +3,7 @@ function getAll($pdo){
   $request = $pdo->prepare(
       "SELECT ID_REPAS AS id, ID_ALIMENT_FK AS id_aliment, ID_USER_FK AS id_user, `DATE` AS `date`, QUANTITE as quantite
        FROM ALIMENT_CONSOMME
-       ORDER BY `date`"
+       ORDER BY `date` DESC"
   );
 
   $request->execute();
@@ -25,7 +25,7 @@ function getUserAll($pdo, $id){
       "SELECT ID_REPAS AS id, ID_ALIMENT_FK AS id_aliment, ID_USER_FK AS id_user, `DATE` AS `date`, QUANTITE as quantite
        FROM ALIMENT_CONSOMME
        WHERE ID_USER_FK = {$id}
-       ORDER BY `date`"
+       ORDER BY `date` DESC"
   );
 
   $request->execute();

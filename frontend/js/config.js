@@ -1,0 +1,1 @@
+const prefixeEndpoint = "http://localhost/~spinelli/Projet_IDAW";

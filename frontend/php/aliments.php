@@ -25,6 +25,7 @@
                 </div>
         </div>
     </main>
-    <script type="text/javascript" src="../js/aliments.js">
+    <script src="../js/config.js"></script>
+    <script type="text/javascript" src="../js/aliments.js"></script>
     </script>
 

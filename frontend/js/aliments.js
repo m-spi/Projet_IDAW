@@ -24,7 +24,7 @@ $(document).ready(function () {
     // affiche le tableau aliments
     $.ajax({
         // L'URL de la requête
-        url: "http://localhost/Projet_IDAW/backend/aliments.php",
+        url: prefixeEndpoint+"/backend/aliments.php",
         // La méthode d'envoi (type de requête)
         method: "GET",
         // Le format de réponse attendu
@@ -75,7 +75,7 @@ $(document).ready(function () {
                     //aliment parent = ingrédient de quoi d'un aliment parent
                     aliment.ingredient_de.forEach(function(idAlimentParent) {
                         var nomAlimentParent = trouverNomAlimentAvecId(idAlimentParent);
-                        composé += '<li class="ingredient_deListe">' + nomIngredient + '</li>';
+                        composé += '<li class="ingredient_deListe">' + nomAlimentParent + '</li>';
                     });
 
                 } else {
@@ -278,7 +278,7 @@ $(document).ready(function () {
     // Fonction pour effectuer la requête AJAX pour ajouter l'aliment
     function ajouterAliment(data) {
         $.ajax({
-            url: "http://localhost/Projet_IDAW/backend/aliments.php",
+            url: prefixeEndpoint+"/backend/aliments.php",
             method: "POST", // Utilisez la méthode appropriée (POST, PUT, etc.)
             dataType: "json",
             data: JSON.stringify(data),
@@ -309,7 +309,7 @@ $(document).ready(function () {
 
     function deleteAliment(idAliment) {
         $.ajax({
-            url: "http://localhost/Projet_IDAW/backend/aliments.php/"+idAliment,
+            url: prefixeEndpoint+"/backend/aliments.php/"+idAliment,
             method: "DELETE", // Utilisez la méthode appropriée (POST, PUT, etc.)
             dataType: "json",
         })
