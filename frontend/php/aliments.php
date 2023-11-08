@@ -10,7 +10,7 @@
                     <i class="fas fa-table me-1"></i> Mes aliments
                 </div>
                 <div class="card-body">
-                    <table id="alimentsDataTable" class="hover cell-border order-column row-border ">
+                    <table id="alimentsDataTable" class="hover  order-column row-border ">
                         <thead>
                         <tr>
                             <th>Aliment</th>
