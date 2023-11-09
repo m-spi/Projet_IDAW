@@ -107,18 +107,27 @@ function createOne($pdo, $input){
 
 function updateOne($pdo, $id, $input){
     try{
-        $request_string = "UPDATE USER SET ";
+      $request_string = "UPDATE USER SET ";
 
       $res = array();
       if(isset($input->email)){
+        if(strlen($input->email) == 0)
+          inputError('Email de taille 0');
+
         $request_string .= " EMAIL = '{$input->email}',";
         $res[] = "email=".$input->email;
       }
       if(isset($input->password)){
+        if(strlen($input->password) == 0)
+          inputError('Mot de passe de taille 0');
+
         $request_string .= " PASSWORD = '{$input->password}',";
         $res[] = "password=".$input->password;
       }
       if(isset($input->nom)){
+        if(strlen($input->nom) == 0)
+          inputError('Nom de taille 0');
+
         $request_string .= " NOM = '{$input->nom}',";
         $res[] = "nom=".$input->nom;
       }
@@ -160,8 +169,8 @@ function updateOne($pdo, $id, $input){
         http_response_code(202);
         return json_encode($res);
     }catch(PDOException $erreur){
-        echo 'Erreur : '.$erreur->getMessage();
-        http_response_code(500);
+      echo 'Erreur : '.$erreur->getMessage();
+      http_response_code(500);
     }
 }
 
@@ -182,4 +191,15 @@ function deleteOne($pdo, $id){
         echo 'Erreur : '.$err->getMessage();
         http_response_code(500);
     }
+}
+
+function inputError($errorString){
+  $res = array(
+      "http_status" => 400,
+      "response" => "Erreur : ".$errorString
+  );
+
+  http_response_code(400);
+  echo json_encode($res);
+  exit(1);
 }
