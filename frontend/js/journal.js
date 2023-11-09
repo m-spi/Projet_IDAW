@@ -174,7 +174,7 @@ $(document).ready(function () {
         /*var userId;*/
         var date = $('#dateInput').val();
         date = date.replace('T', ' ');
-        date += ":00:00";
+        date += ":00";
         var quantite = $('#quantiteInput').val();
         // on vérifie que les champs sont bien complétés
         if (platId == "") {
@@ -341,7 +341,7 @@ $(document).ready(function () {
         /*var userId;*/
        var newDate = $('#newDateInput').val();
         newDate = newDate.replace('T', ' ');
-        newDate += ":00:00";
+        newDate += ":00";
         var newQuantite = $('#newQuantiteInput').val();
         // on vérifie que les champs sont bien complétés
         if (newPlatId == "") {
