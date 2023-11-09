@@ -24,7 +24,7 @@
                 displayRecommendation('Attention vous consommez trop de calories!', 'index.php?page=warningEnergie');
                 ?>
             </div>
-            <div class="rr">
+            <!---<div class="rr">
                 <h1 class="mt-4 h3Size">Mon bilan en graphiques</h1>
                 <div class="dropdown">
                     <button class="side-btn smallSize"  id="selectedBtn">Sélectionner une donnée<span class="arrow-down"></span></button>
@@ -55,42 +55,24 @@
                         <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
                     </div>
                 </div>
-            </div>
-            <?php
-            require_once ('codeFactorisé/dataTables.php');
-            $dataJSON =
-               '[
-        {
-            "id": 1,
-            "nom_aliment": "Pommes",
-            "Date de consommation": "2023-10-30",
-            "indice_nova": 2,
-            "energie_kcal": 52.0,
-            "sucre": 10.4,
-            "proteine": 0.26,
-            "fibre_alimentaire": 2.4,
-            "matiere_grasse": 0.2,
-            "alcool": 0.0
-        },
-        {
-            "id": 2,
-            "nom_aliment": "Bananes",
-            "Date de consommation": "2023-10-29",
-            "indice_nova": 3,
-            "energie_kcal": 89.0,
-            "sucre": 12.2,
-            "proteine": 1.1,
-            "fibre_alimentaire": 2.6,
-            "matiere_grasse": 0.3,
-            "alcool": 0.0
-        }
-    ]'
-
-            ;
-
-            displayDataTable($dataJSON, 'Tableau de données');
-
-            ?>
+            </div>-->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i> Mon historique de consommation
+                </div>
+                <div class="card-body">
+                    <table id="journalDataTable"  class="hover  order-column row-border ">
+                        <thead>
+                        <tr>
+                            <th>Aliments/Plats consommé</th>
+                            <th>Date de consommation</th>
+                            <th>Quantité</th>
+                            <th>Valeurs nutritionnelles du plat</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
         </div>
     </main>
 
