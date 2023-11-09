@@ -25,7 +25,7 @@ $(document).ready(function () {
     // affiche le tableau aliments
     $.ajax({
         // L'URL de la requête
-        url: "http://localhost/Projet_IDAW/backend/aliments.php",
+        url: prefixeEndpoint+"/backend/aliments.php",
         // La méthode d'envoi (type de requête)
         method: "GET",
         // Le format de réponse attendu
@@ -216,29 +216,29 @@ $(document).ready(function () {
 
     });
 
-    //ajouter l'aliment
+    // Fonction pour effectuer la requête AJAX pour ajouter l'aliment
     function ajouterAliment(data) {
         $.ajax({
-            url: "http://localhost/Projet_IDAW/backend/aliments.php",
-            method: "POST",
+            url: prefixeEndpoint+"/backend/aliments.php",
+            method: "POST", // Utilisez la méthode appropriée (POST, PUT, etc.)
             dataType: "json",
             data: data,
             contentType: "application/json",
         })
             .done(function(response) {
-
+                // Traitement en cas de succès
                 console.log("Aliment ajouté avec succès :", response);
                 location.reload();
             })
             .fail(function(error) {
-
+                // Traitement en cas d'échec
                 console.error("Erreur lors de l'ajout de l'aliment :", error);
             });
     }
 
     // Gestionnaire d'événements pour le bouton "Valider"
     $(document).on('click', '#validerBtn', function () {
-
+            // Récupérer les données des champs d'entrée
             let ok = 1 ;
 
             var pourcentageComposition = $('#pourcentageCompositionInput').val();
@@ -330,7 +330,7 @@ $(document).ready(function () {
 
     function deleteAliment(idAliment) {
         $.ajax({
-            url: "http://localhost/Projet_IDAW/backend/aliments.php/"+idAliment,
+            url: prefixeEndpoint+"/backend/aliments.php/"+idAliment,
             method: "DELETE", // Utilisez la méthode appropriée (POST, PUT, etc.)
             dataType: "json",
         })
@@ -351,7 +351,7 @@ $(document).ready(function () {
     // Fonction pour effectuer la requête AJAX pour mettre à jour l'aliment
     function modifierAliment(data,idAliment) {
         $.ajax({
-            url: "http://localhost/Projet_IDAW/backend/aliments.php/" + idAliment,
+            url: prefixeEndpoint+"/backend/aliments.php/" + idAliment,
             method: "PUT",
             dataType: "json",
             data: data,
@@ -385,7 +385,7 @@ $(document).ready(function () {
 
     function getAlimentByID(idAliment, callback) {
         $.ajax({
-            url: "http://localhost/Projet_IDAW/backend/aliments.php/" + idAliment,
+            url: prefixeEndpoint+"/backend/aliments.php/" + idAliment,
             method: "GET",
             dataType: "json"
         })
@@ -556,7 +556,6 @@ $(document).ready(function () {
             ],
             "compose_par": []
         };
-        console.log("preenvoie"+ JSON.stringify(newAliment));
 
         if (newAliment.ingredient_de[0].id_aliment === "" || newAliment.ingredient_de[0].id_aliment === null || newAliment.ingredient_de[0].id_aliment === undefined) {
             // Crée un nouvel newAliment avec "ingredient_de" comme un tableau vide
@@ -578,7 +577,7 @@ $(document).ready(function () {
 
         console.log(idAliment);
 
-        console.log("newAliment: " + JSON.stringify(newAliment));
+
         console.log(modifOk);
         if (modifOk == 1) {
             console.log("newAliment: " + JSON.stringify(newAliment));

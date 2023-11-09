@@ -1,3 +1,2 @@
 <?php
-$prefixeEndpoint ="http://localhost/Projet_IDAW";
-?>
+define('prefixeEndpoint', "http/localhost/~spinelli/Projet_IDAW/");

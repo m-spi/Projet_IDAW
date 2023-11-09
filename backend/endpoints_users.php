@@ -1,5 +1,5 @@
 <?php
-function getAll($pdo){
+  function getAll($pdo){
     $request = $pdo->prepare("
         SELECT ID_USER AS id,
                EMAIL AS email,
@@ -27,9 +27,9 @@ function getAll($pdo){
 
     http_response_code(200);
     return json_encode($res);
-}
+  }
 
-function getOne($pdo, $id){
+  function getOne($pdo, $id){
     $request = $pdo->prepare("
         SELECT ID_USER AS id,
                EMAIL AS email,
@@ -57,9 +57,9 @@ function getOne($pdo, $id){
 
     http_response_code(200);
     return json_encode($res);
-}
+  }
 
-function createOne($pdo, $input){
+  function createOne($pdo, $input){
     if(!isset($input->email) ||
         strlen($input->email) <1 ||
         !isset($input->password) ||
@@ -72,9 +72,9 @@ function createOne($pdo, $input){
         !isset($input->taille) ||
         !isset($input->sport)
     ){
-        echo 'Erreur : Il manque au moins un paramètre.';
-        http_response_code(400);
-        exit(1);
+      echo 'Erreur : Il manque au moins un paramètre.';
+      http_response_code(400);
+      exit(1);
     }
 
     try{
@@ -86,100 +86,100 @@ function createOne($pdo, $input){
                 {$input->poids}, {$input->taille},
                 {$input->sport})
       ");
-        $request->execute();
+      $request->execute();
 
-        $last_id = $pdo->lastInsertId();
-        $res = array("id" => $last_id);
-        $res = array(
-            "http_status" => 201,
-            "response" => "Entrée insérée avec succès.",
-            "result" => $res
-        );
+      $last_id = $pdo->lastInsertId();
+      $res = array("id" => $last_id);
+      $res = array(
+          "http_status" => 201,
+          "response" => "Entrée insérée avec succès.",
+          "result" => $res
+      );
 
-        http_response_code(201);
-        return json_encode($res);
+      http_response_code(201);
+      return json_encode($res);
     }catch(PDOException $erreur){
-        echo 'Erreur : '.$erreur->getMessage();
-        http_response_code(500);
-        return "";
+      echo 'Erreur : '.$erreur->getMessage();
+      http_response_code(500);
+      return "";
     }
-}
+  }
 
-function updateOne($pdo, $id, $input){
+  function updateOne($pdo, $id, $input){
     try{
-        $request_string = "UPDATE USER SET ";
+      $request_string = "UPDATE USER SET ";
 
-        $res = array();
-        if(isset($input->email)){
-            $request_string .= " EMAIL = '{$input->email}',";
-            $res[] = "email=".$input->email;
-        }
-        if(isset($input->password)){
-            $request_string .= " PASSWORD = '{$input->password}',";
-            $res[] = "password=".$input->password;
-        }
-        if(isset($input->nom)){
-            $request_string .= " NOM = '{$input->nom}',";
-            $res[] = "nom=".$input->nom;
-        }
-        if(isset($input->prenom)){
-            $request_string .= " PRENOM = '{$input->prenom}',";
-            $res[] = "prenom=".$input->prenom;
-        }
-        if(isset($input->age)){
-            $request_string .= " AGE = {$input->age},";
-            $res[] = "age=".$input->age;
-        }
-        if(isset($input->is_male)){
-            $request_string .= " ISMALE = {$input->is_male},";
-            $res[] = "is_male=".$input->is_male;
-        }
-        if(isset($input->poids)){
-            $request_string .= " POIDS = {$input->poids},";
-            $res[] = "poids=".$input->poids;
-        }
-        if(isset($input->taille)){
-            $request_string .= " TAILLE = {$input->taille},";
-            $res[] = "taille=".$input->taille;
-        }
-        if(isset($input->sport)){
-            $request_string .= " SPORT = {$input->sport},";
-            $res[] = "sport=".$input->sport;
-        }
-        $request_string = substr($request_string,0,strlen($request_string)-1);
-        $request_string .= " WHERE ID_USER = {$id}";
+      $res = array();
+      if(isset($input->email)){
+        $request_string .= " EMAIL = '{$input->email}',";
+        $res[] = "email=".$input->email;
+      }
+      if(isset($input->password)){
+        $request_string .= " PASSWORD = '{$input->password}',";
+        $res[] = "password=".$input->password;
+      }
+      if(isset($input->nom)){
+        $request_string .= " NOM = '{$input->nom}',";
+        $res[] = "nom=".$input->nom;
+      }
+      if(isset($input->prenom)){
+        $request_string .= " PRENOM = '{$input->prenom}',";
+        $res[] = "prenom=".$input->prenom;
+      }
+      if(isset($input->age)){
+        $request_string .= " AGE = {$input->age},";
+        $res[] = "age=".$input->age;
+      }
+      if(isset($input->is_male)){
+        $request_string .= " ISMALE = {$input->is_male},";
+        $res[] = "is_male=".$input->is_male;
+      }
+      if(isset($input->poids)){
+        $request_string .= " POIDS = {$input->poids},";
+        $res[] = "poids=".$input->poids;
+      }
+      if(isset($input->taille)){
+        $request_string .= " TAILLE = {$input->taille},";
+        $res[] = "taille=".$input->taille;
+      }
+      if(isset($input->sport)){
+        $request_string .= " SPORT = {$input->sport},";
+        $res[] = "sport=".$input->sport;
+      }
+      $request_string = substr($request_string,0,strlen($request_string)-1);
+      $request_string .= " WHERE ID_USER = {$id}";
 
-        $request = $pdo->prepare($request_string);
-        $request->execute();
-        $res = array(
-            "http_status" => 202,
-            "response" => "Utilisateur mis à jour avec succès.",
-            "result" => $res
-        );
+      $request = $pdo->prepare($request_string);
+      $request->execute();
+      $res = array(
+          "http_status" => 202,
+          "response" => "Utilisateur mis à jour avec succès.",
+          "result" => $res
+      );
 
-        http_response_code(202);
-        return json_encode($res);
+      http_response_code(202);
+      return json_encode($res);
     }catch(PDOException $erreur){
-        echo 'Erreur : '.$erreur->getMessage();
-        http_response_code(500);
+      echo 'Erreur : '.$erreur->getMessage();
+      http_response_code(500);
     }
-}
+  }
 
-function deleteOne($pdo, $id){
+  function deleteOne($pdo, $id){
     try{
-        $request = $pdo->prepare("DELETE FROM USER WHERE ID_USER = {$id}");
-        $request->execute();
+      $request = $pdo->prepare("DELETE FROM USER WHERE ID_USER = {$id}");
+      $request->execute();
 
-        $res = array("id" => $id);
-        $res = array(
-            "http_status" => 202,
-            "response" => "Utilisateur supprimé avec succès.",
-            "result" => $res
-        );
-        http_response_code(202);
-        return json_encode($res);
+      $res = array("id" => $id);
+      $res = array(
+          "http_status" => 202,
+          "response" => "Utilisateur supprimé avec succès.",
+          "result" => $res
+      );
+      http_response_code(202);
+      return json_encode($res);
     }catch(PDOException $err){
-        echo 'Erreur : '.$err->getMessage();
-        http_response_code(500);
+      echo 'Erreur : '.$err->getMessage();
+      http_response_code(500);
     }
-}
+  }

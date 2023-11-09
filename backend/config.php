@@ -3,5 +3,5 @@
   define('_MYSQL_PORT',3307);
   define('_MYSQL_DBNAME','TraqueTaBouffe');
   define('_MYSQL_USER','root');
-  define('_MYSQL_PASSWORD','');
+  define('_MYSQL_PASSWORD','root');
 ?>
