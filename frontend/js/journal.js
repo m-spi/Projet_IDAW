@@ -25,7 +25,7 @@ $(document).ready(function () {
 
     // GET Journal
     $.ajax({
-        url: "http://localhost/Projet_IDAW/backend/journal.php",
+        url: prefixeEndpoint+"/backend/journal.php",
         method: "GET",
         dataType: "json",
     })
@@ -36,7 +36,7 @@ $(document).ready(function () {
 
             // après avoir GET journal on GET aliment pour récupérer les infos
             $.ajax({
-                url: "http://localhost/Projet_IDAW/backend/aliments.php",
+                url: prefixeEndpoint+"/backend/aliments.php",
                 method: "GET",
                 dataType: "json",
             })
@@ -149,7 +149,7 @@ $(document).ready(function () {
 // creer une entree dans le journal
     function ajouterJournal(data) {
         $.ajax({
-            url: "http://localhost/Projet_IDAW/backend/journal.php",
+            url: prefixeEndpoint+"/backend/journal.php",
             method: "POST",
             dataType: "json",
             data: JSON.stringify(data),
@@ -221,7 +221,7 @@ $(document).ready(function () {
 
     function deleteJournal(idJournal) {
         $.ajax({
-            url: "http://localhost/Projet_IDAW/backend/journal.php/"+idJournal,
+            url: prefixeEndpoint+"/backend/journal.php/"+idJournal,
             method: "DELETE", // Utilisez la méthode appropriée (POST, PUT, etc.)
             dataType: "json",
         })
@@ -247,7 +247,7 @@ $(document).ready(function () {
     //modifier une entree
     function modifierJournal(data,idJournal) {
         $.ajax({
-            url: "http://localhost/Projet_IDAW/backend/journal.php/" + idJournal,
+            url: prefixeEndpoint+"/backend/journal.php/" + idJournal,
             method: "PUT",
             dataType: "json",
             data: data,
@@ -267,7 +267,7 @@ $(document).ready(function () {
     // get une entrée du journal
     function getJournalByID(idJournal, callback) {
         $.ajax({
-            url: "http://localhost/Projet_IDAW/backend/journal.php/" + idJournal,
+            url: prefixeEndpoint+"/backend/journal.php/" + idJournal,
             method: "GET",
             dataType: "json"
         })

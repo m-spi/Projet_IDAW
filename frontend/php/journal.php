@@ -23,7 +23,7 @@
                     </table>
                 </div>
     </main>
-    <script type="text/javascript" src="../js/journal.js">
-    </script>
+    <script src="../js/config.js"></script>
+    <script type="text/javascript" src="../js/journal.js"></script>
 
 

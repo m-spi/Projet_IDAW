@@ -13,6 +13,8 @@ if(isset($_POST['emailInput']) && isset($_POST['passwordInput'])){
       exit(0);
     }
   }
+
+  $wrong = true;
 }
 
 require_once('codeFactorisé/smallHeader.php');
@@ -66,5 +68,8 @@ require_once('codeFactorisé/smallHeader.php');
   </div>
 </div>
 <script src="../../node_modules/startbootstrap-sb-admin/dist/js/scripts.js"></script>
+<?php
+if($wrong) echo '<script>alert("Mauvais identifiants, veuillez réessayer.")</script>';
+?>
 </body>
 </html>
