@@ -3,7 +3,7 @@ $(document).ready(function () {
     let alimentsTable = []; // stock l'id et le nom des aliments dans un tableau
     let count = 0; // compteur pour ajouter qu'une fois une ligne vide
     let enModification = 0;
-
+    console.log("id_user" + id_user);
     function trouverNomAlimentAvecId(idIngredient) {
         var nomIngredient = "Inconnu";
         alimentsTable.forEach(function(aliment) {
@@ -25,7 +25,7 @@ $(document).ready(function () {
 
     // GET Journal
     $.ajax({
-        url: prefixeEndpoint+"/backend/journal.php",
+        url: prefixeEndpoint+"/backend/journal.php/user/"+id_user,
         method: "GET",
         dataType: "json",
     })
@@ -66,17 +66,17 @@ $(document).ready(function () {
                             nutrimentsPlat += '<li>Indice Nova : Non renseigné </li>';
                         }
                         if (platTrouve.energie_kcal != 0 && platTrouve.indice_nova !== "") {
-                            nutrimentsPlat += '<li >Énergie : ' + ((platTrouve.energie_kcal)*plat.quantite)/100 + 'kcal</li>';
+                            nutrimentsPlat += '<li >Énergie : ' + ( ((platTrouve.energie_kcal)*plat.quantite)/100 ).toFixed(2) + 'kcal</li>';
                         } else {
                             nutrimentsPlat += '<li>Énergie : Non renseigné </li>';
                         }
                         nutrimentsPlat +=
-                            '<li>Sel : ' + ((platTrouve.sel)*plat.quantite)/100 + 'g</li>' +
-                            '<li>Sucre : ' + ((platTrouve.sucre)*plat.quantite)/100 + 'g</li>' +
-                            '<li>Protéines : ' + ((platTrouve.proteines)*plat.quantite)/100+ 'g</li>' +
-                            '<li>Fibre alimentaire : ' + ((platTrouve.fibre_alimentaire)*plat.quantite)/100 + ' g</li>' +
-                            '<li>Matières grasses : ' + ((platTrouve.matieres_grasses)*plat.quantite)/100 + 'g</li>' +
-                            '<li>Alcool : ' + platTrouve.alcool + '%</li>' +
+                            '<li>Sel : ' + ( ((platTrouve.sel)*plat.quantite)/100 ).toFixed(2) + 'g</li>' +
+                            '<li>Sucre : ' + ( ((platTrouve.sucre)*plat.quantite)/100 ).toFixed(2) + 'g</li>' +
+                            '<li>Protéines : ' + ( ((platTrouve.proteines)*plat.quantite)/100 ).toFixed(2) + 'g</li>' +
+                            '<li>Fibre alimentaire : ' + ( ((platTrouve.fibre_alimentaire)*plat.quantite)/100 ).toFixed(2) + ' g</li>' +
+                            '<li>Matières grasses : ' + ( ((platTrouve.matieres_grasses)*plat.quantite)/100 ).toFixed(2) + 'g</li>' +
+                            '<li>Alcool : ' + platTrouve.alcool + '°</li>' +
                             '</ul>';
                         var buttons = '<div class="action-button-container" >' +
                             '<button class="action-button" id="modifier-Btn">' +
@@ -195,7 +195,7 @@ $(document).ready(function () {
         var journalData =
             {
                 "id_aliment": platId,
-                "id_user": 1,
+                "id_user": id_user,
                 "date": date,
                 "quantite": quantite,
             };
@@ -361,7 +361,7 @@ $(document).ready(function () {
         var newJournalData =
             {
                 "id_aliment": newPlatId,
-                "id_user": 1,
+                "id_user": id_user,
                 "date": newDate,
                 "quantite": newQuantite,
             };

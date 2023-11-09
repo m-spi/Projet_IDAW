@@ -22,8 +22,21 @@
                         </thead>
                     </table>
                 </div>
+            </div>
     </main>
-    <script src="../js/config.js"></script>
+    <?php
+    //session_start(); // Démarrez la session si ce n'est pas déjà fait
+
+    // Récupérez la valeur de $_SESSION['user']
+    $user = $_SESSION['user'];
+    ?>
+
+    <script>
+        // Utilisez la variable PHP dans votre code JavaScript
+        var id_user = <?php echo json_encode($user); ?>;
+        console.log("id_user "+id_user);
+    </script>
     <script type="text/javascript" src="../js/journal.js"></script>
+    <script src="../js/config.js"></script>
 
 

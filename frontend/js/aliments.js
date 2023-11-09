@@ -71,7 +71,7 @@ $(document).ready(function () {
                     '<li>Protéines : ' + aliment.proteines + 'g</li>' +
                     '<li>Fibre alimentaire : ' + aliment.fibre_alimentaire + ' g</li>' +
                     '<li>Matières grasses : ' + aliment.matieres_grasses + 'g</li>' +
-                    '<li>Alcool : ' + aliment.alcool + '%</li>' +
+                    '<li>Alcool : ' + aliment.alcool + '°</li>' +
                     '</ul>';
                 //creer le liste pour affficher les ingredient_de
                 var composé = '<ol class="composéCompositionColonne"> Ingrédient de : ';

@@ -6,10 +6,10 @@
                 <div class="dropdown">
                     <button class="side-btn"  id="selectedBtn">Sélectionner un bilan<span class="arrow-down"></span></button>
                     <div class="dropdown-content">
-                        <a href="bilan.php?jours=7">Aujourd'hui</a>
-                        <a href="bilan.php?jours=7">7 derniers jours</a>
-                        <a href="bilan.php?jours=14">14 derniers jours</a>
-                        <a href="bilan.php?jours=30">30 derniers jours</a>
+                        <button class="duration-button" data-duration="1">Aujourd'hui</button>
+                        <button class="duration-button" data-duration="7">7 derniers jours</button>
+                        <button class="duration-button" data-duration="14">14 derniers jours</button>
+                        <button class="duration-button" data-duration="30">30 derniers jours</button>
                     </div>
                 </div>
             </div>
@@ -56,6 +56,11 @@
                     </div>
                 </div>
             </div>-->
+            <div class="container-fluid px-4">
+                <div class="rr margin-bottom">
+                    <h1 class="mt-4">Mon Bilan</h1>
+
+                </div>
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i> Bilan nutritionnel
@@ -70,13 +75,30 @@
                             <th>Matières grasse (g)</th>
                             <th>Fibre alimentaire</th>
                             <th>Protéines</th>
-                            <th>Alcool</th>
+                            <!--<th>Alcool</th>-->
                         </tr>
                         </thead>
+                        <tbody>
+
+                        </tbody>
                     </table>
                 </div>
         </div>
     </main>
+    <?php
+    //session_start(); // Démarrez la session si ce n'est pas déjà fait
+
+    // Récupérez la valeur de $_SESSION['user']
+    $user = $_SESSION['user'];
+    ?>
+
+    <script>
+        // Utilisez la variable PHP dans votre code JavaScript
+        var id_user = <?php echo json_encode($user); ?>;
+        console.log("id_user "+id_user);
+    </script>
+    <script src="../js/dashBoard.js"></script>
+    <script src="../js/config.js"></script>
 
 
 
