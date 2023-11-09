@@ -134,7 +134,16 @@ h1 {
     display: flex;
     flex-direction: column;
     width: 15em;
-    margin :10px;
+    margin: 10px;
+}
+.small-column {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    margin: 3px;
+}
+b.small-column{
+    width: 11em;
 }
 
 .side-btn:hover{
@@ -143,6 +152,10 @@ h1 {
 }
 .mt-4 {
     margin-bottom: 36px;
+}
+.plr-8 {
+    padding-left: 72px;
+    padding-right: 72px;
 }
 .italic {
     font-style: italic;

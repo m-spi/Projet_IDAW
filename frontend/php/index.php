@@ -3,14 +3,14 @@ session_start();
 
 require_once('config.php');
 if(!isset($_SESSION['user'])){
-    header('Location: '.prefixeEndpoint.'/frontend/php/login.php');
+    header('Location: login.php', true, 401);
     exit(0);
 }
 
 require_once ('codeFactorisé/header.php');
 require_once ('codeFactorisé/menu.php');
 
-$currentPageId = 'accueil';
+$currentPageId = 'dashBoard';
 if(isset($_GET['page']))
 {
     $currentPageId = $_GET['page'];

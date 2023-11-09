@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+if(isset($_GET['disconnect'])){
+  session_unset();
+  session_destroy();
+  header("Location: login.php");
+}
+
 if(isset($_POST['emailInput']) && isset($_POST['passwordInput'])){
   require_once ('config.php');
   $users = json_decode(file_get_contents(prefixeEndpoint.'/backend/users.php'));
@@ -9,7 +15,7 @@ if(isset($_POST['emailInput']) && isset($_POST['passwordInput'])){
     if($u->email == $_POST['emailInput'] && $u->password == $_POST['passwordInput']){
       $_SESSION['user'] = $u->id;
       $_SESSION['prenom'] = $u->prenom;
-      header('Location: '.prefixeEndpoint.'/frontend/php/index.php');
+      header('Location: index.php', true, 303);
       exit(0);
     }
   }
