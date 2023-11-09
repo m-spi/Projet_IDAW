@@ -58,17 +58,19 @@
             </div>-->
             <div class="card mb-4">
                 <div class="card-header">
-                    <i class="fas fa-table me-1"></i> Mon historique de consommation
+                    <i class="fas fa-table me-1"></i> Bilan nutritionnel
                 </div>
                 <div class="card-body">
-                    <table id="journalDataTable"  class="hover  order-column row-border ">
+                    <table id="dashBoardDataTable"  class="hover  order-column row-border ">
                         <thead>
                         <tr>
-                            <th>Aliments/Plats consommé</th>
-                            <th>Date de consommation</th>
-                            <th>Quantité</th>
-                            <th>Valeurs nutritionnelles du plat</th>
-                            <th>Actions</th>
+                            <th>Energie (kcal)</th>
+                            <th>Sucre (g)</th>
+                            <th>Sel (g)</th>
+                            <th>Matières grasse (g)</th>
+                            <th>Fibre alimentaire</th>
+                            <th>Protéines</th>
+                            <th>Alcool</th>
                         </tr>
                         </thead>
                     </table>

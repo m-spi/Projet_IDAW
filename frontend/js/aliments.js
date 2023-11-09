@@ -302,6 +302,23 @@ $(document).ready(function () {
                 "compose_par": [
                 ]
             };
+        if (alimentData.ingredient_de[0].id === "" || alimentData.ingredient_de[0].id === null || alimentData.ingredient_de[0].id === undefined) {
+            // Crée un nouvel newAliment avec "ingredient_de" comme un tableau vide
+            var alimentData = {
+                "nom": nom,
+                "is_liquid": isLiquid, // Mettez la valeur appropriée
+                "indice_nova": indiceNova,
+                "energie_kcal": energie,
+                "sel": sel,
+                "sucre": sucre,
+                "proteines": proteines,
+                "fibre_alimentaire": fibre,
+                "matieres_grasses": matieres,
+                "alcool": alcool,
+                "ingredient_de": [],
+                "compose_par": []
+            };
+        }
             console.log(alimentData);
             console.log(typeof alimentData);
             if (ok === 1) {

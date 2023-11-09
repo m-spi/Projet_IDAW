@@ -19,7 +19,7 @@ if(isset($_POST['emailInput']) && isset($_POST['passwordInput'])){
 
 require_once('codeFactorisé/smallHeader.php');
 ?>
-<body class="bg-primary">
+<body class="loginBackground">
 <div id="layoutAuthentication">
   <div id="layoutAuthentication_content">
     <main>
@@ -43,8 +43,8 @@ require_once('codeFactorisé/smallHeader.php');
                   </div>
                 </form>
               </div>
-              <div class="card-footer text-center py-3">
-                <div class="small"><a href="register.php">Se créer un compte</a></div>
+              <!--<div class="card-footer text-center py-3">
+                <div class="small"><a href="register.php">Se créer un compte</a></div>-->
               </div>
             </div>
           </div>
@@ -56,12 +56,7 @@ require_once('codeFactorisé/smallHeader.php');
     <footer class="py-4 bg-light mt-auto">
       <div class="container-fluid px-4">
         <div class="d-flex align-items-center justify-content-between small">
-          <div class="text-muted">Copyright &copy; Your Website 2023</div>
-          <div>
-            <a href="#">Privacy Policy</a>
-            &middot;
-            <a href="#">Terms &amp; Conditions</a>
-          </div>
+          <div class="text-muted">Copyright &copy; Traque ta bouffe 2023</div>
         </div>
       </div>
     </footer>

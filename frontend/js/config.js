@@ -1,1 +1,1 @@
-const prefixeEndpoint = "http://localhost/~spinelli/Projet_IDAW";
+const prefixeEndpoint = "http://localhost/Projet_IDAW";
