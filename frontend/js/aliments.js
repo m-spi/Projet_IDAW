@@ -216,29 +216,29 @@ $(document).ready(function () {
 
     });
 
-    // Fonction pour effectuer la requête AJAX pour ajouter l'aliment
+    //ajouter l'aliment
     function ajouterAliment(data) {
         $.ajax({
             url: "http://localhost/Projet_IDAW/backend/aliments.php",
-            method: "POST", // Utilisez la méthode appropriée (POST, PUT, etc.)
+            method: "POST",
             dataType: "json",
             data: data,
             contentType: "application/json",
         })
             .done(function(response) {
-                // Traitement en cas de succès
+
                 console.log("Aliment ajouté avec succès :", response);
                 location.reload();
             })
             .fail(function(error) {
-                // Traitement en cas d'échec
+
                 console.error("Erreur lors de l'ajout de l'aliment :", error);
             });
     }
 
     // Gestionnaire d'événements pour le bouton "Valider"
     $(document).on('click', '#validerBtn', function () {
-            // Récupérer les données des champs d'entrée
+
             let ok = 1 ;
 
             var pourcentageComposition = $('#pourcentageCompositionInput').val();
@@ -421,7 +421,7 @@ $(document).ready(function () {
                 '<li><label>Energie (en kcal)  </label><input class="modifyInput" type="text" id="newEnergieInput" value="' + alimentData.result.aliment.energie_kcal + '" placeholder="Energie (kcal)" /></li>' +
                 '<li><label>Sel (g) </label><input class="modifyInput" type="text" id="newSelInput" value="' + alimentData.result.aliment.sel + '" placeholder="Sel (g)" /></li>' +
                 '<li><label>Sucre (g)  </label><input class="modifyInput" type="text" id="newSucreInput" value="' + alimentData.result.aliment.sucre + '" placeholder="Sucre (g)" /></li>' +
-                '<li><label>Protéines (g)   </label><input class="modifyInput" type="text" id="newProteineInput" value="' + alimentData.result.aliment.proteines + '" placeholder="Protéines (g)" /></li>' +
+                '<li><label>Protéines (g)   </label><input class="modifyInput" type="text" id="newProteinesInput" value="' + alimentData.result.aliment.proteines + '" placeholder="Protéines (g)" /></li>' +
                 '<li><label>Fibre Alimentaire (g) </label><input class="modifyInput" type="text" id="newFibreAlimentaireInput" value="' + alimentData.result.aliment.fibre_alimentaire + '" placeholder="Fibre Alimentaire (g)" /></li>' +
                 '<li><label>Matière grasse (g)  </label><input class="modifyInput" type="text" id="newMatiereGrasseInput" value="' + alimentData.result.aliment.matieres_grasses + '" placeholder="Matière grasse (g)" /></li>' +
                 '<li><label>Alcool (en %)  </label><input class="modifyInput" type="text" id="newAlcoolInput" value="' + alimentData.result.aliment.alcool + '" placeholder="Alcool (en %)" /></li>' +
@@ -556,6 +556,7 @@ $(document).ready(function () {
             ],
             "compose_par": []
         };
+        console.log("preenvoie"+ JSON.stringify(newAliment));
 
         if (newAliment.ingredient_de[0].id_aliment === "" || newAliment.ingredient_de[0].id_aliment === null || newAliment.ingredient_de[0].id_aliment === undefined) {
             // Crée un nouvel newAliment avec "ingredient_de" comme un tableau vide
@@ -577,7 +578,7 @@ $(document).ready(function () {
 
         console.log(idAliment);
 
-
+        console.log("newAliment: " + JSON.stringify(newAliment));
         console.log(modifOk);
         if (modifOk == 1) {
             console.log("newAliment: " + JSON.stringify(newAliment));

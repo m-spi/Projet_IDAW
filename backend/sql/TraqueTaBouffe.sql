@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `ALIMENTS` (
-  `ID_ALIMENT` int(11) NOT NULL,
-  `INDICE_NOVA` int(11) DEFAULT NULL,
-  `NOM_ALIMENT` varchar(1024) NOT NULL,
-  `ISLIQUID` tinyint(1) NOT NULL
+                            `ID_ALIMENT` int(11) NOT NULL,
+                            `INDICE_NOVA` int(11) DEFAULT NULL,
+                            `NOM_ALIMENT` varchar(1024) NOT NULL,
+                            `ISLIQUID` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -39,30 +39,30 @@ CREATE TABLE `ALIMENTS` (
 --
 
 INSERT INTO `ALIMENTS` (`ID_ALIMENT`, `INDICE_NOVA`, `NOM_ALIMENT`, `ISLIQUID`) VALUES
-(84, 1, 'eau cristaline', 1),
-(85, 4, 'coca', 1),
-(86, 4, 'IceTea', 1),
-(87, 4, 'Fanta', 1),
-(88, 4, 'Orangina', 1),
-(89, 1, 'Hépar', 1),
-(90, 1, 'Salveta', 1),
-(91, 4, 'Oasis', 1),
-(92, 1, 'Laitue', 0),
-(93, 4, 'Pain de mie blanc', 0),
-(94, 4, 'Pain de mie complet', 0),
-(95, 4, 'Nutella', 0),
-(96, 3, 'chocolat noir 70%', 0),
-(97, 1, 'flocons d\'avoine', 0),
+                                                                                    (84, 1, 'eau cristaline', 1),
+                                                                                    (85, 4, 'coca', 1),
+                                                                                    (86, 4, 'IceTea', 1),
+                                                                                    (87, 4, 'Fanta', 1),
+                                                                                    (88, 4, 'Orangina', 1),
+                                                                                    (89, 1, 'Hépar', 1),
+                                                                                    (90, 1, 'Salveta', 1),
+                                                                                    (91, 4, 'Oasis', 1),
+                                                                                    (92, 1, 'Laitue', 0),
+                                                                                    (93, 4, 'Pain de mie blanc', 0),
+                                                                                    (94, 4, 'Pain de mie complet', 0),
+                                                                                    (95, 4, 'Nutella', 0),
+                                                                                    (96, 3, 'chocolat noir 70%', 0),
+                                                                                    (97, 1, 'flocons d\'avoine', 0),
 (98, 4, 'Oreo', 0),
 (99, 4, 'velouté yahourt', 0),
 (100, 1, 'jus d\'orange', 1),
-(101, 3, 'Bière 1664', 1),
-(102, 4, 'Desperados', 1),
-(103, 3, 'leffe blonde', 1),
-(104, 3, 'yahourt nature', 0),
-(105, 4, 'pringles nature', 0),
-(106, 4, 'chocolat milka', 0),
-(107, 3, 'Chips nature lay\'s', 0);
+                                                                                    (101, 3, 'Bière 1664', 1),
+                                                                                    (102, 4, 'Desperados', 1),
+                                                                                    (103, 3, 'leffe blonde', 1),
+                                                                                    (104, 3, 'yahourt nature', 0),
+                                                                                    (105, 4, 'pringles nature', 0),
+                                                                                    (106, 4, 'chocolat milka', 0),
+                                                                                    (107, 3, 'Chips nature lay\'s', 0);
 
 -- --------------------------------------------------------
 
@@ -309,6 +309,7 @@ INSERT INTO `NUTRIMENTS` (`ID_NUTRIMENT`, `NOM_NUTRIMENT`) VALUES
 CREATE TABLE `USER` (
   `ID_USER` int(11) NOT NULL,
   `EMAIL` varchar(255) NOT NULL,
+  `PASSWORD` varchar(255) NOT NULL,
   `NOM` varchar(1024) NOT NULL,
   `PRENOM` varchar(1024) DEFAULT NULL,
   `AGE` int(11) NOT NULL,

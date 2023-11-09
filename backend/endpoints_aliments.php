@@ -246,7 +246,7 @@
             "sucre",
             "proteines",
             "fibre_alimentaire",
-            "matiere_grasses",
+            "matieres_grasses",
             "alcool"
         );
 
