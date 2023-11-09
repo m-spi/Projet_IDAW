@@ -80,7 +80,7 @@
     try{
       $request = $pdo->prepare("
         INSERT INTO USER (ID_USER, EMAIL, PASSWORD, NOM, PRENOM, AGE, ISMALE, POIDS, TAILLE, SPORT)
-        VALUES (NULL, '{$input->email}', '{$input->nom}', '{$input->password}', "
+        VALUES (NULL, '{$input->email}', '{$input->password}', '{$input->nom}', "
                 .(isset($input->prenom) ? "'{$input->prenom}'" : "NULL").",
                 {$input->age}, {$input->is_male},
                 {$input->poids}, {$input->taille},

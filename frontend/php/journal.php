@@ -10,7 +10,7 @@
                     <i class="fas fa-table me-1"></i> Mon historique de consommation
                 </div>
                 <div class="card-body">
-                    <table id="journalDataTable">
+                    <table id="journalDataTable"  class="hover  order-column row-border ">
                         <thead>
                         <tr>
                             <th>Aliments/Plats consommé</th>

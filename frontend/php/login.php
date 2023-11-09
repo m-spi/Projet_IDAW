@@ -3,12 +3,18 @@ session_start();
 
 if(isset($_POST['emailInput']) && isset($_POST['passwordInput'])){
   require_once ('config.php');
-  $users = file_get_contents(prefixeEndpoint.'/backend/users.php');
+  $users = json_decode(file_get_contents(prefixeEndpoint.'/backend/users.php'));
 
   foreach($users->result->utilisateurs as $u){
-    if($u->email == )
+    if($u->email == $_POST['emailInput'] && $u->password == $_POST['passwordInput']){
+      $_SESSION['user'] = $u->id;
+      $_SESSION['prenom'] = $u->prenom;
+      header('Location: '.prefixeEndpoint.'/frontend/php/index.php');
+      exit(0);
+    }
   }
 }
+
 require_once('codeFactorisé/smallHeader.php');
 ?>
 <body class="bg-primary">
@@ -21,7 +27,7 @@ require_once('codeFactorisé/smallHeader.php');
             <div class="card shadow-lg border-0 rounded-lg mt-5">
               <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
               <div class="card-body">
-                <form action="login.php" method="GET">
+                <form action="login.php" method="POST">
                   <div class="form-floating mb-3">
                     <input class="form-control" id="inputEmail" type="email" name="emailInput" placeholder="name@example.com" />
                     <label for="inputEmail">Email address</label>
@@ -31,7 +37,7 @@ require_once('codeFactorisé/smallHeader.php');
                     <label for="inputPassword">Password</label>
                   </div>
                   <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                    <a class="btn btn-primary" href="login.php">Login</a>
+                    <input type="submit" class="btn btn-primary" value="Login">
                   </div>
                 </form>
               </div>
