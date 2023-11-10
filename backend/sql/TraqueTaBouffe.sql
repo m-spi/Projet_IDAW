@@ -39,30 +39,30 @@ CREATE TABLE `ALIMENTS` (
 --
 
 INSERT INTO `ALIMENTS` (`ID_ALIMENT`, `INDICE_NOVA`, `NOM_ALIMENT`, `ISLIQUID`) VALUES
-                                                                                    (1, 1, 'eau cristaline', 1),
-                                                                                    (2, 4, 'coca', 1),
-                                                                                    (3, 4, 'IceTea', 1),
-                                                                                    (4, 4, 'Fanta', 1),
-                                                                                    (5, 4, 'Orangina', 1),
-                                                                                    (6, 1, 'Hépar', 1),
-                                                                                    (7, 1, 'Salveta', 1),
-                                                                                    (8, 4, 'Oasis', 1),
-                                                                                    (9, 1, 'Laitue', 0),
-                                                                                    (10, 4, 'Pain de mie blanc', 0),
-                                                                                    (11, 4, 'Pain de mie complet', 0),
-                                                                                    (12, 4, 'Nutella', 0),
-                                                                                    (13, 3, 'chocolat noir 70%', 0),
-                                                                                    (14, 1, 'flocons d\'avoine', 0),
-                                                                                    (15, 4, 'Oreo', 0),
-                                                                                    (16, 4, 'velouté yahourt', 0),
-                                                                                    (17, 1, 'jus d\'orange', 1),
-                                                                                    (18, 3, 'Bière 1664', 1),
-                                                                                    (19, 4, 'Desperados', 1),
-                                                                                    (20, 3, 'leffe blonde', 1),
-                                                                                    (21, 3, 'yahourt nature', 0),
-                                                                                    (22, 4, 'pringles nature', 0),
-                                                                                    (23, 4, 'chocolat milka', 0),
-                                                                                    (24, 3, 'Chips nature lay\'s', 0);
+(1, 1, 'eau cristaline', 1),
+(2, 4, 'coca', 1),
+(3, 4, 'IceTea', 1),
+(4, 4, 'Fanta', 1),
+(5, 4, 'Orangina', 1),
+(6, 1, 'Hépar', 1),
+(7, 1, 'Salveta', 1),
+(8, 4, 'Oasis', 1),
+(9, 1, 'Laitue', 0),
+(10, 4, 'Pain de mie blanc', 0),
+(11, 4, 'Pain de mie complet', 0),
+(12, 4, 'Nutella', 0),
+(13, 3, 'chocolat noir 70%', 0),
+(14, 1, 'flocons d\'avoine', 0),
+(15, 4, 'Oreo', 0),
+(16, 4, 'velouté yahourt', 0),
+(17, 1, 'jus d\'orange', 1),
+(18, 3, 'Bière 1664', 1),
+(19, 4, 'Desperados', 1),
+(20, 3, 'leffe blonde', 1),
+(21, 3, 'yahourt nature', 0),
+(22, 4, 'pringles nature', 0),
+(23, 4, 'chocolat milka', 0),
+(24, 3, 'Chips nature lay\'s', 0);
 
 -- --------------------------------------------------------
 
@@ -77,6 +77,12 @@ CREATE TABLE `ALIMENT_CONSOMME` (
   `DATE` datetime NOT NULL,
   `QUANTITE` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `ALIMENT_CONSOMME` (`ID_REPAS`, `ID_ALIMENT_FK`, `ID_USER_FK`, `DATE`, `QUANTITE`) VALUES
+(1, 1, 1, '2023-11-10 14:57:35', 65),
+(2, 12, 1, '2023-11-10 16:30:00', 42),
+(3, 11, 1, '2023-11-09 12:15:12', 150),
+(4, 8, 1, '2023-11-01 19:21:59', 100);
 
 -- --------------------------------------------------------
 
@@ -319,6 +325,10 @@ CREATE TABLE `USER` (
   `SPORT` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `USER` (`ID_USER`, `EMAIL`, `PASSWORD`, `NOM`, `PRENOM`, `AGE`, `ISMALE`, `POIDS`, `TAILLE`, `SPORT`) VALUES
+(1, 'test@imt.fr', 'test', 'Dupont', 'Jean', 34, 1, 75, 180, 1),
+(2, 'test2@imt.fr', 'test2', 'Dupont', 'Jeanne', 26, 0, 56, 162, 3);
+
 --
 -- Indexes for dumped tables
 --
@@ -364,7 +374,7 @@ ALTER TABLE `NUTRIMENTS`
 --
 ALTER TABLE `USER`
   ADD PRIMARY KEY (`ID_USER`),
-  ADD KEY `EMAIL` (`EMAIL`);
+  ADD UNIQUE `EMAIL` (`EMAIL`);
 
 --
 -- AUTO_INCREMENT for dumped tables
