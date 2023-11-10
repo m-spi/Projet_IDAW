@@ -39,12 +39,12 @@ require_once('codeFactorisé/smallHeader.php');
               <div class="card-body">
                 <form action="login.php" method="POST">
                   <div class="form-floating mb-3">
-                    <input class="form-control" id="inputEmail" type="email" name="emailInput" placeholder="name@example.com" />
+                    <input class="form-control" id="inputEmail" type="email" name="emailInput" placeholder="nom@exemple.fr" />
                     <label for="inputEmail">Email address</label>
                   </div>
                   <div class="form-floating mb-3">
-                    <input class="form-control" id="inputPassword" type="password" name="passwordInput" placeholder="Mot de Passe" />
-                    <label for="inputPassword">Password</label>
+                    <input class="form-control" id="inputPassword" type="password" name="passwordInput" placeholder="MotDePasse" />
+                    <label for="inputPassword">Mot de Passe</label>
                   </div>
                   <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                     <input type="submit" class="btn btn-primary" value="Login">
