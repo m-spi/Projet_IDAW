@@ -196,28 +196,28 @@ function Recommendations(duration, bilanData, userGender) {
         var quotas = userGender === 1 ? quotasNutriments1jour['homme'] : quotasNutriments1jour['femme'];
 
         if (parseFloat(bilanData.sel) > quotas.sel * duration) {
-            recommendationHtml += displayRecommendation("Attention vous avez consommé trop de sel !", "/Projet_IDAW/frontend/php/index.php?page=warningSel");
+            recommendationHtml += displayRecommendation("Attention vous avez consommé trop de sel !", prefixeEndpoint+"/frontend/php/index.php?page=warningSel");
             console.log("je suis dans if sel");
         }
         if (parseFloat(bilanData.sucre) > quotas.sucre * duration) {
-            recommendationHtml += displayRecommendation("Attention vous avez consommé trop de sucre !", "/Projet_IDAW/frontend/php/index.php?page=warningSucre");
+            recommendationHtml += displayRecommendation("Attention vous avez consommé trop de sucre !", prefixeEndpoint+"/frontend/php/index.php?page=warningSucre");
             console.log("je suis dans if sucre");
             console.log(recommendationHtml);
         }
         if (parseFloat(bilanData.energie) > quotas.energie * duration) {
-            recommendationHtml += displayRecommendation("Attention vous avez consommé trop de calories !", "/Projet_IDAW/frontend/php/index.php?page=warningEnergie");
+            recommendationHtml += displayRecommendation("Attention vous avez consommé trop de calories !", prefixeEndpoint+"/frontend/php/index.php?page=warningEnergie");
             console.log("je suis dans if energie");
         }
         if (parseFloat(bilanData.matieresGrasses )> quotas.matiere_grasse * duration) {
-            recommendationHtml += displayRecommendation("Attention vous avez consommé trop de matière grasse !", "/Projet_IDAW/frontend/php/index.php?page=warningMatiereGrasse");
+            recommendationHtml += displayRecommendation("Attention vous avez consommé trop de matière grasse !", prefixeEndpoint+"/frontend/php/index.php?page=warningMatiereGrasse");
             console.log("je suis dans if matiere grasse");
         }
         if (parseFloat(bilanData.proteines) > quotas.proteine * duration) {
-            recommendationHtml += displayRecommendation("Attention vous avez consommé trop de protéines !", "/Projet_IDAW/frontend/php/index.php?page=warningProteine");
+            recommendationHtml += displayRecommendation("Attention vous avez consommé trop de protéines !", prefixeEndpoint+"/frontend/php/index.php?page=warningProteine");
             console.log("if proteine");
         }
         if (parseFloat(bilanData.fibre) < (quotas.fibre) * duration) {
-            recommendationHtml += displayRecommendation("Attention vous ne consommez pas assez de fibres alimentaires !", "../../php/warningFibreAlimentaire.php")
+            recommendationHtml += displayRecommendation("Attention vous ne consommez pas assez de fibres alimentaires !", prefixeEndpoint+"/frontend/php/index.php?page=warningFibre")
             console.log("if fibre");
         }
         console.log("reco"+recommendationHtml)
