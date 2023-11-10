@@ -20,9 +20,7 @@ if(isset($_POST['emailInput']) && isset($_POST['passwordInput'])){
     }
   }
 
-
-} else {
-    $wrong = true;
+  $wrong = true;
 }
 
 require_once('codeFactorisé/smallHeader.php');
