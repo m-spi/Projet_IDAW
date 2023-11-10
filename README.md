@@ -14,6 +14,7 @@ Sur le dashboard vous pourrez :
 - Sélectionner les données de nutriments en particulier afin de visualiser l'**évolution de la consommation dans un graphique**.
 > Note :
 > Pour choisir un nutriment à visualiser sur un graphique veillez à d'abord choisir la période du bilan à afficher.
+> Par défaut si aucun bilan n'est sélectionné, un bilan des 7 derniers jours vous sera afficher
 - Avoir des **recommandations personnalisées** en fonction de votre genre et de votre consommation.
 
 ### Journal :
