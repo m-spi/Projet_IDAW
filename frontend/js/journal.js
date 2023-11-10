@@ -49,8 +49,6 @@ $(document).ready(function () {
                     });
                     console.log ("alimentTable" + JSON.stringify(alimentsTable));
 
-
-
                     journal.forEach(function(plat) {
                         var nomPlat = '<span>' + trouverNomAlimentAvecId(plat.id_aliment) + '</span>' +
                             '<input type="hidden" id="journalId" value="' + plat.id + '"/>';
@@ -100,7 +98,10 @@ $(document).ready(function () {
                 });
         })
         .fail(function(error){
-            alert("La requête GET journal s'est terminée en échec. Infos : " + JSON.stringify(error));
+            if (error.responseJSON.http_status != 404){
+                alert("La requête GET journal s'est terminée en échec. Infos : " + JSON.stringify(error));
+            }
+
         });
 
 
