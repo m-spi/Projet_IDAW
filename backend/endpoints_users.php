@@ -80,28 +80,23 @@ function createOne($pdo, $input){
     try{
       $request = $pdo->prepare("
         INSERT INTO USER (ID_USER, EMAIL, PASSWORD, NOM, PRENOM, AGE, ISMALE, POIDS, TAILLE, SPORT)
-        VALUES (NULL, '{$input->email}', '{$input->password}', '{$input->nom}', "
-                .(isset($input->prenom) ? "'{$input->prenom}'" : "NULL").",
-                {$input->age}, {$input->is_male},
-                {$input->poids}, {$input->taille},
-                {$input->sport})
-      ");
-        $request->execute();
+        VALUES (NULL,'{$input->email}','{$input->password}','{$input->nom}',".(isset($input->prenom) ? "'{$input->prenom}'" : "NULL").",{$input->age},{$input->is_male},{$input->poids},{$input->taille},{$input->sport})");
+      $request->execute();
 
-        $last_id = $pdo->lastInsertId();
-        $res = array("id" => $last_id);
-        $res = array(
-            "http_status" => 201,
-            "response" => "Entrée insérée avec succès.",
-            "result" => $res
-        );
+      $last_id = $pdo->lastInsertId();
+      $res = array("id" => $last_id);
+      $res = array(
+          "http_status" => 201,
+          "response" => "Entrée insérée avec succès.",
+          "result" => $res
+      );
 
-        http_response_code(201);
-        return json_encode($res);
+      http_response_code(201);
+      return json_encode($res);
     }catch(PDOException $erreur){
-        echo 'Erreur : '.$erreur->getMessage();
-        http_response_code(500);
-        return "";
+      echo 'Erreur : '.$erreur->getMessage();
+      http_response_code(500);
+      return "";
     }
 }
 
