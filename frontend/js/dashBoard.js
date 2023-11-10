@@ -216,7 +216,7 @@ function Recommendations(duration, bilanData, userGender) {
             recommendationHtml += displayRecommendation("Attention vous avez consommé trop de protéines !", "/Projet_IDAW/frontend/php/index.php?page=warningProteine");
             console.log("if proteine");
         }
-        if (parseFloat(bilanData.fibre) < ((quotas.fibre) * duration)) {
+        if (parseFloat(bilanData.fibre) < (quotas.fibre) * duration) {
             recommendationHtml += displayRecommendation("Attention vous ne consommez pas assez de fibres alimentaires !", "../../php/warningFibreAlimentaire.php")
             console.log("if fibre");
         }
