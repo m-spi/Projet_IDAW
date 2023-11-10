@@ -73,7 +73,9 @@ require_once('codeFactorisé/smallHeader.php');
         </div>
       </div>
     </main>
-    <script src="../js/config.js"></script>
+    <script>
+      const prefixeEndpoint = <?php echo json_encode(prefixeEndpoint); ?>;
+    </script>
     <script type="text/javascript" src="../js/register.js"></script>
   </div>
 <?php
