@@ -21,7 +21,8 @@ if(isset($_POST['emailInput']) && isset($_POST['passwordInput'])){
   }
 
   $wrong = true;
-}
+}else
+  $wrong = false;
 
 require_once('codeFactorisé/smallHeader.php');
 ?>
@@ -62,7 +63,6 @@ require_once('codeFactorisé/smallHeader.php');
       </div>
     </main>
   </div>
-  <
 <?php
-if($wrong) echo '<script>alert("Mauvais identifiatns")</script>';
+if($wrong) echo '<script>alert("Mauvais identifiants")</script>';
 require_once('codeFactorisé/footer.php');
