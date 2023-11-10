@@ -181,7 +181,7 @@ $(document).ready(function () {
             alert("Veuillez choisir un plat ou un aliment");
             ok = 0;
         }
-        if( date == ""){
+        if( date==":00"|| date == undefined || date == null){
             alert ("Veuillez choisir indiquer l'heure à laquelle vous avez manger ce plat");
             ok = 0;
         }

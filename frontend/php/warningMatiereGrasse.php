@@ -2,7 +2,7 @@
     <main class="enSavoirPlusReco">
         <div class="container-fluid px-4">
             <div class="article">
-                <h1 class="enSavoirPlusTitle1">Matières Grasses</h1>
+                <h1 class="enSavoirPlusTitle1">Matières Grasses </h1>
                 <p class="enSavoirPlusText">Les matières grasses sont une source d'énergie importante et fournissent des acides gras essentiels. Cependant, une consommation excessive de matières grasses peut avoir des effets négatifs sur la santé. Il est crucial de respecter les recommandations de consommation de matières grasses pour les raisons suivantes :</p>
                 <div class="reason">
                     <h2 class="enSavoirPlusTitle2">Prise de poids</h2>

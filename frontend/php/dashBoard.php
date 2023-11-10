@@ -14,15 +14,8 @@
                 </div>
             </div>
 
-            <div class="row"> <!--Etiquettes-->
-                <?php
-                require_once ('codeFactorisé/recommandation.php');
-                displayRecommendation('Attention vous consommez trop de sel !', 'index.php?page=warningSel');
-                displayRecommendation('Attention vous consommez trop de matière grasse !', 'index.php?page=warningMatiereGrasse');
-                displayRecommendation('Attention vous consommer trop de sucre !', 'index.php?page=warningSucre');
-                displayRecommendation('Attention vous consommez trop de proteine !', 'index.php?page=warningProteine');
-                displayRecommendation('Attention vous consommez trop de calories!', 'index.php?page=warningEnergie');
-                ?>
+            <div class="row" id="recommendationContainer"> <!--Etiquettes-->
+
             </div>
             <!---<div class="rr">
                 <h1 class="mt-4 h3Size">Mon bilan en graphiques</h1>
@@ -97,8 +90,10 @@
         var id_user = <?php echo json_encode($user); ?>;
         console.log("id_user "+id_user);
     </script>
-    <script src="../js/dashBoard.js"></script>
     <script src="../js/config.js"></script>
+    <script src="../js/dashboard/dashBoard.js"></script>
+    <!--<script src="../js/dashboard/afficherRecommandation.js"></script>-->
+
 
 
 
