@@ -22,6 +22,7 @@ Le journal est votre historique de consommation. Vous pourrez donc :
 - Ajouter un plat que vous avez consommé à partir de la base de donnée des aliments présents.
 - Supprimer un plat consommé.
 - Modifier un plat déjà ajouté.
+
 Chaque entrée du journal est propre à un utilisateur.
 
 ### Aliments:
