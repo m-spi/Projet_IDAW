@@ -32,11 +32,9 @@
     ?>
 
     <script>
-        // Utilisez la variable PHP dans votre code JavaScript
         var id_user = <?php echo json_encode($user); ?>;
-        console.log("id_user "+id_user);
+        const prefixeEndpoint = <?php echo json_encode(prefixeEndpoint); ?>;
     </script>
     <script type="text/javascript" src="../js/journal.js"></script>
-    <script src="../js/config.js"></script>
 
 

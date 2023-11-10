@@ -1,5 +1,4 @@
 backend/config.php
 .*
 !.gitignore
-frontend/js/config.js
 frontend/php/config.php

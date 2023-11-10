@@ -81,18 +81,13 @@
                 </div>
     </main>
     <?php
-    //session_start(); // Démarrez la session si ce n'est pas déjà fait
-
     // Récupérez la valeur de $_SESSION['user']
     $user = $_SESSION['user'];
     ?>
-
     <script>
-        // Utilisez la variable PHP dans votre code JavaScript
-        var id_user = <?php echo json_encode($user); ?>;
-        console.log("id_user "+id_user);
+        const id_user = <?php echo json_encode($user); ?>;
+        const prefixeEndpoint = <?php echo json_encode(prefixeEndpoint); ?>;
     </script>
-    <script src="../js/config.js"></script>
     <script src="../js/dashBoard.js"></script>
 
 

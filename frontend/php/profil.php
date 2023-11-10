@@ -64,8 +64,8 @@
         </div>
       </div>
   </main>
-  <script src="../js/config.js"></script>
   <script>
-      user_id = <?php echo json_encode($_SESSION['user']); ?>;
+      const user_id = <?php echo json_encode($_SESSION['user']); ?>;
+      const prefixeEndpoint = <?php echo json_encode(prefixeEndpoint); ?>;
   </script>
   <script type="text/javascript" src="../js/profil.js"></script>
