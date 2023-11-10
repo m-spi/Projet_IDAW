@@ -308,7 +308,6 @@ function populateAlimentsTable(alimentsTable){
 
             var newInput = '<td>'+'<span style="color: white; font-size: 1px;">AAAAAAAA</span>'+'<input type="hidden" id="newIdJournal" value="' + idJournal+ '"/>'+
                 '<select id="newAlimentBDD">' +
-                '<option value="">Choisir un plat*</option>' +
                 '<option value="' + journal.id_aliment + '">' + trouverNomAlimentAvecId(journal.id_aliment) + '</option>';
             newInput+=alimentsTable.map(function(aliment) {
                 return '<option value="' + aliment.id + '">' + aliment.nom + '</option>';
