@@ -20,6 +20,8 @@
 
       $request->execute();
       $res = $request->fetchAll(PDO::FETCH_ASSOC);
+      if(sizeof($res) == 0)
+        getNotFound();
 
       $request = $pdo->prepare("
         SELECT ID_ALIMENT AS id_aliment, ID_ALIMENT_FK AS lien, '1' as is_ingredient
@@ -84,6 +86,8 @@
       );
       $request->execute();
       $res = $request->fetchAll(PDO::FETCH_ASSOC);
+      if(sizeof($res) == 0)
+        getNotFound();
       $res = $res[0];
 
       $request = $pdo->prepare("
@@ -142,8 +146,13 @@
          !isset($input->ingredient_de) ||
          !isset($input->compose_par)
       ){
-        echo 'Erreur : Il manque au moins un paramètre.';
+        $res = array(
+            "http_status" => 400,
+            "response" => "Erreur : Il manque au moins un paramètre."
+        );
+
         http_response_code(400);
+        echo json_encode($res);
         exit(1);
       }
 
@@ -224,10 +233,10 @@
       $request->execute();
 
       $res = array(
-        "http_status" => 202,
+        "http_status" => 201,
         "response" => "Ingrédient ajouté avec succès."
       );
-      http_response_code(202);
+      http_response_code(201);
       return json_encode($res);
     }catch(PDOException $erreur){
       echo 'Erreur : '.$erreur->getMessage();
@@ -310,12 +319,12 @@
         $request = $pdo->prepare($request_string);
         $request->execute();
         $res = array(
-              "http_status" => 202,
+              "http_status" => 201,
               "response" => "Aliment mis à jour avec succès.",
               "result" => $res
           );
 
-        http_response_code(202);
+        http_response_code(201);
         return json_encode($res);
       }catch(PDOException $erreur){
         echo 'Erreur : '.$erreur->getMessage();
@@ -327,19 +336,17 @@
       try{
         $request = $pdo->prepare("DELETE FROM ALIMENTS WHERE ID_ALIMENT={$id}");
 
-        if(!$request->execute()){
-          echo 'Erreur : Aucun aliment avec cet id.';
-          http_response_code(400);
-        }else{
-          $res = array("id" => $id);
-          $res = array(
-            "http_status" => 202,
-            "response" => "Aliment supprimé avec succès.",
-            "result" => $res
-          );
-          http_response_code(202);
-          return json_encode($res);
-        }
+        if(!$request->execute())
+          getNotFound();
+
+        $res = array("id" => $id);
+        $res = array(
+          "http_status" => 200,
+          "response" => "Aliment supprimé avec succès.",
+          "result" => $res
+        );
+        http_response_code(200);
+        return json_encode($res);
       }catch(Exception $err){
         echo 'Erreur : '.$err->getMessage();
         http_response_code(500);
@@ -356,11 +363,11 @@
         }else{
           $res = array("id_aliment" => $id_aliment, "id_ingredient" => $id_ingredient);
           $res = array(
-            "http_status" => 202,
+            "http_status" => 200,
             "response" => "Ingrédient supprimé avec succès.",
             "result" => $res
           );
-          http_response_code(202);
+          http_response_code(200);
           return json_encode($res);
         }
       }catch(Exception $err){
@@ -369,3 +376,13 @@
       }
   }
 
+function getNotFound(){
+  $res = array(
+      "http_status" => 404,
+      "response" => "Erreur : Aucun aliment trouvé."
+  );
+
+  http_response_code(404);
+  echo json_encode($res);
+  exit(1);
+}

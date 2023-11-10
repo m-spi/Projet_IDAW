@@ -33,7 +33,9 @@ require_once('codeFactorisé/smallHeader.php');
         <div class="row justify-content-center">
           <div class="col-lg-5">
             <div class="card shadow-lg border-0 rounded-lg mt-5">
-              <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
+              <div class="card-header">
+                <h3 class="text-center font-weight-light my-4">Login</h3>
+              </div>
               <div class="card-body">
                 <form action="login.php" method="POST">
                   <div class="form-floating mb-3">
@@ -49,8 +51,10 @@ require_once('codeFactorisé/smallHeader.php');
                   </div>
                 </form>
               </div>
-              <!--<div class="card-footer text-center py-3">
-                <div class="small"><a href="register.php">Se créer un compte</a></div>-->
+              <div class="card-footer text-center py-3">
+                <div class="small">
+                  <a href="register.php">Se créer un compte</a>
+                </div>
               </div>
             </div>
           </div>
@@ -58,19 +62,5 @@ require_once('codeFactorisé/smallHeader.php');
       </div>
     </main>
   </div>
-  <div id="layoutAuthentication_footer">
-    <footer class="py-4 bg-light mt-auto">
-      <div class="container-fluid px-4">
-        <div class="d-flex align-items-center justify-content-between small">
-          <div class="text-muted">Copyright &copy; Traque ta bouffe 2023</div>
-        </div>
-      </div>
-    </footer>
-  </div>
-</div>
-<script src="../../node_modules/startbootstrap-sb-admin/dist/js/scripts.js"></script>
 <?php
-if($wrong) echo '<script>alert("Mauvais identifiants, veuillez réessayer.")</script>';
-?>
-</body>
-</html>
+require_once('codeFactorisé/footer.php');

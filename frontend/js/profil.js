@@ -97,7 +97,6 @@ function valider() {
         "taille": $('#inputTaille').val(),
         "sport": sport
     };
-    console.log(JSON.stringify(data));
 
     $.ajax({
         url: prefixeEndpoint+"/backend/users.php/"+user_id,
