@@ -1,6 +1,6 @@
 # Projet IDAW - Traque ta bouffe
 
-Bienvenue sur l'application qui permettra de traquer votre consommation au quotidien !
+Bienvenue sur l'application qui vous permettra de traquer votre consommation au quotidien !
 Cette application est composée des pages suivantes :
 
 
