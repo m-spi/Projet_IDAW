@@ -21,8 +21,10 @@
     flex-direction: row;
     align-items: center;
     margin-bottom: 38px;
+    margin-top: 10px;
+    align-items: baseline;
 }
-.h3Size{
+.graphiqueTitle{
     font-size:30px;
 }
 .smallSize {
