@@ -74,6 +74,16 @@ function modifier() {
         $('#inputTaille')[0].innerText+
         '">'
     );
+    $('#inputSport').after(`
+        <div class="row mb-4 plr-8 passwordInput">
+          <b class="small-column">Changer de mot de passe :</b>
+          <input class="card small-column" type="password" id="inputPassword">
+        </div>
+        <div class="row mb-4 plr-8 passwordInput">
+          <b class="small-column">Confirmer le mot de passe :</b>
+          <input class="card small-column" type="password" id="inputPasswordConfirm">
+        </div>
+    `);
 
     $('#modifier').replaceWith(`
             <button style="margin-left: auto;" class="side-btn" id="valider">
@@ -85,10 +95,17 @@ function modifier() {
 }
 
 function valider() {
+    if($('#inputPassword').val().length){
+        if($('#inputPassword').val() !== $('#inputPasswordConfirm').val()){
+            alert('Les mots de passe ne correspondent pas');
+            return;
+        }
+    }
     let is_male = $('input[name=sexe]:checked').val() == 'homme' ? true : false;
     let sport = $('input[name=sport]:checked').val()
     const data = {
         "email": $('#inputEmail').val(),
+        "password": $('#inputPassword').val(),
         "nom": $('#inputNom').val(),
         "prenom": $('#inputPrenom').val(),
         "age": $('#inputAge').val(),
@@ -137,6 +154,7 @@ function valider() {
         '<p class="card small-column" id="inputTaille">'+
         $('#inputTaille').val()+'</p>'
     );
+    $('.passwordInput').remove();
 
     $('#valider').replaceWith(`
             <button style="margin-left: auto;" class="side-btn" id="modifier">
