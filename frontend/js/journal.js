@@ -1,9 +1,12 @@
 $(document).ready(function () {
     let table = new DataTable('#journalDataTable');
     let alimentsTable = []; // stock l'id et le nom des aliments dans un tableau
+    populateAlimentsTable(alimentsTable);
     let count = 0; // compteur pour ajouter qu'une fois une ligne vide
     let enModification = 0;
-    console.log("id_user" + id_user);
+    getJournal();
+
+
     function trouverNomAlimentAvecId(idIngredient) {
         var nomIngredient = "Inconnu";
         alimentsTable.forEach(function(aliment) {
@@ -22,90 +25,105 @@ $(document).ready(function () {
         });
         return id;
     }
+    function getJournal() {
 
-    // GET Journal
-    $.ajax({
-        url: prefixeEndpoint+"/backend/journal.php/user/"+id_user,
-        method: "GET",
-        dataType: "json",
-    })
-        .done(function(responseJournal){
-            console.log ("je suis dans le done GET journal");
-            table.clear().draw();
-            var journal = responseJournal.result.journal;
-
-            // après avoir GET journal on GET aliment pour récupérer les infos
-            $.ajax({
-                url: prefixeEndpoint+"/backend/aliments.php",
+        $.ajax({
+                url: prefixeEndpoint + "/backend/journal.php/user/" + id_user,
                 method: "GET",
                 dataType: "json",
             })
-                // done du get aliments
-                .done(function(responseAliment) {
-                    var aliments = responseAliment.result.aliments;
-                    // on remplit la table alimentsTable
-                    aliments.forEach(function (aliment) {
-                        alimentsTable.push({id: aliment.id, nom: aliment.nom});
-                    });
-                    console.log ("alimentTable" + JSON.stringify(alimentsTable));
-
-                    journal.forEach(function(plat) {
-                        var nomPlat = '<span>' + trouverNomAlimentAvecId(plat.id_aliment) + '</span>' +
-                            '<input type="hidden" id="journalId" value="' + plat.id + '"/>';
-
-                        console.log (nomPlat);
-                        var platTrouve = aliments.find ( (aliment) => aliment.id == plat.id_aliment );
-
-                        var nutrimentsPlat = '<ul>';
-
-                        if (platTrouve.indice_nova != 0 && platTrouve.indice_nova !== "") {
-                            nutrimentsPlat += '<li >Indice Nova : ' + platTrouve.indice_nova + '/4</li>';
-                        } else {
-                            nutrimentsPlat += '<li>Indice Nova : Non renseigné </li>';
-                        }
-                        if (platTrouve.energie_kcal != 0 && platTrouve.indice_nova !== "") {
-                            nutrimentsPlat += '<li >Énergie : ' + ( ((platTrouve.energie_kcal)*plat.quantite)/100 ).toFixed(2) + 'kcal</li>';
-                        } else {
-                            nutrimentsPlat += '<li>Énergie : Non renseigné </li>';
-                        }
-                        nutrimentsPlat +=
-                            '<li>Sel : ' + ( ((platTrouve.sel)*plat.quantite)/100 ).toFixed(2) + 'g</li>' +
-                            '<li>Sucre : ' + ( ((platTrouve.sucre)*plat.quantite)/100 ).toFixed(2) + 'g</li>' +
-                            '<li>Protéines : ' + ( ((platTrouve.proteines)*plat.quantite)/100 ).toFixed(2) + 'g</li>' +
-                            '<li>Fibre alimentaire : ' + ( ((platTrouve.fibre_alimentaire)*plat.quantite)/100 ).toFixed(2) + ' g</li>' +
-                            '<li>Matières grasses : ' + ( ((platTrouve.matieres_grasses)*plat.quantite)/100 ).toFixed(2) + 'g</li>' +
-                            '<li>Alcool : ' + platTrouve.alcool + '°</li>' +
-                            '</ul>';
-                        var buttons = '<div class="action-button-container" >' +
-                            '<button class="action-button" id="modifier-Btn">' +
-                            '<i class="fas fa-pencil-alt"></i>' +
-                            '</button>' +
-                            '<button class=action-button" id="delete-Btn" data-id="' + plat.id + '">' +
-                            '<i class="fas fa-trash"></i>' +
-                            '</button>' +
-                            '</div>';
-                        table.row.add([
-                            nomPlat,
-                            plat.date,
-                            plat.quantite,
-                            nutrimentsPlat,
-                            buttons,
-                        ]).draw(false);
-                    });
+                .done(function (responseJournal) {
+                    console.log("je suis dans le done GET journal");
+                    table.clear().draw();
+                    var journal = responseJournal.result.journal;
+                    getAlimentDuJournal(journal);
                 })
-                .fail(function(error){
-                    alert("La requête GET aliment s'est terminée en échec. Infos : " + JSON.stringify(error));
+                .fail(function (error) {
+                    if (error.responseJSON.http_status != 404) {
+                        alert("La requête GET journal s'est terminée en échec. Infos : " + JSON.stringify(error));
+                    }
                 });
-        })
-        .fail(function(error){
-            if (error.responseJSON.http_status != 404){
-                alert("La requête GET journal s'est terminée en échec. Infos : " + JSON.stringify(error));
-            }
+    }
 
+
+    function getAlimentDuJournal(journal) {
+        $.ajax({
+            url: prefixeEndpoint + "/backend/aliments.php",
+            method: "GET",
+            dataType: "json",
+        })
+            // done du get aliments
+            .done(function (responseAliment) {
+                var aliments = responseAliment.result.aliments;
+                journal.forEach(function (plat) {
+                    var nomPlat = '<span>' + trouverNomAlimentAvecId(plat.id_aliment) + '</span>' +
+                        '<input type="hidden" id="journalId" value="' + plat.id + '"/>';
+
+                    console.log(nomPlat);
+                    var platTrouve = aliments.find((aliment) => aliment.id == plat.id_aliment);
+
+                    var nutrimentsPlat = '<ul>';
+
+                    if (platTrouve.indice_nova != 0 && platTrouve.indice_nova !== "") {
+                        nutrimentsPlat += '<li >Indice Nova : ' + platTrouve.indice_nova + '/4</li>';
+                    } else {
+                        nutrimentsPlat += '<li>Indice Nova : Non renseigné </li>';
+                    }
+                    if (platTrouve.energie_kcal != 0 && platTrouve.indice_nova !== "") {
+                        nutrimentsPlat += '<li >Énergie : ' + (((platTrouve.energie_kcal) * plat.quantite) / 100).toFixed(2) + 'kcal</li>';
+                    } else {
+                        nutrimentsPlat += '<li>Énergie : Non renseigné </li>';
+                    }
+                    nutrimentsPlat +=
+                        '<li>Sel : ' + (((platTrouve.sel) * plat.quantite) / 100).toFixed(2) + 'g</li>' +
+                        '<li>Sucre : ' + (((platTrouve.sucre) * plat.quantite) / 100).toFixed(2) + 'g</li>' +
+                        '<li>Protéines : ' + (((platTrouve.proteines) * plat.quantite) / 100).toFixed(2) + 'g</li>' +
+                        '<li>Fibre alimentaire : ' + (((platTrouve.fibre_alimentaire) * plat.quantite) / 100).toFixed(2) + ' g</li>' +
+                        '<li>Matières grasses : ' + (((platTrouve.matieres_grasses) * plat.quantite) / 100).toFixed(2) + 'g</li>' +
+                        '<li>Alcool : ' + platTrouve.alcool + '°</li>' +
+                        '</ul>';
+                    var buttons = '<div class="action-button-container" >' +
+                        '<button class="action-button" id="modifier-Btn">' +
+                        '<i class="fas fa-pencil-alt"></i>' +
+                        '</button>' +
+                        '<button class=action-button" id="delete-Btn" data-id="' + plat.id + '">' +
+                        '<i class="fas fa-trash"></i>' +
+                        '</button>' +
+                        '</div>';
+                    table.row.add([
+                        nomPlat,
+                        plat.date,
+                        plat.quantite,
+                        nutrimentsPlat,
+                        buttons,
+                    ]).draw(false);
+                });
+            })
+            .fail(function (error) {
+                alert("La requête GET aliment s'est terminée en échec. Infos : " + JSON.stringify(error));
+            });
+    }
+function populateAlimentsTable(alimentsTable){
+    $.ajax({
+        url: prefixeEndpoint + "/backend/aliments.php",
+        method: "GET",
+        dataType: "json",
+    })
+        // done du get aliments
+        .done(function (responseAliment) {
+            var aliments = responseAliment.result.aliments;
+            // on remplit la table alimentsTable
+            aliments.forEach(function (aliment) {
+                alimentsTable.push({id: aliment.id, nom: aliment.nom});
+            });
+            console.log("alimentTable" + JSON.stringify(alimentsTable));
+        })
+        .fail(function (error) {
+            alert("La requête GET aliment s'est terminée en échec. Infos : " + JSON.stringify(error));
         });
 
 
-
+}
     //Ajouter un journal
 
     function ajouterLigne() {
