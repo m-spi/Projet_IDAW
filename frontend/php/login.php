@@ -62,5 +62,7 @@ require_once('codeFactorisé/smallHeader.php');
       </div>
     </main>
   </div>
+  <
 <?php
+if($wrong) echo '<script>alert("Mauvais identifiatns")</script>';
 require_once('codeFactorisé/footer.php');
