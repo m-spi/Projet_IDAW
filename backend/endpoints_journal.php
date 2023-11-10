@@ -8,6 +8,8 @@ function getAll($pdo){
 
   $request->execute();
   $res = $request->fetchAll(PDO::FETCH_ASSOC);
+  if(sizeof($res) == 0)
+    getNotFound();
 
   $res = array("journal" => $res);
   $res = array(
@@ -30,6 +32,8 @@ function getUserAll($pdo, $id){
 
   $request->execute();
   $res = $request->fetchAll(PDO::FETCH_ASSOC);
+  if(sizeof($res) == 0)
+    getNotFound();
 
   $res = array("journal" => $res);
   $res = array(
@@ -50,6 +54,8 @@ function getOne($pdo, $id){
   );
   $request->execute();
   $res = $request->fetchAll(PDO::FETCH_ASSOC);
+  if(sizeof($res) == 0)
+    getNotFound();
   $res = $res[0];
 
   $res = array("entree" => $res);
@@ -70,8 +76,13 @@ function createOne($pdo, $input){
       strlen($input->date) <19 ||
       !isset($input->quantite)
   ){
-    echo 'Erreur : Il manque au moins un paramètre.';
+    $res = array(
+        "http_status" => 400,
+        "response" => "Erreur : Il manque au moins un paramètre."
+    );
+
     http_response_code(400);
+    echo json_encode($res);
     exit(1);
   }
 
@@ -104,34 +115,43 @@ function updateOne($pdo, $id, $input){
     $request_string = "UPDATE ALIMENT_CONSOMME SET ";
 
     $res = array();
+    $no_request = true;
     if(isset($input->id_aliment)){
+      $no_request = false;
       $request_string .= " ID_ALIMENT_FK = {$input->id_aliment},";
       $res[] = "id_aliment=".$input->id_aliment;
     }
     if(isset($input->id_user)){
+      $no_request = false;
       $request_string .= " ID_USER_FK = {$input->id_user},";
       $res[] = "id_user=".$input->id_user;
     }
     if(isset($input->date)){
+      $no_request = false;
       $request_string .= " `DATE` = '{$input->date}',";
       $res[] = "date=".$input->date;
     }
     if(isset($input->quantite)){
-      $request_string .= " QUANTITE= {$input->quantite},";
+      $no_request = false;
+      $request_string .= " QUANTITE = {$input->quantite},";
       $res[] = "quantite=".$input->quantite;
     }
-    $request_string = substr($request_string,0,strlen($request_string)-1);
-    $request_string .= " WHERE ID_REPAS = {$id}";
 
-    $request = $pdo->prepare($request_string);
-    $request->execute();
+    if(!$no_request){
+      $request_string = substr($request_string,0,strlen($request_string)-1);
+      $request_string .= " WHERE ID_REPAS = {$id}";
+
+      $request = $pdo->prepare($request_string);
+      $request->execute();
+    }
+
     $res = array(
-        "http_status" => 202,
+        "http_status" => 201,
         "response" => "Entrée mise à jour avec succès.",
         "result" => $res
     );
 
-    http_response_code(202);
+    http_response_code(201);
     return json_encode($res);
   }catch(PDOException $erreur){
     echo 'Erreur : '.$erreur->getMessage();
@@ -146,14 +166,25 @@ function deleteOne($pdo, $id){
 
     $res = array("id" => $id);
     $res = array(
-        "http_status" => 202,
+        "http_status" => 200,
         "response" => "Entrée supprimée avec succès.",
         "result" => $res
     );
-    http_response_code(202);
+    http_response_code(200);
     return json_encode($res);
   }catch(PDOException $err){
     echo 'Erreur : '.$err->getMessage();
     http_response_code(500);
   }
+}
+
+function getNotFound(){
+  $res = array(
+      "http_status" => 404,
+      "response" => "Erreur : Aucune entrée trouvée."
+  );
+
+  http_response_code(404);
+  echo json_encode($res);
+  exit(1);
 }

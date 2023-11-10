@@ -1,6 +1,6 @@
 # API
 
-> __Note :__\
+> __IMPORTANT :__\
 > Tous les éléments renvoyés sont des json.\
 > Tous les paramètres envoyés sont des json.
 
@@ -15,6 +15,11 @@ ___/backend/aliments.php/{id}___
 > Les valeurs des nutriments sont une proprtion (pourcentage).
 
 #### Réponse
+
+__Codes :__
+
+- 404 : Aucun aliment trouvé
+- 200 : OK
 
 __Format :__
 ```json
@@ -56,6 +61,11 @@ ___/backend/aliments.php___
 
 #### Réponse
 
+__Codes :__
+
+- 404 : Aucun aliment trouvé
+- 200 : OK
+
 __Format :__
 ```json
 {
@@ -96,7 +106,7 @@ ___/backend/aliments.php___
 
 > Description :\
 > Ajoute un nouvel élément dans les aliments.\
-> Optionnellement un aliment ajouté peut être un composant d'un autre aliment.
+> Optionnellement un aliment ajouté peut être un composant d'un autre aliment ou composé par d'autres aliments.
 
 __Paramètre POST :__
 
@@ -129,12 +139,18 @@ __Paramètre POST :__
 }
 ```
 
-> Note :\
+> __IMPORTANT :__\
 > Si l'aliment ne compose pas d'autre aliments, le champ `ingredient_de` doit être un tableau vide.\
-> Il ne peut pas être `null` !
-> Même chose pour le `compose_par`
+> Il ne peut pas être `null` !\
+> Même chose pour le `compose_par`.
 
 #### Réponse
+
+__Codes :__
+
+- 400 : Paramètre manquant
+- 201 : Created
+- 500 : Erreur
 
 __Format :__
 ```json
@@ -152,7 +168,7 @@ __Format :__
 ___/backend/aliments.php/{id}___
 
 > Description :\
-> Permet de changer le nom et/ou les valeurs des nutriments.
+> Permet de changer les paramètres d'un aliment.
 
 __Paramètre PUT :__
 ```json
@@ -184,10 +200,16 @@ __Paramètre PUT :__
 }
 ```
 
-> Note :\
+> __IMPORTANT :__\
 > Tous les paramètres omis resteront inchangés.
 
 #### Réponse
+
+__Codes :__
+
+- 400 : Paramètre manquant
+- 201 : Created
+- 500 : Erreur
 
 __Format :__
 ```json
@@ -219,6 +241,11 @@ __Paramètre POST :__
 
 #### Réponse
 
+__Codes :__
+
+- 201 : Created
+- 500 : Erreur
+
 __Format :__
 ```json
 {
@@ -235,6 +262,12 @@ ___/backend/aliments.php/{id}___
 > Permet de supprimer un aliment de la base.
 
 #### Réponse
+
+__Codes :__
+
+- 404 : Aucun aliment avec cet ID
+- 200 : OK
+- 500 : Erreur
 
 __Format :__
 ```json
@@ -256,6 +289,12 @@ ___/backend/aliments.php/{id_aliment}/ingredient/{id_ingredient}___
 
 #### Réponse
 
+__Codes :__
+
+- 400 : Cet ingrédient ne compose pas cet aliment
+- 200 : OK
+- 500 : Erreur
+
 __Format :__
 ```json
 {
@@ -272,7 +311,7 @@ __Format :__
 
 ## Journal
 
-> __Note__ :\
+> __Note :__\
 > Les String pour les dates sont sous le format 'YYYY-MM-DD HH:MM:SS.UUUUUU',
 > les 'U' étant les microsecondes, ces derniers sont optionnels.
 
@@ -284,6 +323,11 @@ ___/backend/journal.php/{id}___
 > Renvoi l'entrée spécifié par l'id dans l'URL.
 
 #### Réponse
+
+__Codes :__
+
+- 404 : Aucune entrée trouvée
+- 200 : OK
 
 __Format :__
 ```json
@@ -310,6 +354,11 @@ ___/backend/journal.php___
 > Renvoi toutes les entrées du journal.
 
 #### Réponse
+
+__Codes :__
+
+- 404 : Aucune entrée trouvée
+- 200 : OK
 
 __Format :__
 ```json
@@ -339,6 +388,11 @@ ___/backend/journal.php/user/{id}___
 > Renvoi toutes les entrées du journal d'un user en précisant son id dans l'URL.
 
 #### Réponse
+
+__Codes :__
+
+- 404 : Aucune entrée trouvée
+- 200 : OK
 
 __Format :__
 ```json
@@ -377,7 +431,16 @@ __Paramètre POST :__
 }
 ```
 
+> __IMPORTANT :__\
+> Tous les paramètres sont nécessaires.
+
 #### Réponse
+
+__Codes :__
+
+- 400 : Paramètre manquant
+- 201 : Created
+- 500 : Erreur
 
 __Format :__
 ```json
@@ -410,6 +473,11 @@ __Paramètre PUT :__
 
 #### Réponse
 
+__Codes :__
+
+- 201 : Created
+- 500 : Erreur
+
 __Format :__
 ```json
 {
@@ -430,6 +498,11 @@ ___/backend/journal.php/{id}___
 > Supprime une entrée du journal.
 
 #### Réponse
+
+__Codes :__
+
+- 200 : OK
+- 500 : Erreur
 
 __Format :__
 ```json
@@ -454,6 +527,11 @@ ___/backend/users.php/{id}___
 > Renvoi l'utilisateur spécifié par l'id dans l'URL.
 
 #### Réponse
+
+__Codes :__
+
+- 404 : Aucun utilisateur trouvé
+- 200 : OK
 
 __Format :__
 ```json
@@ -485,6 +563,11 @@ ___/backend/users.php___
 > Renvoi tous les utilisateurs.
 
 #### Réponse
+
+__Codes :__
+
+- 404 : Aucun utilisateur trouvé
+- 200 : OK
 
 __Format :__
 ```json
@@ -533,7 +616,16 @@ __Paramètre POST :__
 }
 ```
 
+> __IMPORTANT :__\
+> Tous les paramètres sonr nécessaires.
+
 #### Réponse
+
+__Codes :__
+
+- 400 : Paramètre manquant
+- 201 : Created
+- 500 : Erreur
 
 __Format :__
 ```json
@@ -571,6 +663,11 @@ __Paramètre PUT :__
 
 #### Réponse
 
+__Codes :__
+
+- 201 : Created
+- 500 : Erreur
+
 __Format :__
 ```json
 {
@@ -591,6 +688,12 @@ ___/backend/users.php/{id}___
 > Supprime un utilisateur.
 
 #### Réponse
+
+__Codes :__
+
+- 404 : Aucun utilisateur avec cet ID
+- 200 : OK
+- 500 : Erreur
 
 __Format :__
 ```json

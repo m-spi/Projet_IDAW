@@ -17,6 +17,8 @@ function getAll($pdo){
 
     $request->execute();
     $res = $request->fetchAll(PDO::FETCH_ASSOC);
+    if(sizeof($res) == 0)
+      getNotFound();
 
     $res = array("utilisateurs" => $res);
     $res = array(
@@ -46,6 +48,8 @@ function getOne($pdo, $id){
     ");
     $request->execute();
     $res = $request->fetchAll(PDO::FETCH_ASSOC);
+    if(sizeof($res) == 0)
+      getNotFound();
     $res = $res[0];
 
     $res = array("utilisateur" => $res);
@@ -72,9 +76,14 @@ function createOne($pdo, $input){
         !isset($input->taille) ||
         !isset($input->sport)
     ){
-        echo 'Erreur : Il manque au moins un paramètre.';
-        http_response_code(400);
-        exit(1);
+      $res = array(
+          "http_status" => 400,
+          "response" => "Erreur : Il manque au moins un paramètre."
+      );
+
+      http_response_code(400);
+      echo json_encode($res);
+      exit(1);
     }
 
     try{
@@ -105,7 +114,9 @@ function updateOne($pdo, $id, $input){
       $request_string = "UPDATE USER SET ";
 
       $res = array();
+      $no_request = true;
       if(isset($input->email)){
+        $no_request = false;
         if(strlen($input->email) == 0)
           inputError('Email de taille 0');
 
@@ -113,6 +124,7 @@ function updateOne($pdo, $id, $input){
         $res[] = "email=".$input->email;
       }
       if(isset($input->password)){
+        $no_request = false;
         if(strlen($input->password) == 0)
           inputError('Mot de passe de taille 0');
 
@@ -120,6 +132,7 @@ function updateOne($pdo, $id, $input){
         $res[] = "password=".$input->password;
       }
       if(isset($input->nom)){
+        $no_request = false;
         if(strlen($input->nom) == 0)
           inputError('Nom de taille 0');
 
@@ -127,41 +140,51 @@ function updateOne($pdo, $id, $input){
         $res[] = "nom=".$input->nom;
       }
       if(isset($input->prenom)){
+        $no_request = false;
         $request_string .= " PRENOM = '{$input->prenom}',";
         $res[] = "prenom=".$input->prenom;
       }
       if(isset($input->age)){
+        $no_request = false;
         $request_string .= " AGE = {$input->age},";
         $res[] = "age=".$input->age;
       }
       if(isset($input->is_male)){
+        $no_request = false;
         $request_string .= " ISMALE = {$input->is_male},";
         $res[] = "is_male=".$input->is_male;
       }
       if(isset($input->poids)){
+        $no_request = false;
         $request_string .= " POIDS = {$input->poids},";
         $res[] = "poids=".$input->poids;
       }
       if(isset($input->taille)){
+        $no_request = false;
         $request_string .= " TAILLE = {$input->taille},";
         $res[] = "taille=".$input->taille;
       }
       if(isset($input->sport)){
+        $no_request = false;
         $request_string .= " SPORT = {$input->sport},";
         $res[] = "sport=".$input->sport;
       }
-      $request_string = substr($request_string,0,strlen($request_string)-1);
-      $request_string .= " WHERE ID_USER = {$id}";
 
-      $request = $pdo->prepare($request_string);
-      $request->execute();
+      if(!$no_request){
+        $request_string = substr($request_string, 0, strlen($request_string) - 1);
+        $request_string .= " WHERE ID_USER = {$id}";
+
+        $request = $pdo->prepare($request_string);
+        $request->execute();
+      }
+
       $res = array(
-          "http_status" => 202,
+          "http_status" => 201,
           "response" => "Utilisateur mis à jour avec succès.",
           "result" => $res
       );
 
-        http_response_code(202);
+        http_response_code(201);
         return json_encode($res);
     }catch(PDOException $erreur){
       echo 'Erreur : '.$erreur->getMessage();
@@ -172,20 +195,33 @@ function updateOne($pdo, $id, $input){
 function deleteOne($pdo, $id){
     try{
         $request = $pdo->prepare("DELETE FROM USER WHERE ID_USER = {$id}");
-        $request->execute();
+
+        if(!$request->execute())
+          getNotFound();
 
         $res = array("id" => $id);
         $res = array(
-            "http_status" => 202,
+            "http_status" => 200,
             "response" => "Utilisateur supprimé avec succès.",
             "result" => $res
         );
-        http_response_code(202);
+        http_response_code(200);
         return json_encode($res);
     }catch(PDOException $err){
         echo 'Erreur : '.$err->getMessage();
         http_response_code(500);
     }
+}
+
+function getNotFound(){
+  $res = array(
+      "http_status" => 404,
+      "response" => "Erreur : Aucun utilisateur trouvé."
+  );
+
+  http_response_code(404);
+  echo json_encode($res);
+  exit(1);
 }
 
 function inputError($errorString){
